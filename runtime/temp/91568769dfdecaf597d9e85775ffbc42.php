@@ -1,17 +1,18 @@
+<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\about\index.html";i:1553179328;}*/ ?>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
-		<title>Mr.Wang - Blog </title>
+		<title>关于 - Mr.Wang - Blog </title>
 		<!--width=device-width 表示宽度是设备屏幕的宽度;initial-scale=1 表示初始的缩放比例;shrink-to-fit=no 自动适应手机屏幕的宽度。-->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!--引入public目录中的main.css文件-->
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/main.css" />
 		<!--引入public目录中的初始化css文件-->
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/initial.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/initial.css" />
 		<!--引入public目录中的ico图标-->
-		<link rel="shortcut icon" href="__PUBLIC__/index/img/favicon.ico">
+		<link rel="shortcut icon" href="http://localhost/myblog/public/static/index/img/favicon.ico">
 		<!--引入cdn图标-->
 		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
 		<!-- 新 Bootstrap4 核心 CSS 文件 -->
@@ -36,7 +37,7 @@
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" href="{:url('index/index')}">首页</a>
+							<a class="nav-link active" href="<?php echo url('index/index'); ?>">首页</a>
 						</li>
 						<!-- Dropdown -->
 						<li class="nav-item dropdown">
@@ -44,29 +45,29 @@
 								技术
 							</a>
 							<div class="dropdown-menu text-center" id="menu">
-								<a class="dropdown-item" href="{:url('technology/index')}">前端</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">PHP</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Linux</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Java</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Android</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">C语言</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">网络安全</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">前端</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">PHP</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Linux</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Java</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Android</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">C语言</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">网络安全</a>
 							</div>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">项目</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('diary/index')}">日志</a>
+							<a class="nav-link" href="<?php echo url('diary/index'); ?>">日志</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('essay/index')}">随笔</a>
+							<a class="nav-link" href="<?php echo url('essay/index'); ?>">随笔</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('board/index')}">留言板</a>
+							<a class="nav-link" href="<?php echo url('board/index'); ?>">留言板</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('about/index')}">关于</a>
+							<a class="nav-link" href="<?php echo url('about/index'); ?>">关于</a>
 						</li>
 					</ul>
 				</div>

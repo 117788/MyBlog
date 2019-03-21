@@ -1,17 +1,18 @@
+<?php /*a:1:{s:65:"D:\wamp64\www\MyBlog\application\index\view\technology\index.html";i:1553179499;}*/ ?>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
-		<title>Mr.Wang - Blog </title>
+		<title> 技术 - Mr.Wang - Blog </title>
 		<!--width=device-width 表示宽度是设备屏幕的宽度;initial-scale=1 表示初始的缩放比例;shrink-to-fit=no 自动适应手机屏幕的宽度。-->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!--引入public目录中的main.css文件-->
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/main.css" />
 		<!--引入public目录中的初始化css文件-->
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/initial.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/initial.css" />
 		<!--引入public目录中的ico图标-->
-		<link rel="shortcut icon" href="__PUBLIC__/index/img/favicon.ico">
+		<link rel="shortcut icon" href="http://localhost/myblog/public/static/index/img/favicon.ico">
 		<!--引入cdn图标-->
 		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
 		<!-- 新 Bootstrap4 核心 CSS 文件 -->
@@ -22,7 +23,14 @@
 		<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
 		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
+		<style type="text/css">
+			#main #warp{
+				margin-top: 45px!important;
+			}
+			#main #banner_right{
+				margin-top: 95px !important;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -36,37 +44,37 @@
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" href="{:url('index/index')}">首页</a>
+							<a class="nav-link " href="<?php echo url('index/index'); ?>">首页</a>
 						</li>
 						<!-- Dropdown -->
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+							<a class="nav-link dropdown-toggle active" href="#" id="navbardrop" data-toggle="dropdown">
 								技术
 							</a>
 							<div class="dropdown-menu text-center" id="menu">
-								<a class="dropdown-item" href="{:url('technology/index')}">前端</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">PHP</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Linux</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Java</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Android</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">C语言</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">网络安全</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">前端</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">PHP</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Linux</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Java</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Android</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">C语言</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">网络安全</a>
 							</div>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">项目</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('diary/index')}">日志</a>
+							<a class="nav-link" href="<?php echo url('diary/index'); ?>">日志</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('essay/index')}">随笔</a>
+							<a class="nav-link" href="<?php echo url('essay/index'); ?>">随笔</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('board/index')}">留言板</a>
+							<a class="nav-link" href="<?php echo url('board/index'); ?>">留言板</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('about/index')}">关于</a>
+							<a class="nav-link" href="<?php echo url('about/index'); ?>">关于</a>
 						</li>
 					</ul>
 				</div>
@@ -74,53 +82,18 @@
 		</div>
 		<!--导航栏结束-->
 
-		<!--banner开始-->
-		<div id="banner">
-
-			<div class="text">
-				<span>愿你历尽千帆</span><br />
-				<span style="margin-left: 30px;">归来仍是少年</span></div>
-
-		</div>
-		<!--banner结束-->
-
 		<!--主体内容开始-->
 		<div id="main" class="container">
 			<div class="row">
 				
 				<div class="col-xs-12 col-md-12 col-lg-8" id="warp">
+					<!--面包屑导航开始-->
 					<nav class="breadcrumb">
-						<a class="breadcrumb-item active" href="#">Blog</a>
-						<a class="breadcrumb-item" href="#">首页</a>
-						
+						<a class="breadcrumb-item " href="#">Blog</a>
+						<a class="breadcrumb-item " href="#">技术</a>
+						<a class="breadcrumb-item active" href="#">前端</a>
 					</nav>
-					<div class="article">
-						<h3>
-							<a href="#" class="article_title">标题</a>
-						</h3>
-						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_read"><i class="fa fa-check-square"></i>&nbsp;阅读次数</li>
-							<li class="article_comment"><i class="fa fa-comment"></i>&nbsp;评论次数</li>
-							<li class="article_cate1"><i class="fa fa-list-alt"></i>&nbsp;一级标签</li>
-							<li class="article_cate2"><i class="fa fa-tags"></i>&nbsp;二级标签</li>
-
-						</ul>
-						<div class="article_main clearfix">
-							<div class="row">
-								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
-								</div>
-								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
-								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
-							</div>
-
-						</div>
-
-					</div>
+					<!--面包屑导航结束-->
 					<div class="article">
 						<h3>
 							<a href="#" class="article_title">标题</a>
@@ -297,31 +270,6 @@
 							<li class="list-group-item">
 								<span class="num">5</span>
 								<span><a href="#">近期文章5</a></span>
-							</li>
-						</ul>
-					</div>
-					<div class="comment_list widget">
-						<h2 class="title">近期评论</h2>
-						<ul class="list-group">
-							<li class="list-group-item">
-								<span class="num" style="background-color: #ff858e;">1</span>
-								<span><a href="#">近期评论1</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #77d549;">2</span>
-								<span><a href="#">近期评论2</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #62c1ff;">3</span>
-								<span><a href="#">近期评论3</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">4</span>
-								<span><a href="#">近期评论4</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">5</span>
-								<span><a href="#">近期评论5</a></span>
 							</li>
 						</ul>
 					</div>
