@@ -22,7 +22,46 @@
 		<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
 		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
+		<style type="text/css">
+			#main #warp {
+				margin-top: 45px!important;
+			}
+			
+			#main #banner_right {
+				margin-top: 95px !important;
+			}
+			#main .about,#main .about_box{
+				height: 650px;
+				background-color: #f1f1ee;
+				margin-top: 20px;
+				padding: 20px;
+			}
+			#main .about .about_title{
+				font-size: 20px;
+				font-weight: 500;
+			}
+			#main .about_text{
+				font-size: 13px;
+				font-weight: 400;
+				line-height: 30px;
+				text-indent: 40px;
+			}
+			
+			#main .about_box li{
+				margin: 15px 0 15px 25px;
+				font-size: 15px;
+			}
+			#main .about_box ul{
+				margin-left: 20px;
+				margin-top: 20px;
+			}
+			#main .about_box img{
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				margin-left: 80px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -36,7 +75,7 @@
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" href="{:url('index/index')}">首页</a>
+							<a class="nav-link" href="{:url('index/index')}">首页</a>
 						</li>
 						<!-- Dropdown -->
 						<li class="nav-item dropdown">
@@ -46,6 +85,7 @@
 							<div class="dropdown-menu text-center" id="menu">
 								<a class="dropdown-item" href="{:url('technology/index')}">前端</a>
 								<a class="dropdown-item" href="{:url('technology/index')}">PHP</a>
+								<a class="dropdown-item" href="{:url('technology/index')}">Python</a>
 								<a class="dropdown-item" href="{:url('technology/index')}">Linux</a>
 								<a class="dropdown-item" href="{:url('technology/index')}">Java</a>
 								<a class="dropdown-item" href="{:url('technology/index')}">Android</a>
@@ -54,7 +94,7 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">项目</a>
+							<a class="nav-link" href="{:url('project/index')}">项目</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{:url('diary/index')}">日志</a>
@@ -66,7 +106,7 @@
 							<a class="nav-link" href="{:url('board/index')}">留言板</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('about/index')}">关于</a>
+							<a class="nav-link active" href="{:url('about/index')}">关于</a>
 						</li>
 					</ul>
 				</div>
@@ -74,286 +114,59 @@
 		</div>
 		<!--导航栏结束-->
 
-		<!--banner开始-->
-		<div id="banner">
-
-			<div class="text">
-				<span>愿你历尽千帆</span><br />
-				<span style="margin-left: 30px;">归来仍是少年</span></div>
-
-		</div>
 		<!--banner结束-->
 
 		<!--主体内容开始-->
 		<div id="main" class="container">
 			<div class="row">
-				
+
 				<div class="col-xs-12 col-md-12 col-lg-8" id="warp">
+					<!--面包屑导航开始-->
 					<nav class="breadcrumb">
-						<a class="breadcrumb-item active" href="#">Blog</a>
-						<a class="breadcrumb-item" href="#">首页</a>
-						
+						<a class="breadcrumb-item" href="#">Blog</a>
+						<a class="breadcrumb-item active" href="#">关于</a>
 					</nav>
-					<div class="article">
-						<h3>
-							<a href="#" class="article_title">标题</a>
-						</h3>
-						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_read"><i class="fa fa-check-square"></i>&nbsp;阅读次数</li>
-							<li class="article_comment"><i class="fa fa-comment"></i>&nbsp;评论次数</li>
-							<li class="article_cate1"><i class="fa fa-list-alt"></i>&nbsp;一级标签</li>
-							<li class="article_cate2"><i class="fa fa-tags"></i>&nbsp;二级标签</li>
-
-						</ul>
-						<div class="article_main clearfix">
-							<div class="row">
-								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
-								</div>
-								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
-								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
+					<!--面包屑导航结束-->
+					<div class="about">
+						<div class="about_me">
+							<p class="about_title">关于我 | ABOUT ME</p>
+							<div class="about_text">
+								<p>一个90后爱好web前端的程序员，内心充满热情。</p>
+							    <p>大学所修专业软件工程,大二开始对web前端感兴趣，于是开始了漫漫学习之路。
+							前前后后接触web前端有两年的时间了，一直想搭建一个自己的网站，
+							记录自己学习上的成长。同时为了这个目标自己也在不断学习。
+							最终利用在北京实习这段时间的空闲时间，开始着手建站。从一开始的的静态网页到最后的网站,
+							从无到有，也许对于有一定经验的程序员来说，并不是难事，但是对于我来说建站的过程也是一个学习的过程，
+						 	而过程则是最令人兴奋的。这期间自己不断从网上搜集资料，充实网站内容，也付出了很多心血，
+						 	希望自己以后学习更多的新技术，让网站变得越来越好。
+							       </p>
 							</div>
-
+							
 						</div>
-
-					</div>
-					<div class="article">
-						<h3>
-							<a href="#" class="article_title">标题</a>
-						</h3>
-						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_read"><i class="fa fa-check-square"></i>&nbsp;阅读次数</li>
-							<li class="article_comment"><i class="fa fa-comment"></i>&nbsp;评论次数</li>
-							<li class="article_cate1"><i class="fa fa-list-alt"></i>&nbsp;一级标签</li>
-							<li class="article_cate2"><i class="fa fa-tags"></i>&nbsp;二级标签</li>
-
-						</ul>
-						<div class="article_main clearfix">
-							<div class="row">
-								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
-								</div>
-								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
-								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
+						<div class="about_blog">
+							<p class="about_title">关于博客| ABOUT BLOG</p>
+							<div class="about_text">
+								<p>
+									网站是博客类性质的个人站，主要分享自己在web前端学习过程中的一些体会和技术上的心得，没有标注的均为自己原创，转载请注明出处。
+								</p>
 							</div>
-
 						</div>
-
 					</div>
-					<div class="article">
-						<h3>
-							<a href="#" class="article_title">标题</a>
-						</h3>
-						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_read"><i class="fa fa-check-square"></i>&nbsp;阅读次数</li>
-							<li class="article_comment"><i class="fa fa-comment"></i>&nbsp;评论次数</li>
-							<li class="article_cate1"><i class="fa fa-list-alt"></i>&nbsp;一级标签</li>
-							<li class="article_cate2"><i class="fa fa-tags"></i>&nbsp;二级标签</li>
-
-						</ul>
-						<div class="article_main clearfix">
-							<div class="row">
-								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
-								</div>
-								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
-								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
-							</div>
-
-						</div>
-
-					</div>
-					<div class="article">
-						<h3>
-							<a href="#" class="article_title">标题</a>
-						</h3>
-						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_read"><i class="fa fa-check-square"></i>&nbsp;阅读次数</li>
-							<li class="article_comment"><i class="fa fa-comment"></i>&nbsp;评论次数</li>
-							<li class="article_cate1"><i class="fa fa-list-alt"></i>&nbsp;一级标签</li>
-							<li class="article_cate2"><i class="fa fa-tags"></i>&nbsp;二级标签</li>
-
-						</ul>
-						<div class="article_main clearfix">
-							<div class="row">
-								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
-								</div>
-								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
-								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
-							</div>
-
-						</div>
-
-					</div>
-					<div class="article">
-						<h3>
-							<a href="#" class="article_title">标题</a>
-						</h3>
-						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_read"><i class="fa fa-check-square"></i>&nbsp;阅读次数</li>
-							<li class="article_comment"><i class="fa fa-comment"></i>&nbsp;评论次数</li>
-							<li class="article_cate1"><i class="fa fa-list-alt"></i>&nbsp;一级标签</li>
-							<li class="article_cate2"><i class="fa fa-tags"></i>&nbsp;二级标签</li>
-
-						</ul>
-						<div class="article_main clearfix">
-							<div class="row">
-								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
-								</div>
-								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
-								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
-							</div>
-
-						</div>
-
-					</div>
-
-					<ul class="pagination d-flex justify-content-center">
-						<li class="page-item">
-							<a class="page-link" href="#">Previous</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">1</a>
-						</li>
-						<li class="page-item active">
-							<a class="page-link" href="#">2</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">3</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">Next</a>
-						</li>
-					</ul>
 
 				</div>
 				<div class="col-lg-4 d-none d-sm-block" id="banner_right">
-					<div class="hot_list widget">
-						<h2 class="title">热门文章</h2>
-						<ul class="list-group">
-							<li class="list-group-item">
-								<span class="num" style="background-color: #ff858e;">1</span>
-								<span><a href="#">热门文章1</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #77d549;">2</span>
-								<span><a href="#">热门文章2</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #62c1ff;">3</span>
-								<span><a href="#">热门文章3</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">4</span>
-								<span><a href="#">热门文章4</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">5</span>
-								<span><a href="#">热门文章5</a></span>
-							</li>
-						</ul>
-					</div>
-					<div class="recent_list widget">
-						<h2 class="title">近期文章</h2>
-						<ul class="list-group">
-							<li class="list-group-item">
-								<span class="num" style="background-color: #ff858e;">1</span>
-								<span><a href="#">近期文章1</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #77d549;">2</span>
-								<span><a href="#">近期文章2</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #62c1ff;">3</span>
-								<span><a href="#">近期文章3</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">4</span>
-								<span><a href="#">近期文章4</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">5</span>
-								<span><a href="#">近期文章5</a></span>
-							</li>
-						</ul>
-					</div>
-					<div class="comment_list widget">
-						<h2 class="title">近期评论</h2>
-						<ul class="list-group">
-							<li class="list-group-item">
-								<span class="num" style="background-color: #ff858e;">1</span>
-								<span><a href="#">近期评论1</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #77d549;">2</span>
-								<span><a href="#">近期评论2</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #62c1ff;">3</span>
-								<span><a href="#">近期评论3</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">4</span>
-								<span><a href="#">近期评论4</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">5</span>
-								<span><a href="#">近期评论5</a></span>
-							</li>
-						</ul>
-					</div>
-					<div class="time_list widget">
-						<h2 class="title">归档</h2>
-						<ul class="list-group">
-							<li class="list-group-item">
-								<span><a href="#">2019(1)</a></span>
-							</li>
-							<li class="list-group-item">
-								<span><a href="#">2019(2)</a></span>
-							</li>
-							<li class="list-group-item">
-								<span><a href="#">2019(3)</a></span>
-							</li>
+					<div class="about_box">
+						<img src="__PUBLIC__/index/img/photo2.jpg" />
+						<ul >
+							<li>昵称 : Cat</li>
+							<li>生日 : 1999年2月16日</li>
+							<li>职业 : 还不是程序猿的码农</li>
+							<li>爱好 : 睡觉、写代码、听音乐、追剧</li>
+							<li>喜欢的歌手 : 许嵩 ( 暴露年龄了hh ) </li>
+							<li>对象  : Object (自己new一个，哭~~)</li>
 							
 						</ul>
-					</div>
-					<div class="friends_link widget">
-						<h2 class="title">友情链接</h2>
-						<ul class="list-group">
-							<li class="list-group-item">
-								<span><a href="#">友情链接1</a></span>
-							</li>
-							<li class="list-group-item">
-								<span><a href="#">友情链接2</a></span>
-							</li>
-							<li class="list-group-item">
-								<span><a href="#">友情链接3</a></span>
-							</li>
-
-						</ul>
+						
 					</div>
 				</div>
 			</div>
@@ -361,7 +174,7 @@
 		</div>
 		<!--主体内容结束-->
 		<!--copyright开始-->
-		<div id="copyright" >
+		<div id="copyright">
 			<p>copyright &nbsp;2019-2020 @
 				<a href="#">wh241.com</a>
 			</p>

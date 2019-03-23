@@ -1,4 +1,4 @@
-<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\board\index.html";i:1553183296;}*/ ?>
+<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\board\index.html";i:1553243039;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -23,6 +23,16 @@
 		<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
 		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<!-- Include Editor style. -->
+		<link href='https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
+		<link href='https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_style.min.css' rel='stylesheet' type='text/css' />
+		<!-- Include JS file. -->
+		<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/js/froala_editor.min.js'></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+
+		<!-- Include Editor style. -->
+		<link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+		<link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 		<style type="text/css">
 			#main #warp {
 				margin-top: 45px!important;
@@ -60,9 +70,15 @@
 			#main .review {
 				margin-left: 50px;
 			}
-			.website_data li{
+			
+			.website_data li {
 				height: 40px;
 				line-height: 15px;
+			}
+			
+			#main .message_p {
+				font-size: 20px;
+				font-weight: 500;
 			}
 		</style>
 	</head>
@@ -88,6 +104,7 @@
 							<div class="dropdown-menu text-center" id="menu">
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">前端</a>
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">PHP</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Python</a>
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Linux</a>
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Java</a>
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Android</a>
@@ -96,7 +113,7 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">项目</a>
+							<a class="nav-link" href="<?php echo url('project/index'); ?>">项目</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo url('diary/index'); ?>">日志</a>
@@ -234,6 +251,50 @@
 								<p>这是评论内容，这是评论内容，这是评论内容，这是评论内容，这是评论内容</p>
 							</div>
 						</div>
+
+						<ul class="pagination d-flex justify-content-center">
+							<li class="page-item">
+								<a class="page-link" href="#">Previous</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="#">1</a>
+							</li>
+							<li class="page-item active">
+								<a class="page-link" href="#">2</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="#">3</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link" href="#">Next</a>
+							</li>
+						</ul>
+						<p class="message_p">留下脚印吧,尽情吐槽~~</p>
+						<div class="message_box">
+							<form action="/action_page.php">
+								<div class="row">
+									<div class="input-group mb-3 col-xs-6 col-md-6 col-lg-6">
+										<div class="input-group-prepend">
+											<span class="input-group-text">昵称</span>
+										</div>
+										<input type="text" class="form-control" placeholder="昵称将会被显示(必填)" id="usr" name="username">
+									</div>
+
+									<div class="input-group mb-3 col-xs-6 col-md-6 col-lg-6">
+										<div class="input-group-append">
+											<span class="input-group-text">邮箱</span>
+										</div>
+										<input type="text" class="form-control" placeholder="邮箱不会被公开(必填)" id="mail" name="email">
+
+									</div>
+
+								</div>
+								<div class="editor"></div>
+								<button type="submit" class="btn btn-primary" style="margin-bottom: 20px; margin-top: 10px;">发表评论</button>
+
+							</form>
+						</div>
+
 					</div>
 
 				</div>
@@ -246,8 +307,8 @@
 							<li class="list-group-item list-group-item-info">随笔总数:365</li>
 							<li class="list-group-item list-group-item-warning">日志总数:150</li>
 							<li class="list-group-item list-group-item-danger">评论总数:75</li>
-							<li class="list-group-item list-group-item-primary">留言板:66</li>
-							<li class="list-group-item list-group-item-dark">最后发文:2019.3.21</li>
+							<li class="list-group-item list-group-item-dark ">留言板:66</li>
+							<li class="list-group-item list-group-item-primary">最后发文:2019.3.21</li>
 						</ul>
 					</div>
 
@@ -264,7 +325,32 @@
 			</p>
 		</div>
 		<!--copyright结束-->
+		<!-- Include external JS libs. -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
 
+		<!-- Include Editor JS files. -->
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/js/froala_editor.pkgd.min.js"></script>
+		<script src='http://localhost/myblog/public/static/froala_editor/js/languages/zh_cn.js'></script>
+		<!-- Initialize the editor. -->
+		<script>
+			$(function() {
+				$('div.editor').froalaEditor({
+					language: 'zh_cn',
+					heightMin: 100,
+					heightMax: 600,
+					placeholderText: '亲亲，这边建议您留下脚印呢~~',
+					pastePlain: true,
+					tooltips: false,
+					theme: 'dark',
+					quickInsertTags: [''],
+					toolbarButtons: ['emoticons'],
+					toolbarStickyOffset: 53,
+				})
+			});
+		</script>
 	</body>
 
 </html>

@@ -1,4 +1,4 @@
-<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\diary\index.html";i:1553179158;}*/ ?>
+<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\diary\index.html";i:1553243039;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -57,6 +57,7 @@
 							<div class="dropdown-menu text-center" id="menu">
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">前端</a>
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">PHP</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Python</a>
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Linux</a>
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Java</a>
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Android</a>
@@ -65,7 +66,7 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">项目</a>
+							<a class="nav-link" href="<?php echo url('project/index'); ?>">项目</a>
 						</li>
 						<li class="nav-item active">
 							<a class="nav-link" href="<?php echo url('diary/index'); ?>">日志</a>

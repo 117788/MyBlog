@@ -1,4 +1,4 @@
-<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\index\index.html";i:1553179155;}*/ ?>
+<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\index\index.html";i:1553354004;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -47,6 +47,7 @@
 							<div class="dropdown-menu text-center" id="menu">
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">前端</a>
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">PHP</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Python</a>
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Linux</a>
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Java</a>
 								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Android</a>
@@ -55,7 +56,7 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">项目</a>
+							<a class="nav-link" href="<?php echo url('project/index'); ?>">项目</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo url('diary/index'); ?>">日志</a>
@@ -91,13 +92,13 @@
 				
 				<div class="col-xs-12 col-md-12 col-lg-8" id="warp">
 					<nav class="breadcrumb">
-						<a class="breadcrumb-item active" href="#">Blog</a>
-						<a class="breadcrumb-item" href="#">首页</a>
+						<a class="breadcrumb-item" href="#">Blog</a>
+						<a class="breadcrumb-item active" href="#">首页</a>
 						
 					</nav>
 					<div class="article">
 						<h3>
-							<a href="#" class="article_title">标题</a>
+							<a href="<?php echo url('index/show'); ?>" class="article_title">标题</a>
 						</h3>
 						<ul class="clearfix">
 							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
@@ -124,7 +125,7 @@
 					</div>
 					<div class="article">
 						<h3>
-							<a href="#" class="article_title">标题</a>
+							<a href="<?php echo url('index/show'); ?>" class="article_title">标题</a>
 						</h3>
 						<ul class="clearfix">
 							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
@@ -151,7 +152,7 @@
 					</div>
 					<div class="article">
 						<h3>
-							<a href="#" class="article_title">标题</a>
+							<a href="<?php echo url('index/show'); ?>" class="article_title">标题</a>
 						</h3>
 						<ul class="clearfix">
 							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
@@ -178,7 +179,7 @@
 					</div>
 					<div class="article">
 						<h3>
-							<a href="#" class="article_title">标题</a>
+							<a href="<?php echo url('index/show'); ?>" class="article_title">标题</a>
 						</h3>
 						<ul class="clearfix">
 							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
@@ -205,7 +206,7 @@
 					</div>
 					<div class="article">
 						<h3>
-							<a href="#" class="article_title">标题</a>
+							<a href="<?php echo url('index/show'); ?>" class="article_title">标题</a>
 						</h3>
 						<ul class="clearfix">
 							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>

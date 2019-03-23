@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>Toolbar auto fixed - Editor.md examples</title>
+		
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+		<link rel="stylesheet" href="../editormd.min.css" />
+		<link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+	</head>
+
+	<body>
+		<div id="layout" style="height:3000px;">
+			<header>
+				<h1>工具栏自动固定定位的开启与禁用</h1>
+				<p>Enable / disable toolbar auto fixed position.</p>
+			</header>
+			<div class="btns">
+				<button id="enable-btn">Enable</button>
+				<button id="disable-btn">Disable</button>
+			</div>
+			<div id="test-editormd">
+				<textarea style="display:none;">
+					##jQuery操作
+
+@(javascript)
+
+###jQuery操作样式
+####1.1 css操作
+- 修改单个样式
+>css(name, value)
+>name:样式名 value:样式值
+- 修改多个样式
+ - 方式一:
+ ```css
+ $("li")
+  .css("backgroundColor", "pink")
+  .css("color", "red")
+  .css("fontSize", "32px");
+ ```
+ - 方式二:
+ ```css
+ /*css(obj)*/
+ $("li").css({
+  backgroundColor:"pink",
+  color: "red",
+  fontSize:"32px",
+  border: "1px solid black"
+});
+ ```
+- 获取样式
+> css(name)
+> name:想要获取的样式
+
+
+>` 隐式迭代`
+>- 设置操作的时候：会给jq内部的所有对象都设置上相同的值。
+> - 获取的时候：只会返回第一个元素对应的值。
+####1.2 class操作
+- 添加类
+> addClass("")
+- 移除类
+> removeClass("")
+- 判断类(有无)
+> hasClass("")
+- 切换类
+> toggleClass("")
+###jQuery操作属性
+> 区分`样式`和`属性`
+> `样式:`在style里面写的，用css来操作
+> `属性:`在标签里面写的，用attr方法操作。
+
+- 设置单个属性
+>attr(name, value)
+- 设置多个属性
+	```javascript
+	$("img").attr({
+      alt:"图破了",
+      title:"错错错",
+      aa:"bb"
+    })
+	```
+- 查询属性
+>attr(name)
+				</textarea>
+			</div>
+		</div>
+		<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+		<script>
+			hljs.initHighlightingOnLoad();
+		</script>
+		<script src="js/jquery.min.js"></script>
+		<script src="../editormd.js"></script>
+		<script type="text/javascript">
+			var testEditor;
+
+			$(function() {
+				testEditor = editormd("test-editormd", {
+					width: "90%",
+					height: 1600,
+					path: "../lib/",
+					emoji : true,
+					previewTheme: "dark",//预览主题
+				});
+
+				$("#enable-btn").bind("click", function() {
+					testEditor.setToolbarAutoFixed(true);
+					// or
+					//testEditor.config("toolbarAutoFixed", true);
+				});
+
+				$("#disable-btn").bind("click", function() {
+					testEditor.setToolbarAutoFixed(false);
+					// or
+					//testEditor.config("toolbarAutoFixed", false);
+				});
+			});
+		</script>
+	</body>
+
+</html>

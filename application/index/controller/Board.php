@@ -7,5 +7,9 @@ class Board
     {
     	return view();
     }
+    public function editor()
+    {
+    	return view();
+    }
 
 }
