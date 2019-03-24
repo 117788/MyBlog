@@ -8,8 +8,4 @@ class Index extends Controller
     	return view();
     }
 
-    public function hello($name = 'ThinkPHP5')
-    {
-        return 'hello,' . $name;
-    }
 }

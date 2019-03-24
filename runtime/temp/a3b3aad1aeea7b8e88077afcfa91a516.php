@@ -1,17 +1,15 @@
-<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\index\index.html";i:1553355744;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553393232;}*/ ?>
+<?php /*a:3:{s:58:"D:\wamp64\www\MyBlog\application\admin\view\admin\lst.html";i:1553394240;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553393232;}*/ ?>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="utf-8">
-		<title>后台管理系统 - Mr.Wang - Blog</title>
+		<title>管理员列表 - Mr.Wang - Blog</title>
 
 		<meta name="description" content="Dashboard">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<!--引入public目录中的ico图标-->
-		<link rel="shortcut icon" href="http://localhost/myblog/public/static/admin/images/favicon.ico">
 		<!--Basic http://localhost/myblog/public/static/admin/styles-->
 		<link href="http://localhost/myblog/public/static/admin/style/bootstrap.css" rel="stylesheet">
 		<link href="http://localhost/myblog/public/static/admin/style/font-awesome.css" rel="stylesheet">
@@ -22,6 +20,8 @@
 		<link href="http://localhost/myblog/public/static/admin/style/demo.css" rel="stylesheet">
 		<link href="http://localhost/myblog/public/static/admin/style/typicons.css" rel="stylesheet">
 		<link href="http://localhost/myblog/public/static/admin/style/animate.css" rel="stylesheet">
+		<!--引入public目录中的ico图标-->
+		<link rel="shortcut icon" href="http://localhost/myblog/public/static/admin/images/favicon.ico">
 
 	</head>
 
@@ -84,6 +84,7 @@
         </div>
     </div>
 </div>
+
 
 		<!-- /头部 -->
 
@@ -275,7 +276,11 @@
 						<!-- Page Breadcrumb -->
 						<div class="page-breadcrumbs">
 							<ul class="breadcrumb">
-								<li class="active">控制面板</li>
+								<li>
+									<a href="#">后台</a>
+								</li>
+								<li ><a href="#">管理员管理</a></li>
+								<li class="active">管理员列表</li>
 							</ul>
 						</div>
 						<!-- /Page Breadcrumb -->
@@ -283,25 +288,66 @@
 						<!-- Page Body -->
 						<div class="page-body">
 
-							<div style="text-align:center; line-height:1000%; font-size:24px;">
-								Mr.Wang - Blog<br>
-								<p style="color:#aaa;">后台管理系统</p>
+							<button type="button" tooltip="添加管理员" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '<?php echo url('admin/add'); ?>'"> <i class="fa fa-plus"></i> Add
+</button>
+							<div class="row">
+								<div class="col-lg-12 col-sm-12 col-xs-12">
+									<div class="widget">
+										<div class="widget-body">
+											<div class="flip-scroll">
+												<table class="table table-bordered table-hover">
+													<thead class="">
+														<tr>
+															<th class="text-center">ID</th>
+															<th class="text-center">管理员名称</th>
+															<th class="text-center">操作</th>
+														</tr>
+													</thead>
+													<tbody>
+														<?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+														<tr>
+															<td align="center"><?php echo htmlentities($vo['id']); ?></td>
+															<td align="center"><?php echo htmlentities($vo['username']); ?></td>
+															<td align="center">
+																<a href="<?php echo url('admin/edit',array('id'=>$vo['id'])); ?>" class="btn btn-primary btn-sm shiny">
+																	<i class="fa fa-edit"></i> 编辑
+																</a>
+																<?php if($vo['id'] != 1): ?>
+																<a href="#" onClick="warning('确实要删除吗', '<?php echo url(" admin/del ",array('id'=>$vo['id'])); ?>')" class="btn btn-danger btn-sm shiny">
+																	<i class="fa fa-trash-o"></i> 删除
+																</a>
+																<?php endif; ?>
+															</td>
+														</tr>
+
+														<?php endforeach; endif; else: echo "" ;endif; ?>
+													</tbody>
+
+												</table>
+
+											</div>
+
+											<div style="text-align: right;margin-top: 10px;">
+												<?php echo $list; ?>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
+
 						</div>
-
+						<!-- /Page Body -->
 					</div>
-					<!-- /Page Body -->
+					<!-- /Page Content -->
 				</div>
-				<!-- /Page Content -->
 			</div>
-		</div>
 
-		<!--Basic Scripts-->
-		<script src="http://localhost/myblog/public/static/admin/style/jquery_002.js"></script>
-		<script src="http://localhost/myblog/public/static/admin/style/bootstrap.js"></script>
-		<script src="http://localhost/myblog/public/static/admin/style/jquery.js"></script>
-		<!--Beyond Scripts-->
-		<script src="http://localhost/myblog/public/static/admin/style/beyond.js"></script>
+			<!--Basic Scripts-->
+			<script src="http://localhost/myblog/public/static/admin/style/jquery_002.js"></script>
+			<script src="http://localhost/myblog/public/static/admin/style/bootstrap.js"></script>
+			<script src="http://localhost/myblog/public/static/admin/style/jquery.js"></script>
+			<!--Beyond Scripts-->
+			<script src="http://localhost/myblog/public/static/admin/style/beyond.js"></script>
 
 	</body>
 

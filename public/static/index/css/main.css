@@ -41,6 +41,12 @@ zoom:1;/*为了兼容IE*/
 		padding-left: 80px;
 	}
 }
+@media only screen and (max-width:450px) {
+	#banner .text{
+		left: 17px!important;
+		top: 100px!important;
+	}
+}
 /*整体修改bootstrap4的下拉菜单样式*/
 
 #menu {
@@ -54,7 +60,6 @@ zoom:1;/*为了兼容IE*/
 
 #menu .dropdown-item:hover {
 	background-color: #65686c;
-	;
 	color: #000;
 }
 /**
@@ -87,9 +92,6 @@ zoom:1;/*为了兼容IE*/
 	padding: 20px;
 	background-color: #fff;
 	margin-bottom: 20px;
-}
-#main .article a{
-	color:#0B91F5 !important ;
 }
 #main .article ul{
 	list-style: none;

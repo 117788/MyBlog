@@ -5,6 +5,8 @@ class Index extends Controller
 {
     public function index()
     {
+    	$list = db('article')->paginate(5);
+    	$this->assign("list",$list);
     	return view();
     }
     public function add()
@@ -26,8 +28,9 @@ class Index extends Controller
     	return view();
     }
     public function show(){
-    	$text = db('article')->where('id','5')->find();
-    	$this->assign('text',$text);
+    	$id = input('id');
+    	$text = db('article')->where('id',$id)->find();
+    	$this->assign('vo',$text);
     	return view();
     }
    

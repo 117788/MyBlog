@@ -24,12 +24,21 @@
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="__PUBLIC__/editor/editormd.min.css" />
 		<style type="text/css">
+			#main .article{
+				margin-top: 15px;
+			}
 			#main .article h3{
 				text-align: center;
 			}
 			#main .article  ul{
 				width: 80%;
 				margin: 0 auto;
+			}
+			.article ul span{
+				cursor: pointer;
+			}
+			#main .article  ul a{
+				color: #000!important;
 			}
 		</style>
 	</head>
@@ -94,26 +103,30 @@
 						<a class="breadcrumb-item active" href="#">首页</a>
 
 					</nav>
+					
 					<div class="article">
-						<h3 class="">
-							<a href="#" class="article_title ">标题</a>
+						<h3>
+							<a href="{:url('index/show',array('id'=>$vo['id']))}" class="article_title">{$vo.title}</a>
 						</h3>
 						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_read"><i class="fa fa-check-square"></i>&nbsp;阅读次数</li>
-							<li class="article_comment"><i class="fa fa-comment"></i>&nbsp;评论次数</li>
-							<li class="article_cate1"><i class="fa fa-list-alt"></i>&nbsp;一级标签</li>
-							<li class="article_cate2"><i class="fa fa-tags"></i>&nbsp;二级标签</li>
+							<li class="article_author"><i class="fa fa-user"></i>&nbsp;{$vo.author}</li>
+							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;<span title="{$vo.create_time|date="Y-m-d H:i:s"}">{$vo.create_time|date="y-m-d"}</span></li>
+							<li class="article_read"><i class="fa fa-check-square"></i>&nbsp;{$vo.read_times}</li>
+							<li class="article_comment"><i class="fa fa-comment"></i>&nbsp;{$vo.comment_times}</li>
+							<li class="article_cate1"><i class="fa fa-list-alt"></i>&nbsp;<a href="#" title="{$vo.tag1}">{$vo.tag1}</a></li>
+							<li class="article_cate2"><i class="fa fa-tags"></i>&nbsp;<a href="#" title="{$vo.tag2}">{$vo.tag2}</a></li>
 						</ul>
-						<div class="editormd-preview-theme-dark">
+						
+					</div>
+					
+					<div class="editormd-preview-theme-dark">
 							<div id="test-editormd-view" class="markdown-body editormd-preview-container">
-								<textarea style="display:none;">{$text.text}</textarea>
+								<textarea style="display:none;">{$vo.text}</textarea>
 							</div>
 						</div>
-					</div>
-
+					
 				</div>
+					
 				<div class="col-lg-2 d-none d-sm-block" id="banner_right">
 
 				</div>
@@ -144,7 +157,6 @@
 				tex: true, // 默认不解析
 				flowChart: true, // 默认不解析
 				sequenceDiagram: true, // 默认不解析
-				previewTheme: "dark"
 			});
 		</script>
 
