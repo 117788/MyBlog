@@ -1,3 +1,4 @@
+<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\essay\index.html";i:1553528724;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -7,11 +8,11 @@
 		<!--width=device-width 表示宽度是设备屏幕的宽度;initial-scale=1 表示初始的缩放比例;shrink-to-fit=no 自动适应手机屏幕的宽度。-->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!--引入public目录中的main.css文件-->
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/main.css" />
 		<!--引入public目录中的初始化css文件-->
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/initial.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/initial.css" />
 		<!--引入public目录中的ico图标-->
-		<link rel="shortcut icon" href="__PUBLIC__/index/img/favicon.ico">
+		<link rel="shortcut icon" href="http://localhost/myblog/public/static/index/img/favicon.ico">
 		<!--引入cdn图标-->
 		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
 		<!-- 新 Bootstrap4 核心 CSS 文件 -->
@@ -23,11 +24,11 @@
 		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<!--引入public目录下的layui.css
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/layui/css/layui.css"/>-->
+		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/layui/css/layui.css"/>-->
 		<!--引入public目录下的layui.js-->
-		<script src="__PUBLIC__/layui/layui.js"></script>
+		<script src="http://localhost/myblog/public/static/layui/layui.js"></script>
 		<!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
-		<link href="__PUBLIC__/froala_editor/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+		<link href="http://localhost/myblog/public/static/froala_editor/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 		<style type="text/css">
 			#main {
 				height: 1200px;
@@ -118,7 +119,7 @@
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link " href="{:url('index/index')}">首页</a>
+							<a class="nav-link " href="<?php echo url('index/index'); ?>">首页</a>
 						</li>
 						<!-- Dropdown -->
 						<li class="nav-item dropdown">
@@ -126,30 +127,30 @@
 								技术
 							</a>
 							<div class="dropdown-menu text-center" id="menu">
-								<a class="dropdown-item" href="{:url('technology/index')}">前端</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">PHP</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Python</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Linux</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Java</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Android</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">C语言</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">网络安全</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">前端</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">PHP</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Python</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Linux</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Java</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Android</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">C语言</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">网络安全</a>
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('project/index')}">项目</a>
+							<a class="nav-link" href="<?php echo url('project/index'); ?>">项目</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('diary/index')}">日志</a>
+							<a class="nav-link" href="<?php echo url('diary/index'); ?>">日志</a>
 						</li>
 						<li class="nav-item active">
-							<a class="nav-link" href="{:url('essay/index')}">随笔</a>
+							<a class="nav-link" href="<?php echo url('essay/index'); ?>">随笔</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('board/index')}">留言板</a>
+							<a class="nav-link" href="<?php echo url('board/index'); ?>">留言板</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('about/index')}">关于</a>
+							<a class="nav-link" href="<?php echo url('about/index'); ?>">关于</a>
 						</li>
 					</ul>
 				</div>
@@ -161,37 +162,35 @@
 		<div id="main" class="container">
 			
 			<div class="essay_left">
-				{volist name="essay" id="vo"}
-				{if condition = " $vo['id'] % 2 eq 0"}
+				<?php if(is_array($essay) || $essay instanceof \think\Collection || $essay instanceof \think\Paginator): $i = 0; $__LIST__ = $essay;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;if($vo['id'] % 2 == 0): ?>
 				<ul class="essay_ul">
-					<li class="essay_time">{$vo.create_time|date="Y-m-d H:i:s"}</li>
+					<li class="essay_time"><?php echo htmlentities(date("Y-m-d H:i:s",!is_numeric($vo['create_time'])? strtotime($vo['create_time']) : $vo['create_time'])); ?></li>
 					<li class="essay_main">
 						<div class="fr-view" style="margin-top: 30px;">
-  					 		{$vo.text|raw}
+  					 		<?php echo $vo['text']; ?>
 						</div>
 					</li>
 					<div class="arrow_round"></div>
 					<i class="fa fa-angle-right fa-2x" style="color: #eaebf3;"></i>
 				</ul>
-				{/if}
-				{/volist}
+				<?php endif; ?>
+				<?php endforeach; endif; else: echo "" ;endif; ?>
 			</div>
 			<div class="essay_middle"></div>
 			<div class="essay_right">
-				{volist name="essay" id="vo"}
-				{if condition = " $vo['id'] % 2 eq 1"}
+				<?php if(is_array($essay) || $essay instanceof \think\Collection || $essay instanceof \think\Paginator): $i = 0; $__LIST__ = $essay;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;if($vo['id'] % 2 == 1): ?>
 				<ul class="essay_ul">
-					<li class="essay_time">{$vo.create_time|date="Y-m-d H:i:s"}</li>
+					<li class="essay_time"><?php echo htmlentities(date("Y-m-d H:i:s",!is_numeric($vo['create_time'])? strtotime($vo['create_time']) : $vo['create_time'])); ?></li>
 					<li class="essay_main">
 						<div class="fr-view" style="margin-top: 30px;">
-  					 		{$vo.text|raw}
+  					 		<?php echo $vo['text']; ?>
 						</div>
 					</li>
 					<div class="arrow_round"></div>
 					<i class="fa fa-angle-left fa-2x" style="color: #eaebf3;"></i>
 				</ul>
-				{/if}
-				{/volist}
+				<?php endif; ?>
+				<?php endforeach; endif; else: echo "" ;endif; ?>
 			</div>
 
 		</div>

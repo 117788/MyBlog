@@ -1,17 +1,18 @@
+<?php /*a:1:{s:59:"D:\wamp64\www\MyBlog\application\index\view\diary\show.html";i:1553527492;}*/ ?>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
-		<title> 日志 - Mr.Wang - Blog </title>
+		<title>Mr.Wang - Blog </title>
 		<!--width=device-width 表示宽度是设备屏幕的宽度;initial-scale=1 表示初始的缩放比例;shrink-to-fit=no 自动适应手机屏幕的宽度。-->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!--引入public目录中的main.css文件-->
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/main.css" />
 		<!--引入public目录中的初始化css文件-->
-		<link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/initial.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/initial.css" />
 		<!--引入public目录中的ico图标-->
-		<link rel="shortcut icon" href="__PUBLIC__/index/img/favicon.ico">
+		<link rel="shortcut icon" href="http://localhost/myblog/public/static/index/img/favicon.ico">
 		<!--引入cdn图标-->
 		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
 		<!-- 新 Bootstrap4 核心 CSS 文件 -->
@@ -22,17 +23,22 @@
 		<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
 		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
+		<link href="http://localhost/myblog/public/static/froala_editor/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 		<script src="//at.alicdn.com/t/font_1105599_yb7x1srwrj.js" type="text/javascript" charset="utf-8"></script>
 		<script src="//at.alicdn.com/t/font_1105571_bbt516qtuju.js" type="text/javascript" charset="utf-8"></script>
+		<!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
+		<link href="http://localhost/myblog/public/static/froala_editor/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 		<style type="text/css">
-			#main .article ul li{
-				margin-right: 60px;
+			#main .article{
+				margin-top: 15px;
 			}
-			#main #warp{
-				margin-top: 45px!important;
+			#main .article h3{
+				text-align: center;
 			}
-			#main #banner_right{
-				margin-top: 95px !important;
+			#main .article  ul{
+				width: 80%;
+				margin: 0 auto;
 			}
 			.widget .radio {
 				display: inline-block;
@@ -51,8 +57,11 @@
 				fill: currentColor;
 				overflow: hidden;
 			}
-			#main .article_weather span, #main  .article_mood span{
-				font-size: 17px;
+			.article ul span{
+				cursor: pointer;
+			}
+			#main .article  ul a{
+				color: #000!important;
 			}
 		</style>
 	</head>
@@ -68,38 +77,38 @@
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link " href="{:url('index/index')}">首页</a>
+							<a class="nav-link" href="<?php echo url('index/index'); ?>">首页</a>
 						</li>
 						<!-- Dropdown -->
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 								技术
 							</a>
 							<div class="dropdown-menu text-center" id="menu">
-								<a class="dropdown-item" href="{:url('technology/index')}">前端</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">PHP</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Python</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Linux</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Java</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Android</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">C语言</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">网络安全</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">前端</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">PHP</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Python</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Linux</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Java</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Android</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">C语言</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">网络安全</a>
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('project/index')}">项目</a>
-						</li>
-						<li class="nav-item active">
-							<a class="nav-link" href="{:url('diary/index')}">日志</a>
+							<a class="nav-link" href="<?php echo url('project/index'); ?>">项目</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('essay/index')}">随笔</a>
+							<a class="nav-link  active" href="<?php echo url('diary/index'); ?>">日志</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('board/index')}">留言板</a>
+							<a class="nav-link" href="<?php echo url('essay/index'); ?>">随笔</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{:url('about/index')}">关于</a>
+							<a class="nav-link" href="<?php echo url('board/index'); ?>">留言板</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="<?php echo url('about/index'); ?>">关于</a>
 						</li>
 					</ul>
 				</div>
@@ -110,198 +119,142 @@
 		<!--主体内容开始-->
 		<div id="main" class="container">
 			<div class="row">
-				
-				<div class="col-xs-12 col-md-12 col-lg-8" id="warp">
-					<!--面包屑导航开始-->
+
+				<div class="col-xs-12 col-md-12 col-lg-10" id="warp">
 					<nav class="breadcrumb">
-						<a class="breadcrumb-item " href="#">Blog</a>
+						<a class="breadcrumb-item" href="#">Blog</a>
 						<a class="breadcrumb-item active" href="#">日志</a>
+
 					</nav>
-					<!--面包屑导航结束-->
-					{volist name="diary" id="vo"}
+					
 					<div class="article">
 						<h3>
-							<a href="{:url('diary/show',array('id'=>$vo['id']))}" class="article_title">{$vo.title}</a>
+							<a href="<?php echo url('diary/show',array('id'=>$diary['id'])); ?>" class="article_title"><?php echo htmlentities($diary['title']); ?></a>
 						</h3>
 						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;{$vo.author}</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;{$vo.create_time|date="Y-m-d H:i:s"}</li>
+							<li class="article_author"><i class="fa fa-user"></i>&nbsp;<?php echo htmlentities($diary['author']); ?></li>
+							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;<?php echo htmlentities(date("Y-m-d H:i:s",!is_numeric($diary['create_time'])? strtotime($diary['create_time']) : $diary['create_time'])); ?></li>
 							<li class="article_weather"><i class="fa fa-list-alt"></i>&nbsp;
-								{switch $vo['weather'] }
-								    {case icon-tianqi-qing }
+								<?php switch($diary['weather']): case "icon-tianqi-qing": ?>
 								    	<span class="text" title="晴">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="#icon-tianqi-qing"></use>
 											</svg>
                                 		</span>
-								    {/case}
-								    {case icon-tianqi-yin }
+								    <?php break; case "icon-tianqi-yin": ?>
 								    	<span class="text" title="阴">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="#icon-tianqi-yin"></use>
 											</svg>
                                 		</span>
-								    {/case}
-								    {case icon-tianqi-duoyun }
+								    <?php break; case "icon-tianqi-duoyun": ?>
 								    	<span class="text" title="多云">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="#icon-tianqi-duoyun"></use>
 											</svg>
                                 		</span>
-								    {/case}
-								    {case icon-tianqi-xiaoyu }
+								    <?php break; case "icon-tianqi-xiaoyu": ?>
 								    	<span class="text" title="小雨">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="#icon-tianqi-xiaoyu"></use>
 											</svg>
                                 		</span>
-								    {/case}
-								    {case icon-tianqi-dayu }
+								    <?php break; case "icon-tianqi-dayu": ?>
 								    	<span class="text" title="大雨">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="#icon-tianqi-dayu"></use>
 											</svg>
                                 		</span>
-								    {/case}
-								    {case icon-tianqi-yujiaxue }
+								    <?php break; case "icon-tianqi-yujiaxue": ?>
 								    	<span class="text" title="雨夹雪">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="#icon-tianqi-yujiaxue"></use>
 											</svg>
                                 		</span>
-								    {/case}
-								    {case icon-tianqi-longjuanfeng }
+								    <?php break; case "icon-tianqi-longjuanfeng": ?>
 								    	<span class="text" title="龙卷风">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="#icon-tianqi-longjuanfeng"></use>
 											</svg>
                                 		</span>
-								    {/case}
+								    <?php break; ?>
 								    
-								{/switch}
+								<?php endswitch; ?>
 								
 							</li>
 							<li class="article_mood"><i class="fa fa-tags"></i>&nbsp;
-								{switch $vo['mood'] }
-								    {case icon-smilecry }
+								<?php switch($diary['mood']): case "icon-smilecry": ?>
 								    	<span class="text" title="笑哭">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="#icon-smilecry"></use>
 											</svg>
                                 		</span>
-								    {/case}
-								    {case icon-smile }
+								    <?php break; case "icon-smile": ?>
 								    	<span class="text" title="微笑">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="#icon-smile"></use>
 											</svg>
                                 		</span>
-								    {/case}
-								    {case icon-smile1 }
+								    <?php break; case "icon-smile1": ?>
 								    	<span class="text" title="笑">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="#icon-smile1"></use>
 											</svg>
                                 		</span>
-								    {/case}
-								    {case icon-cool }
+								    <?php break; case "icon-cool": ?>
 								    	<span class="text" title="酷~">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="#icon-cool"></use>
 											</svg>
                                 		</span>
-								    {/case}
-								    {case icon-love }
+								    <?php break; case "icon-love": ?>
 								    	<span class="text" title="爱你呦~">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="icon-love"></use>
 											</svg>
                                 		</span>
-								    {/case}
-								    {case icon-sad }
+								    <?php break; case "icon-sad": ?>
 								    	<span class="text" title="伤心">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="#icon-sad"></use>
 											</svg>
                                 		</span>
-								    {/case}
-								    {case icon-null }
+								    <?php break; case "icon-null": ?>
 								    	<span class="text" title="面无表情">
                                 			<svg class="icon" aria-hidden="true">
     											<use xlink:href="#icon-null"></use>
 											</svg>
                                 		</span>
-								    {/case}
+								    <?php break; ?>
 								    
-								{/switch}
+								<?php endswitch; ?>
 							</li>
 
 						</ul>
-						<div class="article_main clearfix">
-							<div class="row">
-								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="__PUBLIC__/{$vo['img']}"></a>
-								</div>
-								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									{$vo.info}
-								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
-							</div>
-
+						<div class="fr-view" style="margin-top: 30px;">
+  					 		<?php echo $diary['text']; ?>
 						</div>
 					</div>
-					{/volist}
 					
-					<ul class="pagination d-flex justify-content-center">
-						<li class="page-item">
-							<a class="page-link" href="#">Previous</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">1</a>
-						</li>
-						<li class="page-item active">
-							<a class="page-link" href="#">2</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">3</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">Next</a>
-						</li>
-					</ul>
-
+					
+					
 				</div>
-				<div class="col-lg-4 d-none d-sm-block" id="banner_right">
-					
-					
-					<div class="time_list widget">
-						<h2 class="title">时间轴</h2>
-						<ul class="list-group">
-							<li class="list-group-item">
-								<span><a href="#">2019(1)</a></span>
-							</li>
-							<li class="list-group-item">
-								<span><a href="#">2019(2)</a></span>
-							</li>
-							<li class="list-group-item">
-								<span><a href="#">2019(3)</a></span>
-							</li>
-							
-						</ul>
-					</div>
-					
+			
+				<div class="col-lg-2 d-none d-sm-block" id="banner_right">
+
 				</div>
 			</div>
 
 		</div>
 		<!--主体内容结束-->
 		<!--copyright开始-->
-		<div id="copyright" >
+		<div id="copyright">
 			<p>copyright &nbsp;2019-2020 @
 				<a href="#">wh241.com</a>
 			</p>
 		</div>
 		<!--copyright结束-->
+		
 
 	</body>
 

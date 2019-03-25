@@ -1,4 +1,4 @@
-<?php /*a:3:{s:58:"D:\wamp64\www\MyBlog\application\admin\view\admin\lst.html";i:1553394240;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553393232;}*/ ?>
+<?php /*a:3:{s:58:"D:\wamp64\www\MyBlog\application\admin\view\admin\lst.html";i:1553394240;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553434825;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -209,7 +209,7 @@
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="<?php echo url('article/lst'); ?>">
+                                <a href="<?php echo url('diary/lst'); ?>">
                                     <span class="menu-text">
                                         日志列表                                    </span>
                                     <i class="menu-expand"></i>
@@ -225,7 +225,7 @@
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="<?php echo url('article/lst'); ?>">
+                                <a href="<?php echo url('essay/lst'); ?>">
                                     <span class="menu-text">
                                         随笔列表                                    </span>
                                     <i class="menu-expand"></i>

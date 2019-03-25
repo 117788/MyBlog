@@ -1,10 +1,10 @@
-<?php /*a:3:{s:58:"D:\wamp64\www\MyBlog\application\admin\view\diary\add.html";i:1553507644;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553434825;}*/ ?>
+<?php /*a:3:{s:59:"D:\wamp64\www\MyBlog\application\admin\view\diary\edit.html";i:1553488985;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553434825;}*/ ?>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="utf-8">
-		<title>添加日志 - Mr.Wang - Blog</title>
+		<title>修改日志 - Mr.Wang - Blog</title>
 		<meta name="description" content="Dashboard">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,6 +22,17 @@
 		<link href="http://localhost/myblog/public/static/layui/css/layui.css" rel="stylesheet">
 		<!--引入public目录中的ico图标-->
 		<link rel="shortcut icon" href="http://localhost/myblog/public/static/admin/images/favicon.ico">
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<!--引入cdn图标-->
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+		<!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+		<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="http://localhost/myblog/public/static/editor/editormd.min.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="http://localhost/myblog/public/static/froala_editor/css/froala_editor.css">
 		<link rel="stylesheet" href="http://localhost/myblog/public/static/froala_editor/css/froala_style.css">
@@ -59,6 +70,7 @@
 				overflow: hidden;
 			}
 		</style>
+
 	</head>
 
 	<body>
@@ -316,9 +328,9 @@
 									<a href="#">后台</a>
 								</li>
 								<li>
-									<a href="<?php echo url('admin/lst'); ?>">日志管理</a>
+									<a href="<?php echo url('diary/lst'); ?>">日志管理</a>
 								</li>
-								<li class="active">添加日志</li>
+								<li class="active">修改日志</li>
 							</ul>
 						</div>
 						<!-- /Page Breadcrumb -->
@@ -330,25 +342,24 @@
 								<div class="col-lg-12 col-sm-12 col-xs-12">
 									<div class="widget">
 										<div class="widget-header bordered-bottom bordered-blue">
-											<span class="widget-caption">新增日志</span>
+											<span class="widget-caption">修改日志</span>
 										</div>
 										<div class="widget-body">
 
 											<div id="horizontal-form">
 												<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+													<input type="hidden" name="id" value="<?php echo htmlentities($diary['id']); ?>" />
 													<div class="form-group">
 														<label for="title" class="col-sm-2 control-label no-padding-right">日志标题</label>
 														<div class="col-sm-6">
-															<input class="form-control" id="title" placeholder="日志标题" name="title" type="text">
+															<input class="form-control" id="title" placeholder="文章标题" name="title" type="text" value="<?php echo htmlentities($diary['title']); ?>">
 														</div>
-														<p class="help-block col-sm-4 red">* 必填</p>
 													</div>
 													<div class="form-group">
 														<label for="info" class="col-sm-2 control-label no-padding-right">日志简介</label>
 														<div class="col-sm-6">
-															<input class="form-control" id="info" placeholder="日志简介" name="info" type="text">
+															<input class="form-control" id="info" placeholder="文章简介" name="info" type="text" value="<?php echo htmlentities($diary['info']); ?>">
 														</div>
-														<p class="help-block col-sm-4 red">* 必填</p>
 													</div>
 													<div class="form-group">
 														<label for="weather" class="col-sm-2 control-label no-padding-right">天气</label>
@@ -356,7 +367,7 @@
 														<div class="col-sm-6 col-lg-7">
 															<div class="radio">
 																<label>
-                                                        			<input name="weather" type="radio" value="icon-tianqi-qing" >
+                                                        			<input name="weather" type="radio" value="icon-tianqi-qing" <?php if($diary['weather'] == 'icon-tianqi-qing'): ?>checked<?php endif; ?> >
                                                         			<span class="text" title="晴">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-tianqi-qing"></use>
@@ -366,7 +377,7 @@
 															</div>
 															<div class="radio">
 																<label>
-                                                        			<input name="weather" type="radio" value="icon-tianqi-yin" >
+                                                        			<input name="weather" type="radio" value="icon-tianqi-yin" <?php if($diary['weather'] == 'icon-tianqi-yin'): ?>checked<?php endif; ?>>
                                                         			<span class="text" title="阴">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-tianqi-yin"></use>
@@ -376,7 +387,7 @@
 															</div>
 															<div class="radio">
 																<label>
-                                                        			<input name="weather" type="radio" value="icon-tianqi-duoyun" >
+                                                        			<input name="weather" type="radio" value="icon-tianqi-duoyun" <?php if($diary['weather'] == 'icon-tianqi-duoyun'): ?>checked<?php endif; ?>>
                                                         			<span class="text" title="多云">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-tianqi-duoyun"></use>
@@ -386,7 +397,7 @@
 															</div>
 															<div class="radio">
 																<label>
-                                                        			<input name="weather" type="radio" value="icon-tianqi-xiaoyu" >
+                                                        			<input name="weather" type="radio" value="icon-tianqi-xiaoyu" <?php if($diary['weather'] == 'icon-tianqi-xiaoyu'): ?>checked<?php endif; ?>>
                                                         			<span class="text" title="小雨">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-tianqi-xiaoyu"></use>
@@ -396,7 +407,7 @@
 															</div>
 															<div class="radio">
 																<label>
-                                                        			<input name="weather" type="radio" value="icon-tianqi-dayu" >
+                                                        			<input name="weather" type="radio" value="icon-tianqi-dayu"<?php if($diary['weather'] == 'icon-tianqi-dayu'): ?>checked<?php endif; ?> >
                                                         			<span class="text" title="大雨">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-tianqi-dayu"></use>
@@ -406,7 +417,7 @@
 															</div>
 															<div class="radio">
 																<label>
-                                                        			<input name="weather" type="radio" value="icon-tianqi-yujiaxue" >
+                                                        			<input name="weather" type="radio" value="icon-tianqi-yujiaxue" <?php if($diary['weather'] == 'icon-tianqi-yujiaxue'): ?>checked<?php endif; ?>>
                                                         			<span class="text" title="雨夹雪">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-tianqi-yujiaxue"></use>
@@ -416,7 +427,7 @@
 															</div>
 															<div class="radio">
 																<label>
-                                                        			<input name="weather" type="radio" value="icon-tianqi-longjuanfeng" >
+                                                        			<input name="weather" type="radio" value="icon-tianqi-longjuanfeng"<?php if($diary['weather'] == 'longjuanfeng'): ?>checked<?php endif; ?> >
                                                         			<span class="text" title="龙卷风">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-tianqi-longjuanfeng"></use>
@@ -426,7 +437,7 @@
 															</div>
 															<div class="radio">
 																<label>
-                                                        			<input name="weather" type="radio" value="icon-tianqi-qingdumai" >
+                                                        			<input name="weather" type="radio" value="icon-tianqi-qingdumai"<?php if($diary['weather'] == 'icon-tianqi-qingdumai'): ?>checked<?php endif; ?> >
                                                         			<span class="text" title="轻度霾">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-tianqi-qingdumai"></use>
@@ -442,7 +453,7 @@
 														<div class="col-sm-6">
 															<div class="radio">
 																<label>
-                                                        			<input name="mood" type="radio" value="icon-smilecry" >
+                                                        			<input name="mood" type="radio" value="icon-smilecry" <?php if($diary['mood'] == 'icon-smilecry'): ?>checked<?php endif; ?>>
                                                         			<span class="text" title="笑哭">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-smilecry"></use>
@@ -452,7 +463,7 @@
 															</div>
 															<div class="radio">
 																<label>
-                                                        			<input name="mood" type="radio" value="icon-smile" >
+                                                        			<input name="mood" type="radio" value="icon-smile"<?php if($diary['mood'] == 'icon-smile'): ?>checked<?php endif; ?> >
                                                         			<span class="text" title="微笑">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-smile"></use>
@@ -462,7 +473,7 @@
 															</div>
 															<div class="radio">
 																<label>
-                                                        			<input name="mood" type="radio" value="icon-smile1" >
+                                                        			<input name="mood" type="radio" value="icon-smile1" <?php if($diary['mood'] == 'icon-smile1'): ?>checked<?php endif; ?>>
                                                         			<span class="text" title="笑">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-smile1"></use>
@@ -472,7 +483,7 @@
 															</div>
 															<div class="radio">
 																<label>
-                                                        			<input name="mood" type="radio" value="icon-cool" >
+                                                        			<input name="mood" type="radio" value="icon-cool" <?php if($diary['mood'] == 'icon-icon-cool'): ?>checked<?php endif; ?>>
                                                         			<span class="text" title="酷~">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-cool"></use>
@@ -482,7 +493,7 @@
 															</div>
 															<div class="radio">
 																<label>
-                                                        			<input name="mood" type="radio" value="icon-love" >
+                                                        			<input name="mood" type="radio" value="icon-love"<?php if($diary['mood'] == 'icon-love'): ?>checked<?php endif; ?> >
                                                         			<span class="text" title="爱你呦~">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-love"></use>
@@ -492,7 +503,7 @@
 															</div>
 															<div class="radio">
 																<label>
-                                                        			<input name="mood" type="radio" value="icon-sad" >
+                                                        			<input name="mood" type="radio" value="icon-sad"<?php if($diary['mood'] == 'icon-sad'): ?>checked<?php endif; ?> >
                                                         			<span class="text" title="伤心">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-sad"></use>
@@ -502,7 +513,7 @@
 															</div>
 															<div class="radio">
 																<label>
-                                                        			<input name="mood" type="radio" value="icon-null" >
+                                                        			<input name="mood" type="radio" value="icon-null"<?php if($diary['mood'] == 'icon-null'): ?>checked<?php endif; ?> >
                                                         			<span class="text" title="面无表情">
                                                         				<svg class="icon" aria-hidden="true">
     																		<use xlink:href="#icon-null"></use>
@@ -518,7 +529,10 @@
 														<div class="layui-upload">
 															<label for="pic" class="col-sm-2 control-label no-padding-right">日志缩略图</label>
 															<div class="col-sm-6">
-																<button type="button" class="layui-btn layui-btn-normal" id="pic">添加图片</button>
+
+																<button type="button" class="layui-btn layui-btn-normal" id="pic" >添加图片</button>
+																<img src="http://localhost/myblog/public/static/<?php echo htmlentities($diary['img']); ?>"  width="100" height="100" style="float: right;" >
+																
 																<p class="help-block col-sm-4 red" style="float: right;">点击图片放大预览</p>
 																<div id="img_sel">
 
@@ -528,12 +542,12 @@
 															</div>
 
 														</div>
-
 													</div>
+
 													<div class="form-group">
 														<label for="text" class="col-lg-2 control-label no-padding-right">编辑日志</label>
-														<div class="col-lg-10">
-															<textarea id="editor"></textarea>
+														<div class="col-lg-9">
+															<textarea id="editor"><?php echo htmlentities($diary['text']); ?></textarea>
 															<input type="hidden" id="editorText" value=""  name="text"/>
 														</div>
 													</div>
@@ -613,7 +627,7 @@
 						var html = $('textarea#editor').froalaEditor('html.get');
 						$('#editorText').val(html);
 						$.ajax({
-							url: "<?php echo url('diary/add'); ?>",
+							url: "<?php echo url('diary/edit'); ?>",
 							type: 'post',
 							data: $('form').serialize(),
 							dataType: 'json',
@@ -628,7 +642,7 @@
 									});
 								} else {
 									layer.open({
-										title: '添加日志失败',
+										title: '修改日志失败',
 										content: data.msg,
 										icon: 5,
 										anim: 6
@@ -719,7 +733,6 @@
 					});
 				});
 			</script>
-
 	</body>
 
 </html>

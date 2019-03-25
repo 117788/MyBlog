@@ -11,27 +11,22 @@ class Diary extends Controller
     	return view();
     }
     public function add(){
-    	if(request()->isPost()){
+    	if(request()->isAjax()){
     		$post = input('post.');
-    		$articles = new ArticleModel;
-    		if(input('state') == 'on'){
-    			$data['state'] = 1;
-    		}else{
-    			$data['state'] = 0;
-    		}
-    		$res = $articles->save([
+    		
+    		$diarys = new DiaryModel;
+    		$res = $diarys->save([
     			'title'=>$post['title'],
     			'info'=>$post['info'],
-    			'tag1'=>$post['tag1'],
-    			'tag2'=>$post['tag2'],
-    			'top'=>$data['state'],
-    			'text'=>$post['test-editormd-markdown-doc'],
+    			'weather'=>$post['weather'],
+    			'mood'=>$post['mood'],
+    			'text'=>$post['text'],
     			'img' =>cookie('url'),
     		]);
     		if($res){
-    			$this->success("添加文章成功！",'article/lst');
+    			$this->success("添加日志成功！",'diary/lst');
     		}else{
-    			$this->error('添加文章失败！！');
+    			$this->error('添加日志失败！！');
     		}
     		
     	}
@@ -40,37 +35,31 @@ class Diary extends Controller
     public function edit()
     {
     	$id = input('id');
-    	$articles = db('article')->find($id);
-	    $this->assign('articles',$articles);
+    	$diary = db('diary')->find($id);
+	    $this->assign('diary',$diary);
     	if(request()->isAjax()){
 		    $post = input('post.');
 		    $id = $post['id'];
 		    $data = [
 		    	'title'=>$post['title'],
     			'info'=>$post['info'],
-    			'tag1'=>$post['tag1'],
-    			'tag2'=>$post['tag2'],
-    			'text'=>$post['test-editormd-markdown-doc'],
+    			'weather'=>$post['weather'],
+    			'mood'=>$post['mood'],
+    			'text'=>$post['text'],
 		    ];
-		    if(input('state') == 'on'){
-    			$data['top'] = 1;
-    		}else{
-    			$data['top'] = 0;
-    		}
-		    
 		    if(cookie('url')){
 		    	$data['img'] = cookie('url');
 		    }else{
-		    	$data['img'] = $admins['pic'];
+		    	$data['img'] = $diary['pic'];
 		    }
-		   	$articleModel = new ArticleModel;
-		   	$save = $articleModel->save($data,['id' => $id]);
+		   	$diaryModel = new DiaryModel;
+		   	$save = $diaryModel->save($data,['id' => $id]);
 		    if($save !== false)
 		    {
-		    	$this->success('修改文章成功！','lst');
+		    	$this->success('修改日志成功！','lst');
 		    	
 		    }else{
-		    	$this->error('修改文章失败！');
+		    	$this->error('修改日志失败！');
 		    }
 		    
     	}
@@ -102,7 +91,7 @@ class Diary extends Controller
 	public function del(){
 		$id = input('id');
 		// 软删除
-		$user = ArticleModel::get($id);
+		$user = DiaryModel::get($id);
 		$res = $user->delete();
 		if($res){
 			$this->redirect('lst');

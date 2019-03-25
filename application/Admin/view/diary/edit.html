@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>编辑文章 - Mr.Wang - Blog</title>
+		<title>修改日志 - Mr.Wang - Blog</title>
 		<meta name="description" content="Dashboard">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,6 +32,43 @@
 		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="__PUBLIC__/editor/editormd.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/froala_editor.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/froala_style.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/plugins/code_view.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/plugins/colors.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/plugins/emoticons.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/plugins/image_manager.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/plugins/image.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/plugins/line_breaker.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/plugins/table.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/plugins/char_counter.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/plugins/video.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/plugins/fullscreen.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/plugins/file.css">
+		<link rel="stylesheet" href="__PUBLIC__/froala_editor/css/plugins/quick_insert.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+		<script src="//at.alicdn.com/t/font_1105599_yb7x1srwrj.js" type="text/javascript" charset="utf-8"></script>
+		<script src="//at.alicdn.com/t/font_1105571_bbt516qtuju.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.widget .radio {
+				display: inline-block;
+				float: left;
+				margin-right: 10px;
+			}
+			
+			.widget .radio span {
+				font-size: 35px;
+			}
+			
+			.icon {
+				width: 1em;
+				height: 1em;
+				vertical-align: -0.15em;
+				fill: currentColor;
+				overflow: hidden;
+			}
+		</style>
 
 	</head>
 
@@ -60,9 +97,9 @@
 									<a href="#">后台</a>
 								</li>
 								<li>
-									<a href="{:url('article/lst')}">文章管理</a>
+									<a href="{:url('diary/lst')}">日志管理</a>
 								</li>
-								<li class="active">编辑文章</li>
+								<li class="active">修改日志</li>
 							</ul>
 						</div>
 						<!-- /Page Breadcrumb -->
@@ -74,56 +111,196 @@
 								<div class="col-lg-12 col-sm-12 col-xs-12">
 									<div class="widget">
 										<div class="widget-header bordered-bottom bordered-blue">
-											<span class="widget-caption">编辑文章</span>
+											<span class="widget-caption">修改日志</span>
 										</div>
 										<div class="widget-body">
 
 											<div id="horizontal-form">
 												<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
-													<input type="hidden" name="id" value="{$articles.id}" />
+													<input type="hidden" name="id" value="{$diary.id}" />
 													<div class="form-group">
-														<label for="title" class="col-sm-2 control-label no-padding-right">文章标题</label>
+														<label for="title" class="col-sm-2 control-label no-padding-right">日志标题</label>
 														<div class="col-sm-6">
-															<input class="form-control" id="title" placeholder="文章标题" name="title" type="text" value="{$articles.title}">
+															<input class="form-control" id="title" placeholder="文章标题" name="title" type="text" value="{$diary.title}">
 														</div>
 													</div>
 													<div class="form-group">
-														<label for="info" class="col-sm-2 control-label no-padding-right">文章简介</label>
+														<label for="info" class="col-sm-2 control-label no-padding-right">日志简介</label>
 														<div class="col-sm-6">
-															<input class="form-control" id="info" placeholder="文章简介" name="info" type="text" value="{$articles.info}">
+															<input class="form-control" id="info" placeholder="文章简介" name="info" type="text" value="{$diary.info}">
 														</div>
 													</div>
 													<div class="form-group">
-														<div id="element_id">
-															<div style="display: block;overflow: hidden;margin-left: 135px;">
-																<label for="title" class="col-sm-2 control-label no-padding-right">
-																	<span style="margin-right: 10px;">一级标签</span>
-															<select class="tag1" name="tag1" style="width: 100px;">
-																<option value="{$articles.tag1}" selected>{$articles.tag1}</option>
-															</select>
-															</label>
-															</div>
+														<label for="weather" class="col-sm-2 control-label no-padding-right">天气</label>
 
-															<div style="display: block; overflow: hidden;margin-left: 135px;">
-																<label for="title" class="col-sm-2 control-label no-padding-right">
-																	<span style="margin-right: 10px;">二级标签</span>
-															<select class="tag2" name="tag2" style="width: 100px;">
-																<option value="{$articles.tag2}" selected>{$articles.tag2}</option>
-															</select>
-															</label>
+														<div class="col-sm-6 col-lg-7">
+															<div class="radio">
+																<label>
+                                                        			<input name="weather" type="radio" value="icon-tianqi-qing" {if condition="$diary['weather'] == 'icon-tianqi-qing' "}checked{/if} >
+                                                        			<span class="text" title="晴">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-tianqi-qing"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
+															<div class="radio">
+																<label>
+                                                        			<input name="weather" type="radio" value="icon-tianqi-yin" {if condition="$diary['weather'] == 'icon-tianqi-yin' "}checked{/if}>
+                                                        			<span class="text" title="阴">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-tianqi-yin"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
+															<div class="radio">
+																<label>
+                                                        			<input name="weather" type="radio" value="icon-tianqi-duoyun" {if condition="$diary['weather'] == 'icon-tianqi-duoyun' "}checked{/if}>
+                                                        			<span class="text" title="多云">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-tianqi-duoyun"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
+															<div class="radio">
+																<label>
+                                                        			<input name="weather" type="radio" value="icon-tianqi-xiaoyu" {if condition="$diary['weather'] == 'icon-tianqi-xiaoyu' "}checked{/if}>
+                                                        			<span class="text" title="小雨">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-tianqi-xiaoyu"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
+															<div class="radio">
+																<label>
+                                                        			<input name="weather" type="radio" value="icon-tianqi-dayu"{if condition="$diary['weather'] == 'icon-tianqi-dayu' "}checked{/if} >
+                                                        			<span class="text" title="大雨">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-tianqi-dayu"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
+															<div class="radio">
+																<label>
+                                                        			<input name="weather" type="radio" value="icon-tianqi-yujiaxue" {if condition="$diary['weather'] == 'icon-tianqi-yujiaxue' "}checked{/if}>
+                                                        			<span class="text" title="雨夹雪">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-tianqi-yujiaxue"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
+															<div class="radio">
+																<label>
+                                                        			<input name="weather" type="radio" value="icon-tianqi-longjuanfeng"{if condition="$diary['weather'] == 'longjuanfeng' "}checked{/if} >
+                                                        			<span class="text" title="龙卷风">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-tianqi-longjuanfeng"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
+															<div class="radio">
+																<label>
+                                                        			<input name="weather" type="radio" value="icon-tianqi-qingdumai"{if condition="$diary['weather'] == 'icon-tianqi-qingdumai' "}checked{/if} >
+                                                        			<span class="text" title="轻度霾">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-tianqi-qingdumai"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
 															</div>
 
 														</div>
+													</div>
+													<div class="form-group">
+														<label for="mood" class="col-sm-2 control-label no-padding-right">心情</label>
+														<div class="col-sm-6">
+															<div class="radio">
+																<label>
+                                                        			<input name="mood" type="radio" value="icon-smilecry" {if condition="$diary['mood'] == 'icon-smilecry' "}checked{/if}>
+                                                        			<span class="text" title="笑哭">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-smilecry"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
+															<div class="radio">
+																<label>
+                                                        			<input name="mood" type="radio" value="icon-smile"{if condition="$diary['mood'] == 'icon-smile' "}checked{/if} >
+                                                        			<span class="text" title="微笑">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-smile"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
+															<div class="radio">
+																<label>
+                                                        			<input name="mood" type="radio" value="icon-smile1" {if condition="$diary['mood'] == 'icon-smile1' "}checked{/if}>
+                                                        			<span class="text" title="笑">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-smile1"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
+															<div class="radio">
+																<label>
+                                                        			<input name="mood" type="radio" value="icon-cool" {if condition="$diary['mood'] == 'icon-icon-cool' "}checked{/if}>
+                                                        			<span class="text" title="酷~">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-cool"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
+															<div class="radio">
+																<label>
+                                                        			<input name="mood" type="radio" value="icon-love"{if condition="$diary['mood'] == 'icon-love' "}checked{/if} >
+                                                        			<span class="text" title="爱你呦~">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-love"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
+															<div class="radio">
+																<label>
+                                                        			<input name="mood" type="radio" value="icon-sad"{if condition="$diary['mood'] == 'icon-sad' "}checked{/if} >
+                                                        			<span class="text" title="伤心">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-sad"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
+															<div class="radio">
+																<label>
+                                                        			<input name="mood" type="radio" value="icon-null"{if condition="$diary['mood'] == 'icon-null' "}checked{/if} >
+                                                        			<span class="text" title="面无表情">
+                                                        				<svg class="icon" aria-hidden="true">
+    																		<use xlink:href="#icon-null"></use>
+																		</svg>
+                                                        			</span>
+                                                    			</label>
+															</div>
 
+														</div>
 													</div>
 
 													<div class="form-group">
 														<div class="layui-upload">
-															<label for="pic" class="col-sm-2 control-label no-padding-right">文章缩略图</label>
+															<label for="pic" class="col-sm-2 control-label no-padding-right">日志缩略图</label>
 															<div class="col-sm-6">
 
 																<button type="button" class="layui-btn layui-btn-normal" id="pic" >添加图片</button>
-																<img src="__PUBLIC__/{$articles.img}"  width="100" height="100" style="float: right;" >
+																<img src="__PUBLIC__/{$diary.img}"  width="100" height="100" style="float: right;" >
 																
 																<p class="help-block col-sm-4 red" style="float: right;">点击图片放大预览</p>
 																<div id="img_sel">
@@ -137,22 +314,10 @@
 													</div>
 
 													<div class="form-group">
-														<label for="state" class="col-sm-2 control-label no-padding-right">是否推荐</label>
-														<div class="col-sm-6">
-															<label>
-                                    							<input class="checkbox-slider colored-darkorange" name="state" {if condition="$articles['top'] eq 1"}checked="checked"{/if} type="checkbox">
-                                    							<span class="text"></span>
-                                 							</label>
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="text" class="col-lg-2 control-label no-padding-right">编辑文章</label>
+														<label for="text" class="col-lg-2 control-label no-padding-right">编辑日志</label>
 														<div class="col-lg-9">
-															<div id="test-editormd">
-																<textarea style="display:none;">{$articles.text}</textarea>
-																<!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
-																<textarea class="editormd-html-textarea" name="html"></textarea>
-															</div>
+															<textarea id="editor">{$diary.text}</textarea>
+															<input type="hidden" id="editorText" value=""  name="text"/>
 														</div>
 													</div>
 													<div class="form-group">
@@ -174,26 +339,91 @@
 				</div>
 			</div>
 
+			<!-- Include external JS libs. -->
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+
+			<!-- Include Editor JS files. -->
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/froala_editor.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/align.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/char_counter.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/code_beautifier.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/code_view.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/colors.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/draggable.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/emoticons.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/entities.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/file.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/font_size.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/font_family.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/fullscreen.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/image.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/image_manager.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/line_breaker.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/inline_style.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/link.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/lists.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/paragraph_format.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/paragraph_style.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/quick_insert.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/quote.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/table.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/save.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/url.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/froala_editor/js/plugins/video.min.js"></script>
+
+			<script src='__PUBLIC__/froala_editor/js/languages/zh_cn.js'></script>
+			
 			<!--Basic Scripts-->
-			<script src="__PUBLIC__/admin/style/jquery_002.js"></script>
 			<script src="__PUBLIC__/admin/style/bootstrap.js"></script>
-			<script src="__PUBLIC__/admin/style/jquery.js"></script>
 			<!--Beyond Scripts-->
 			<script src="__PUBLIC__/admin/style/beyond.js"></script>
 			<script src="__PUBLIC__/layui/layui.js"></script>
-			<script src="__PUBLIC__/cxSelect/js/jquery.cxselect.js"></script>
-			<script src="__PUBLIC__/editor/editormd.js"></script>
 			<script type="text/javascript">
-				var testEditor;
 				$(function() {
-					testEditor = editormd("test-editormd", {
-						width: "100%",
-						height: 1600,
-						emoji: true,
-						previewTheme: "dark", //预览主题
-						path: "__PUBLIC__/editor/lib/",
+					$('textarea#editor').froalaEditor({
+						language: 'zh_cn',
+						heightMin: 200,
+						heightMax: 300,
+						placeholderText: '不要忘了写日志哦~~',
+						pastePlain: true,
+						theme: 'dark',
+						toolbarSticky: false,
 					});
-
+					
+					$('#toSave').click(function() {
+						var html = $('textarea#editor').froalaEditor('html.get');
+						$('#editorText').val(html);
+						$.ajax({
+							url: "{:url('diary/edit')}",
+							type: 'post',
+							data: $('form').serialize(),
+							dataType: 'json',
+							success: function(data) {
+								console.log(data);
+								if(data.code == 1) {
+									layer.msg(data.msg, {
+										icon: 6,
+										time: 2000
+									}, function() {
+										location.href = data.url;
+									});
+								} else {
+									layer.open({
+										title: '修改日志失败',
+										content: data.msg,
+										icon: 5,
+										anim: 6
+									});
+								}
+							},
+							error: function(data) {
+								console.log(data);
+							}
+						});
+						return false;
+					});
 				});
 			</script>
 			<script>
@@ -205,7 +435,7 @@
 					var uploadInst = upload.render({
 						elem: '#pic' //绑定元素
 							,
-						url: "{:url('article/upload')}" //上传接口
+						url: "{:url('diary/upload')}" //上传接口
 							,
 						auto: false //选择文件后不自动上传
 
@@ -269,49 +499,6 @@
 							//请求异常回调
 							layer.msg('上传失败，请重试');
 						}
-					});
-				});
-			</script>
-			<script type="text/javascript">
-				$(function() {
-					$('#toSave').click(function() {
-						$.ajax({
-							url: "{:url('article/edit')}",
-							type: 'post',
-							data: $('form').serialize(),
-							dataType: 'json',
-							success: function(data) {
-								console.log(data);
-								if(data.code == 1) {
-									layer.msg(data.msg, {
-										icon: 6,
-										time: 2000
-									}, function() {
-										location.href = data.url;
-									});
-								} else {
-									layer.open({
-										title: '添加文章失败',
-										content: data.msg,
-										icon: 5,
-										anim: 6
-									});
-								}
-							},
-							error: function(data) {
-								console.log(data);
-
-							}
-						});
-						return false;
-					});
-				});
-			</script>
-			<script type="text/javascript">
-				$(function() {
-					$('#element_id').cxSelect({
-						url: 'http://localhost/MyBlog/public/static/cxSelect/js/tag.json', // 提示：如果服务器不支持 .json 类型文件，请将文件改为 .js 文件
-						selects: ['tag1', 'tag2'], // selects 为数组形式，请注意顺序
 					});
 				});
 			</script>

@@ -1,4 +1,4 @@
-<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\diary\index.html";i:1553243039;}*/ ?>
+<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\diary\index.html";i:1553524783;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -23,6 +23,8 @@
 		<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
 		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<script src="//at.alicdn.com/t/font_1105599_yb7x1srwrj.js" type="text/javascript" charset="utf-8"></script>
+		<script src="//at.alicdn.com/t/font_1105571_bbt516qtuju.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
 			#main .article ul li{
 				margin-right: 60px;
@@ -32,6 +34,26 @@
 			}
 			#main #banner_right{
 				margin-top: 95px !important;
+			}
+			.widget .radio {
+				display: inline-block;
+				float: left;
+				margin-right: 10px;
+			}
+			
+			#weather span,#mood span {
+				font-size: 35px;
+			}
+			
+			.icon {
+				width: 1em;
+				height: 1em;
+				vertical-align: -0.15em;
+				fill: currentColor;
+				overflow: hidden;
+			}
+			#main .article_weather span, #main  .article_mood span{
+				font-size: 17px;
 			}
 		</style>
 	</head>
@@ -97,109 +119,126 @@
 						<a class="breadcrumb-item active" href="#">日志</a>
 					</nav>
 					<!--面包屑导航结束-->
+					<?php if(is_array($diary) || $diary instanceof \think\Collection || $diary instanceof \think\Paginator): $i = 0; $__LIST__ = $diary;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
 					<div class="article">
 						<h3>
-							<a href="#" class="article_title">标题</a>
+							<a href="<?php echo url('diary/show',array('id'=>$vo['id'])); ?>" class="article_title"><?php echo htmlentities($vo['title']); ?></a>
 						</h3>
 						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_weather"><i class="fa fa-calendar"></i>&nbsp;天气</li>
-							<li class="article_mood"><i class="fa fa-tags"></i>&nbsp;心情</li>
+							<li class="article_author"><i class="fa fa-user"></i>&nbsp;<?php echo htmlentities($vo['author']); ?></li>
+							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;<?php echo htmlentities(date("Y-m-d H:i:s",!is_numeric($vo['create_time'])? strtotime($vo['create_time']) : $vo['create_time'])); ?></li>
+							<li class="article_weather"><i class="fa fa-list-alt"></i>&nbsp;
+								<?php switch($vo['weather']): case "icon-tianqi-qing": ?>
+								    	<span class="text" title="晴">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="#icon-tianqi-qing"></use>
+											</svg>
+                                		</span>
+								    <?php break; case "icon-tianqi-yin": ?>
+								    	<span class="text" title="阴">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="#icon-tianqi-yin"></use>
+											</svg>
+                                		</span>
+								    <?php break; case "icon-tianqi-duoyun": ?>
+								    	<span class="text" title="多云">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="#icon-tianqi-duoyun"></use>
+											</svg>
+                                		</span>
+								    <?php break; case "icon-tianqi-xiaoyu": ?>
+								    	<span class="text" title="小雨">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="#icon-tianqi-xiaoyu"></use>
+											</svg>
+                                		</span>
+								    <?php break; case "icon-tianqi-dayu": ?>
+								    	<span class="text" title="大雨">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="#icon-tianqi-dayu"></use>
+											</svg>
+                                		</span>
+								    <?php break; case "icon-tianqi-yujiaxue": ?>
+								    	<span class="text" title="雨夹雪">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="#icon-tianqi-yujiaxue"></use>
+											</svg>
+                                		</span>
+								    <?php break; case "icon-tianqi-longjuanfeng": ?>
+								    	<span class="text" title="龙卷风">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="#icon-tianqi-longjuanfeng"></use>
+											</svg>
+                                		</span>
+								    <?php break; ?>
+								    
+								<?php endswitch; ?>
+								
+							</li>
+							<li class="article_mood"><i class="fa fa-tags"></i>&nbsp;
+								<?php switch($vo['mood']): case "icon-smilecry": ?>
+								    	<span class="text" title="笑哭">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="#icon-smilecry"></use>
+											</svg>
+                                		</span>
+								    <?php break; case "icon-smile": ?>
+								    	<span class="text" title="微笑">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="#icon-smile"></use>
+											</svg>
+                                		</span>
+								    <?php break; case "icon-smile1": ?>
+								    	<span class="text" title="笑">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="#icon-smile1"></use>
+											</svg>
+                                		</span>
+								    <?php break; case "icon-cool": ?>
+								    	<span class="text" title="酷~">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="#icon-cool"></use>
+											</svg>
+                                		</span>
+								    <?php break; case "icon-love": ?>
+								    	<span class="text" title="爱你呦~">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="icon-love"></use>
+											</svg>
+                                		</span>
+								    <?php break; case "icon-sad": ?>
+								    	<span class="text" title="伤心">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="#icon-sad"></use>
+											</svg>
+                                		</span>
+								    <?php break; case "icon-null": ?>
+								    	<span class="text" title="面无表情">
+                                			<svg class="icon" aria-hidden="true">
+    											<use xlink:href="#icon-null"></use>
+											</svg>
+                                		</span>
+								    <?php break; ?>
+								    
+								<?php endswitch; ?>
+							</li>
 
 						</ul>
 						<div class="article_main clearfix">
 							<div class="row">
 								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
+									<a href="#"><img src="http://localhost/myblog/public/static/<?php echo htmlentities($vo['img']); ?>"></a>
 								</div>
 								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
+									<?php echo htmlentities($vo['info']); ?>
 								</div>
 								<a class="article_readAll" href="#">阅读全文</a>
 							</div>
 
 						</div>
-
 					</div>
-					<div class="article">
-						<h3>
-							<a href="#" class="article_title">标题</a>
-						</h3>
-						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_weather"><i class="fa fa-calendar"></i>&nbsp;天气</li>
-							<li class="article_mood"><i class="fa fa-tags"></i>&nbsp;心情</li>
-
-						</ul>
-						<div class="article_main clearfix">
-							<div class="row">
-								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
-								</div>
-								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
-								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
-							</div>
-
-						</div>
-
-					</div>
-					<div class="article">
-						<h3>
-							<a href="#" class="article_title">标题</a>
-						</h3>
-						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_weather"><i class="fa fa-calendar"></i>&nbsp;天气</li>
-							<li class="article_mood"><i class="fa fa-tags"></i>&nbsp;心情</li>
-
-						</ul>
-						<div class="article_main clearfix">
-							<div class="row">
-								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
-								</div>
-								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
-								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
-							</div>
-
-						</div>
-
-					</div>
+					<?php endforeach; endif; else: echo "" ;endif; ?>
 					
-					<div class="article">
-						<h3>
-							<a href="#" class="article_title">标题</a>
-						</h3>
-						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_weather"><i class="fa fa-calendar"></i>&nbsp;天气</li>
-							<li class="article_mood"><i class="fa fa-tags"></i>&nbsp;心情</li>
-
-						</ul>
-						<div class="article_main clearfix">
-							<div class="row">
-								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
-								</div>
-								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
-								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
-							</div>
-
-						</div>
-
-					</div>
-					
-
 					<ul class="pagination d-flex justify-content-center">
 						<li class="page-item">
 							<a class="page-link" href="#">Previous</a>

@@ -1,17 +1,15 @@
-<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\index\index.html";i:1553355744;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553434825;}*/ ?>
+<?php /*a:3:{s:59:"D:\wamp64\www\MyBlog\application\admin\view\admin\edit.html";i:1553397068;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553434825;}*/ ?>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="utf-8">
-		<title>后台管理系统 - Mr.Wang - Blog</title>
+		<title>编辑资料 - Mr.Wang - Blog</title>
 
 		<meta name="description" content="Dashboard">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<!--引入public目录中的ico图标-->
-		<link rel="shortcut icon" href="http://localhost/myblog/public/static/admin/images/favicon.ico">
 		<!--Basic http://localhost/myblog/public/static/admin/styles-->
 		<link href="http://localhost/myblog/public/static/admin/style/bootstrap.css" rel="stylesheet">
 		<link href="http://localhost/myblog/public/static/admin/style/font-awesome.css" rel="stylesheet">
@@ -22,7 +20,9 @@
 		<link href="http://localhost/myblog/public/static/admin/style/demo.css" rel="stylesheet">
 		<link href="http://localhost/myblog/public/static/admin/style/typicons.css" rel="stylesheet">
 		<link href="http://localhost/myblog/public/static/admin/style/animate.css" rel="stylesheet">
-
+		<link href="http://localhost/myblog/public/static/layui/css/layui.css" rel="stylesheet">
+		<!--引入public目录中的ico图标-->
+		<link rel="shortcut icon" href="http://localhost/myblog/public/static/admin/images/favicon.ico">
 	</head>
 
 	<body>
@@ -84,6 +84,7 @@
         </div>
     </div>
 </div>
+
 
 		<!-- /头部 -->
 
@@ -275,7 +276,13 @@
 						<!-- Page Breadcrumb -->
 						<div class="page-breadcrumbs">
 							<ul class="breadcrumb">
-								<li class="active">控制面板</li>
+								<li>
+									<a href="#">后台</a>
+								</li>
+								<li>
+									<a href="<?php echo url('admin/lst'); ?>">管理员管理</a>
+								</li>
+								<li class="active">编辑资料</li>
 							</ul>
 						</div>
 						<!-- /Page Breadcrumb -->
@@ -283,25 +290,209 @@
 						<!-- Page Body -->
 						<div class="page-body">
 
-							<div style="text-align:center; line-height:1000%; font-size:24px;">
-								Mr.Wang - Blog<br>
-								<p style="color:#aaa;">后台管理系统</p>
+							<div class="row">
+								<div class="col-lg-12 col-sm-12 col-xs-12">
+									<div class="widget">
+										<div class="widget-header bordered-bottom bordered-blue">
+											<span class="widget-caption">编辑管理员</span>
+										</div>
+										<div class="widget-body">
+											<div id="horizontal-form">
+												<form class="form-horizontal" role="form" action="" enctype="multipart/form-data" method="post">
+													<input type="hidden" name="id" value="<?php echo htmlentities($admins['id']); ?>" />
+
+													<div class="form-group">
+														<label for="username" class="col-sm-2 control-label no-padding-right">管理员登录名</label>
+														<div class="col-sm-6">
+															<input class="form-control" id="username" placeholder="" name="username" disabled="disabled" value="<?php echo htmlentities($admins['username']); ?>" type="text">
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label for="name" class="col-sm-2 control-label no-padding-right">管理员昵称</label>
+														<div class="col-sm-6">
+															<input class="form-control" id="name" placeholder="昵称" name="name" value="<?php echo htmlentities($admins['name']); ?>" type="text">
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="email" class="col-sm-2 control-label no-padding-right">管理员邮箱</label>
+														<div class="col-sm-6">
+															<input class="form-control" id="email" placeholder="邮箱" name="email" value="<?php echo htmlentities($admins['email']); ?>" type="text">
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="desca" class="col-sm-2 control-label no-padding-right">管理员描述</label>
+														<div class="col-sm-6">
+															<input class="form-control" id="desca" placeholder="描述" name="info" value="<?php echo htmlentities($admins['info']); ?>" type="text">
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="group_id" class="col-sm-2 control-label no-padding-right">管理员密码</label>
+														<div class="col-sm-6">
+															<input class="form-control" id="password" placeholder="" name="password" type="text">
+														</div>
+													</div>
+													<div class="form-group">
+
+														<div class="layui-upload">
+															<label for="pic" class="col-sm-2 control-label no-padding-right">管理员头像</label>
+															<div class="col-sm-6">
+
+																<button type="button" class="layui-btn layui-btn-normal" id="pic" >添加图片</button>
+																<img src="http://localhost/myblog/public/static/<?php echo htmlentities($admins['img']); ?>"  width="100" height="100" style="float: right;" >
+																
+																<p class="help-block col-sm-4 red" style="float: right;">点击图片放大预览</p>
+																<div id="img_sel">
+
+																</div>
+																<button type="button" class="layui-btn" id="test8" style="margin-top: 10px;">上传</button>
+																<p class="help-block col-sm-4 red" style="float: right;">* 请点击上传</p>
+															</div>
+
+														</div>
+														
+														
+														
+													</div>
+
+													<div class="form-group">
+														<div class="col-sm-offset-2 col-sm-10">
+															<button type="submit" class="btn btn-default" id="toSave">更新信息</button>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
+
 						</div>
-
+						<!-- /Page Body -->
 					</div>
-					<!-- /Page Body -->
+					<!-- /Page Content -->
 				</div>
-				<!-- /Page Content -->
 			</div>
-		</div>
 
-		<!--Basic Scripts-->
-		<script src="http://localhost/myblog/public/static/admin/style/jquery_002.js"></script>
-		<script src="http://localhost/myblog/public/static/admin/style/bootstrap.js"></script>
-		<script src="http://localhost/myblog/public/static/admin/style/jquery.js"></script>
-		<!--Beyond Scripts-->
-		<script src="http://localhost/myblog/public/static/admin/style/beyond.js"></script>
+			<!--Basic Scripts-->
+			<script src="http://localhost/myblog/public/static/admin/style/jquery_002.js"></script>
+			<script src="http://localhost/myblog/public/static/admin/style/bootstrap.js"></script>
+			<script src="http://localhost/myblog/public/static/admin/style/jquery.js"></script>
+			<!--Beyond Scripts-->
+			<script src="http://localhost/myblog/public/static/admin/style/beyond.js"></script>
+			<script src="http://localhost/myblog/public/static/layui/layui.js"></script>
+			<script>
+				layui.use('upload', function() {
+					var upload = layui.upload;
+					var layer = layui.layer;
+					var count = 0;
+					//执行实例
+					var uploadInst = upload.render({
+						elem: '#pic' //绑定元素
+							,
+						url: "<?php echo url('admin/upload'); ?>" //上传接口
+							,
+						auto: false //选择文件后不自动上传
+
+							,
+						bindAction: '#test8',
+						choose: function(obj) {
+							//预读本地文件示例，不支持ie8
+							obj.preview(function(index, file, result) { //在当前ID为“demo2”的区域显示图片
+								count++;
+								console.log(count);
+								if(count > 1 )
+								{
+									layer.msg("只允许上传一张图片");
+									error();
+								}
+								var files = obj.pushFile();
+								layui.use(['jquery', 'layer'], function() {
+									var $ = layui.$ //重点处
+										,
+										layer = layui.layer;
+									$('#img_sel').append('<div class="image-container" id="container' + index + '"><div class="delete-css"><button id="upload_img_' + index + '" class="layui-btn layui-btn-danger layui-btn-xs">删除</button></div>' +
+										'<img id="showImg' + index + '" style="width: 150px; margin:10px;cursor:pointer;"src="' + result + '" alt="' + file.name + '"></div>');
+
+									$("#upload_img_" + index).bind('click', function() {
+										delete files[index];
+										$("#container" + index).remove();
+									});
+									//某图片放大预览
+									$("#showImg" + index).bind('click', function() {
+										var width = $("#showImg" + index).width();
+										var height = $("#showImg" + index).height();
+										var scaleWH = width / height;
+										var bigH = 600;
+										var bigW = scaleWH * bigH;
+										if(bigW > 900) {
+											bigW = 900;
+											bigH = bigW / scaleWH;
+										}
+
+										// 放大预览图片
+										layer.open({
+											type: 1,
+											title: false,
+											closeBtn: 1,
+											shadeClose: true,
+											area: [bigW + 'px', bigH + 'px'], //宽高
+											content: "<img width='" + bigW + "' height='" + bigH + "' src=" + result + " />"
+										});
+									});
+
+								});
+
+							});
+						},
+
+						done: function(res) {
+							//上传完毕回调
+							layer.msg('上传成功');
+
+						},
+						error: function() {
+							//请求异常回调
+							layer.msg('上传失败，请重试');
+						}
+					});
+				});
+			</script>
+			<script type="text/javascript">
+				$(function() {
+					$('#toSave').click(function() {
+						$.ajax({
+							url: "<?php echo url('admin/edit'); ?>",
+							type: 'post',
+							data: $('form').serialize(),
+							dataType: 'json',
+							success: function(data) {
+								console.log(data);
+								if(data.code == 1) {
+									layer.msg(data.msg, {
+										icon: 6,
+										time: 2000
+									}, function() {
+										location.href = data.url;
+									});
+								} else {
+									layer.open({
+										title: '资料修改失败',
+										content: data.msg,
+										icon: 5,
+										anim: 6
+									});
+								}
+							},
+							error: function(data) {
+								console.log(data);
+
+							}
+						});
+						return false;
+					});
+				});
+			</script>
 
 	</body>
 
