@@ -22,6 +22,8 @@
 		<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
 		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
+		<link href="__PUBLIC__/froala_editor/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 		<style type="text/css">
 			#main #warp {
 				margin-top: 45px!important;
@@ -83,14 +85,14 @@
 								技术
 							</a>
 							<div class="dropdown-menu text-center" id="menu">
-								<a class="dropdown-item" href="{:url('technology/index')}">前端</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">PHP</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Python</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Linux</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Java</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">Android</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">C语言</a>
-								<a class="dropdown-item" href="{:url('technology/index')}">网络安全</a>
+								<a class="dropdown-item" href="{:url('technology/index',array('tag1'=>'前端'))}">前端</a>
+								<a class="dropdown-item" href="{:url('technology/index',array('tag1'=>'PHP'))}">PHP</a>
+								<a class="dropdown-item" href="{:url('technology/index',array('tag1'=>'Python'))}">Python</a>
+								<a class="dropdown-item" href="{:url('technology/index',array('tag1'=>'Linux'))}">Linux</a>
+								<a class="dropdown-item" href="{:url('technology/index',array('tag1'=>'Java'))}">Java</a>
+								<a class="dropdown-item" href="{:url('technology/index',array('tag1'=>'Android'))}">Android</a>
+								<a class="dropdown-item" href="{:url('technology/index',array('tag1'=>'C语言'))}">C语言</a>
+								<a class="dropdown-item" href="{:url('technology/index',array('tag1'=>'Security'))}">网络安全</a>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -131,24 +133,18 @@
 						<div class="about_me">
 							<p class="about_title">关于我 | ABOUT ME</p>
 							<div class="about_text">
-								<p>一个90后爱好web前端的程序员，内心充满热情。</p>
-							    <p>大学所修专业软件工程,大二开始对web前端感兴趣，于是开始了漫漫学习之路。
-							前前后后接触web前端有两年的时间了，一直想搭建一个自己的网站，
-							记录自己学习上的成长。同时为了这个目标自己也在不断学习。
-							最终利用在北京实习这段时间的空闲时间，开始着手建站。从一开始的的静态网页到最后的网站,
-							从无到有，也许对于有一定经验的程序员来说，并不是难事，但是对于我来说建站的过程也是一个学习的过程，
-						 	而过程则是最令人兴奋的。这期间自己不断从网上搜集资料，充实网站内容，也付出了很多心血，
-						 	希望自己以后学习更多的新技术，让网站变得越来越好。
-							       </p>
+								<div class="fr-view" style="margin-top: 30px;">
+  					 				{$about.aboutMe|raw}
+								</div>
 							</div>
 							
 						</div>
 						<div class="about_blog">
 							<p class="about_title">关于博客| ABOUT BLOG</p>
 							<div class="about_text">
-								<p>
-									网站是博客类性质的个人站，主要分享自己在web前端学习过程中的一些体会和技术上的心得，没有标注的均为自己原创，转载请注明出处。
-								</p>
+								<div class="fr-view" style="margin-top: 30px;">
+  					 				{$about.aboutBlog|raw}
+								</div>
 							</div>
 						</div>
 					</div>

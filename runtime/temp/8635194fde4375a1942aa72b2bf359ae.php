@@ -1,4 +1,4 @@
-<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\article\lst.html";i:1553434576;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553434825;}*/ ?>
+<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\article\lst.html";i:1553434576;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553694805;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -123,22 +123,6 @@
                             </li>
                         </ul>                            
                     </li> 
-					 <li>
-                        <a href="#" class="menu-dropdown">
-                            <i class="menu-icon fa fa-list"></i>
-                            <span class="menu-text">栏目管理</span>
-                            <i class="menu-expand"></i>
-                        </a>
-                        <ul class="submenu">
-                            <li>
-                                <a href="<?php echo url('cate/lst'); ?>">
-                                    <span class="menu-text">
-                                        栏目列表                                    </span>
-                                    <i class="menu-expand"></i>
-                                </a>
-                            </li>
-                        </ul>                            
-                    </li> 
                     <li>
                         <a href="#" class="menu-dropdown">
                             <i class="menu-icon fa fa-file-text"></i>
@@ -186,14 +170,14 @@
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="<?php echo url('article/lst'); ?>">
+                                <a href="<?php echo url('project/lst'); ?>">
                                     <span class="menu-text">
                                         项目列表                                    </span>
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo url('article/lst'); ?>">
+                                <a href="<?php echo url('project/show'); ?>">
                                     <span class="menu-text">
                                         项目统计                                    </span>
                                     <i class="menu-expand"></i>
@@ -242,21 +226,14 @@
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="<?php echo url('tags/lst'); ?>">
-                                    <span class="menu-text">
-                                        网站资料                                  </span>
-                                    <i class="menu-expand"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo url('tags/lst'); ?>">
+                                <a href="<?php echo url('about/edit'); ?>">
                                     <span class="menu-text">
                                         关于                                  </span>
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo url('tags/lst'); ?>">
+                                <a href="<?php echo url('links/lst'); ?>">
                                     <span class="menu-text">
                                        友情链接                                  </span>
                                     <i class="menu-expand"></i>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>添加项目 - Mr.Wang - Blog</title>
+		<meta name="description" content="Dashboard">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<!--Basic __PUBLIC__/admin/styles-->
+		<link href="__PUBLIC__/admin/style/bootstrap.css" rel="stylesheet">
+		<link href="__PUBLIC__/admin/style/font-awesome.css" rel="stylesheet">
+		<link href="__PUBLIC__/admin/style/weather-icons.css" rel="stylesheet">
+
+		<!--Beyond __PUBLIC__/admin/styles-->
+		<link id="beyond-link" href="__PUBLIC__/admin/style/beyond.css" rel="stylesheet" type="text/css">
+		<link href="__PUBLIC__/admin/style/demo.css" rel="stylesheet">
+		<link href="__PUBLIC__/admin/style/typicons.css" rel="stylesheet">
+		<link href="__PUBLIC__/admin/style/animate.css" rel="stylesheet">
+		<link href="__PUBLIC__/layui/css/layui.css" rel="stylesheet">
+		<!--引入public目录中的ico图标-->
+		<link rel="shortcut icon" href="__PUBLIC__/admin/images/favicon.ico">
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<!--引入cdn图标-->
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+		<!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+		<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+	</head>
+
+	<body>
+		{include file="common/top" /}
+
+		<!-- /头部 -->
+
+		<div class="main-container container-fluid">
+			<div class="page-container">·
+				<!-- Page Sidebar -->
+				<div class="page-sidebar" id="sidebar">
+					<!-- Page Sidebar Header-->
+					<div class="sidebar-header-wrapper">
+						<input class="searchinput" type="text" disabled="disabled">
+					</div>
+					<!-- /Page Sidebar Header -->
+					{include file="common/left" /}
+					<!-- /Page Sidebar -->
+					<!-- Page Content -->
+					<div class="page-content">
+						<!-- Page Breadcrumb -->
+						<div class="page-breadcrumbs">
+							<ul class="breadcrumb">
+								<li>
+									<a href="#">后台</a>
+								</li>
+								<li>
+									<a href="{:url('project/lst')}">项目管理</a>
+								</li>
+								<li class="active">添加项目</li>
+							</ul>
+						</div>
+						<!-- /Page Breadcrumb -->
+
+						<!-- Page Body -->
+						<div class="page-body">
+
+							<div class="row">
+								<div class="col-lg-12 col-sm-12 col-xs-12">
+									<div class="widget">
+										<div class="widget-header bordered-bottom bordered-blue">
+											<span class="widget-caption">新增项目</span>
+										</div>
+										<div class="widget-body">
+
+											<div id="horizontal-form">
+												<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+													<div class="form-group">
+														<label for="name" class="col-sm-2 control-label no-padding-right">项目名称</label>
+														<div class="col-sm-6">
+															<input class="form-control" id="name" placeholder="项目名称" name="name" type="text">
+														</div>
+														<p class="help-block col-sm-4 red">* 必填</p>
+													</div>
+													<div class="form-group">
+														<label for="info" class="col-sm-2 control-label no-padding-right">项目简介</label>
+														<div class="col-sm-6">
+															<input class="form-control" id="info" placeholder="项目简介" name="info" type="text">
+														</div>
+														<p class="help-block col-sm-4 red">* 必填</p>
+													</div>
+													<div class="form-group">
+
+														<div id="element_id">
+															<div style="display: block;overflow: hidden;margin-left: 135px;">
+																<label for="title" class="col-sm-2 control-label no-padding-right">
+																	<span style="margin-right: 10px;">一级标签</span>
+															<select class="tag1" name="tag1" style="width: 100px;">
+																<option value="前端" selected>前端</option>
+															</select>
+															</label>
+															</div>
+
+															<div style="display: block; overflow: hidden;margin-left: 135px;">
+																<label for="title" class="col-sm-2 control-label no-padding-right">
+																	<span style="margin-right: 10px;">二级标签</span>
+															<select class="tag2" name="tag2" style="width: 100px;">
+																<option value="HTML" selected>HTML</option>
+															</select>
+															</label>
+															</div>
+
+														</div>
+
+													</div>
+
+													<div class="form-group">
+														<div class="layui-upload">
+															<label for="pic" class="col-sm-2 control-label no-padding-right">项目缩略图</label>
+															<div class="col-sm-6">
+																<button type="button" class="layui-btn layui-btn-normal layui-input-inline " id="pic">添加图片</button>
+																<div class="layui-form-mid layui-word-aux  " style="float: right;">头像的尺寸限定150x150px,大小在50kb以内</div>
+																<div >
+																	<img src="" id="img_sel">
+																</div>
+
+															</div>
+
+														</div>
+
+													</div>
+													<div class="form-group">
+														<label for="state" class="col-sm-2 control-label no-padding-right">是否原创</label>
+														<div class="col-sm-6">
+															<label>
+                                    							<input class="checkbox-slider colored-darkorange" name="original"  type="checkbox">
+                                    							<span class="text"></span>
+                                 							</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="state" class="col-sm-2 control-label no-padding-right">是否完成</label>
+														<div class="col-sm-6">
+															<label>
+                                    							<input class="checkbox-slider colored-blue" name="complete"  type="checkbox">
+                                    							<span class="text"></span>
+                                 							</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="gitUrl" class="col-sm-2 control-label no-padding-right">GitBook链接</label>
+														<div class="col-sm-6">
+															<input class="form-control" id="gitUrl" placeholder="GitBook链接" name="gitUrl" type="text">
+														</div>
+														<p class="help-block col-sm-4 red">* 必填</p>
+													</div>
+													<div class="form-group">
+														<div class="col-sm-offset-2 col-sm-10">
+															<button type="submit" class="btn btn-default" id="toSave">保存信息</button>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<!-- /Page Body -->
+					</div>
+					<!-- /Page Content -->
+				</div>
+			</div>
+
+			<!--Basic Scripts-->
+			<script src="__PUBLIC__/admin/style/jquery_002.js"></script>
+			<script src="__PUBLIC__/admin/style/bootstrap.js"></script>
+			<script src="__PUBLIC__/admin/style/jquery.js"></script>
+			<!--Beyond Scripts-->
+			<script src="__PUBLIC__/admin/style/beyond.js"></script>
+			<script src="__PUBLIC__/layui/layui.js"></script>
+			<script src="__PUBLIC__/cxSelect/js/jquery.cxselect.js"></script>
+			<script type="text/javascript">
+				layui.config({
+					base: '__PUBLIC__/layui/third/' //layui自定义layui组件目录
+				}).use(['form', 'croppers'], function() {
+					var $ = layui.jquery,
+						form = layui.form,
+						croppers = layui.croppers,
+						layer = layui.layer;
+
+					//创建一个头像上传组件
+					croppers.render({
+						elem: '#pic',
+						saveW: 150 //保存宽度
+							,
+						saveH: 150,
+						mark: 186/ 105 
+							,
+						area: '900px' //弹窗宽度
+							,
+						url: "{:url('project/upload')}" //图片上传接口返回和（layui 的upload 模块）返回的JOSN一样
+							,
+						done: function(url) { //上传完毕回调
+							console.log(url);
+							$("#img_sel").attr('src', url);
+						}
+					});
+
+				});
+			</script>
+			<script type="text/javascript">
+				$(function() {
+					$('#toSave').click(function() {
+						$.ajax({
+							url: "{:url('project/add')}",
+							type: 'post',
+							data: $('form').serialize(),
+							dataType: 'json',
+							success: function(data) {
+								console.log(data);
+								if(data.code == 1) {
+									layer.msg(data.msg, {
+										icon: 6,
+										time: 2000
+									}, function() {
+										location.href = data.url;
+									});
+								} else {
+									layer.open({
+										title: '添加项目失败',
+										content: data.msg,
+										icon: 5,
+										anim: 6
+									});
+								}
+							},
+							error: function(data) {
+								console.log(data);
+
+							}
+						});
+						return false;
+					});
+				});
+			</script>
+			<script type="text/javascript">
+				$(function() {
+					$('#element_id').cxSelect({
+						url: 'http://localhost/MyBlog/public/static/cxSelect/js/tag.json', // 提示：如果服务器不支持 .json 类型文件，请将文件改为 .js 文件
+						selects: ['tag1', 'tag2'], // selects 为数组形式，请注意顺序
+					});
+				});
+			</script>
+	</body>
+
+</html>

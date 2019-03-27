@@ -1,4 +1,4 @@
-<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\essay\index.html";i:1553528724;}*/ ?>
+<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\essay\index.html";i:1553679945;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -127,14 +127,14 @@
 								技术
 							</a>
 							<div class="dropdown-menu text-center" id="menu">
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">前端</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">PHP</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Python</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Linux</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Java</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Android</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">C语言</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">网络安全</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'前端')); ?>">前端</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'PHP')); ?>">PHP</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Python')); ?>">Python</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Linux')); ?>">Linux</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Java')); ?>">Java</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Android')); ?>">Android</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'C语言')); ?>">C语言</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Security')); ?>">网络安全</a>
 							</div>
 						</li>
 						<li class="nav-item">

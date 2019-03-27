@@ -1,4 +1,4 @@
-<?php /*a:1:{s:62:"D:\wamp64\www\MyBlog\application\index\view\project\index.html";i:1553352817;}*/ ?>
+<?php /*a:1:{s:62:"D:\wamp64\www\MyBlog\application\index\view\project\index.html";i:1553700829;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -9,8 +9,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!--引入public目录中的main.css文件-->
 		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/main.css" />
-		<!--引入public目录中的初始化css文件-->
-		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/initial.css" />
+		<!--引入public目录中的初始化css文件
+		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/initial.css" />-->
 		<!--引入public目录中的动画css文件-->
 		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/style.css" />
 		<!--引入public目录中的ico图标-->
@@ -25,16 +25,7 @@
 		<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
 		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
-		<!--Beyond styles-->
-		<link id="beyond-link" href="http://localhost/myblog/public/static/index/css/beyond.css" rel="stylesheet" type="text/css">
-		<link href="http://localhost/myblog/public/static/index/css/demo.css" rel="stylesheet">
-		<link href="http://localhost/myblog/public/static/index/css/typicons.css" rel="stylesheet">
-		<link href="http://localhost/myblog/public/static/index/css/animate.css" rel="stylesheet">
 		<style type="text/css">
-			#nav {
-				padding: 1.7rem 1rem!important;
-			}
-			
 			#main .article ul li {
 				margin-right: 60px;
 			}
@@ -68,7 +59,7 @@
 			
 			#main .project .project_box img {
 				width: 100%;
-				height: 45%;
+				height: 105px;
 			}
 			
 			#main .project .project_box span {
@@ -107,6 +98,19 @@
 			.nav-tabs>li {
 				width: 70px;
 			}
+			#main .widget-caption{
+				border-left: 3px blue solid;
+				padding-left: 5px;
+			}
+			#main .widget-caption a{
+				color: #007bff;
+			}
+			#main .tabbable li{
+				margin-left: 10px;
+			}
+			#main .tab-content{
+				padding: 5px;
+			}
 		</style>
 	</head>
 
@@ -129,14 +133,14 @@
 								技术
 							</a>
 							<div class="dropdown-menu text-center" id="menu">
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">前端</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">PHP</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Python</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Linux</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Java</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Android</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">C语言</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">网络安全</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'前端')); ?>">前端</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'PHP')); ?>">PHP</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Python')); ?>">Python</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Linux')); ?>">Linux</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Java')); ?>">Java</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Android')); ?>">Android</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'C语言')); ?>">C语言</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Security')); ?>">网络安全</a>
 							</div>
 						</li>
 						<li class="nav-item active">
@@ -171,142 +175,187 @@
 						<a class="breadcrumb-item active" href="#">项目</a>
 					</nav>
 					<!--面包屑导航结束-->
-					<div class="project" id="PHP">
+					<div class="project" <?php if($flag[0] == 0): ?> style="display: none;" <?php endif; ?>>
+						<h3 class="project_title">前端</h3>
+						<div class="row">
+							<?php if(is_array($project) || $project instanceof \think\Collection || $project instanceof \think\Paginator): $i = 0; $__LIST__ = $project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;if($vo['tag1'] == '前端'): ?>
+							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
+								
+								<div class="project_box_img he_slideCaptionDown1">
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><img src="http://localhost/myblog/public/static/<?php echo htmlentities($vo['img']); ?>" /></a>
+									<div class="he_slideCaptionDown_caption1">
+										<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><strong class="he_slideCaptionDown_caption_h1"><?php echo htmlentities($vo['info']); ?></strong> </a>
+									</div>
+								</div>
+								<span><?php echo htmlentities($vo['name']); ?></span>
+								<div class="project_box_info he_slideCaptionDown_caption">
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><strong class="he_slideCaptionDown_caption_h"><?php echo htmlentities($vo['name']); ?></strong></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><p class="he_slideCaptionDown_caption_p"><?php echo htmlentities($vo['tag1']); ?> &nbsp;&nbsp;<?php echo htmlentities($vo['tag2']); ?></p></a>
+								</div>
+							</div>
+							
+							<?php endif; ?>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
+						</div>
+					</div>
+					<div class="project" <?php if($flag[1] == 0): ?> style="display: none;" <?php endif; ?>>
 						<h3 class="project_title">PHP</h3>
 						<div class="row">
+							<?php if(is_array($project) || $project instanceof \think\Collection || $project instanceof \think\Paginator): $i = 0; $__LIST__ = $project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;if($vo['tag1'] == 'PHP'): ?>
 							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
+								
 								<div class="project_box_img he_slideCaptionDown1">
-									<img src="http://localhost/myblog/public/static/index/img/project1.jpg" />
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><img src="http://localhost/myblog/public/static/<?php echo htmlentities($vo['img']); ?>" /></a>
 									<div class="he_slideCaptionDown_caption1">
-										<strong class="he_slideCaptionDown_caption_h1">项目相关</strong>
+										<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><strong class="he_slideCaptionDown_caption_h1"><?php echo htmlentities($vo['info']); ?></strong> </a>
 									</div>
 								</div>
-								<span>项目名称</span>
+								<span><?php echo htmlentities($vo['name']); ?></span>
 								<div class="project_box_info he_slideCaptionDown_caption">
-									<strong class="he_slideCaptionDown_caption_h">项目名称</strong>
-									<p class="he_slideCaptionDown_caption_p">描述信息</p>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><strong class="he_slideCaptionDown_caption_h"><?php echo htmlentities($vo['name']); ?></strong></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><p class="he_slideCaptionDown_caption_p"><?php echo htmlentities($vo['tag1']); ?> &nbsp;&nbsp;<?php echo htmlentities($vo['tag2']); ?></p></a>
 								</div>
 							</div>
-							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
-								<div class="project_box_img he_slideCaptionDown1">
-									<img src="http://localhost/myblog/public/static/index/img/project1.jpg" />
-									<div class="he_slideCaptionDown_caption1">
-										<strong class="he_slideCaptionDown_caption_h1">项目相关</strong>
-									</div>
-								</div>
-								<span>项目名称</span>
-								<div class="project_box_info he_slideCaptionDown_caption">
-									<strong class="he_slideCaptionDown_caption_h">项目名称</strong>
-									<p class="he_slideCaptionDown_caption_p">描述信息</p>
-								</div>
-							</div>
-							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
-								<div class="project_box_img he_slideCaptionDown1">
-									<img src="http://localhost/myblog/public/static/index/img/project1.jpg" />
-									<div class="he_slideCaptionDown_caption1">
-										<strong class="he_slideCaptionDown_caption_h1">项目相关</strong>
-									</div>
-								</div>
-								<span>项目名称</span>
-								<div class="project_box_info he_slideCaptionDown_caption">
-									<strong class="he_slideCaptionDown_caption_h">项目名称</strong>
-									<p class="he_slideCaptionDown_caption_p">描述信息</p>
-								</div>
-							</div>
-
+							<?php endif; ?>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
 						</div>
 					</div>
-
-					<div class="project" id="Linux">
-						<h3 class="project_title">LInux</h3>
+					<div class="project" <?php if($flag[2] == 0): ?> style="display: none;" <?php endif; ?>>
+						<h3 class="project_title">Python</h3>
 						<div class="row">
+							<?php if(is_array($project) || $project instanceof \think\Collection || $project instanceof \think\Paginator): $i = 0; $__LIST__ = $project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;if($vo['tag1'] == 'Python'): ?>
 							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
 								<div class="project_box_img he_slideCaptionDown1">
-									<img src="http://localhost/myblog/public/static/index/img/project1.jpg" />
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><img src="http://localhost/myblog/public/static/<?php echo htmlentities($vo['img']); ?>" /></a>
 									<div class="he_slideCaptionDown_caption1">
-										<strong class="he_slideCaptionDown_caption_h1">项目相关</strong>
+										<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><strong class="he_slideCaptionDown_caption_h1"><?php echo htmlentities($vo['info']); ?></strong> </a>
 									</div>
 								</div>
-								<span>项目名称</span>
+								<span><?php echo htmlentities($vo['name']); ?></span>
 								<div class="project_box_info he_slideCaptionDown_caption">
-									<strong class="he_slideCaptionDown_caption_h">项目名称</strong>
-									<p class="he_slideCaptionDown_caption_p">描述信息</p>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><strong class="he_slideCaptionDown_caption_h"><?php echo htmlentities($vo['name']); ?></strong></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><p class="he_slideCaptionDown_caption_p"><?php echo htmlentities($vo['tag1']); ?> &nbsp;&nbsp;<?php echo htmlentities($vo['tag2']); ?></p></a>
 								</div>
 							</div>
-							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
-								<div class="project_box_img he_slideCaptionDown1">
-									<img src="http://localhost/myblog/public/static/index/img/project1.jpg" />
-									<div class="he_slideCaptionDown_caption1">
-										<strong class="he_slideCaptionDown_caption_h1">项目相关</strong>
-									</div>
-								</div>
-								<span>项目名称</span>
-								<div class="project_box_info he_slideCaptionDown_caption">
-									<strong class="he_slideCaptionDown_caption_h">项目名称</strong>
-									<p class="he_slideCaptionDown_caption_p">描述信息</p>
-								</div>
-							</div>
-							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
-								<div class="project_box_img he_slideCaptionDown1">
-									<img src="http://localhost/myblog/public/static/index/img/project1.jpg" />
-									<div class="he_slideCaptionDown_caption1">
-										<strong class="he_slideCaptionDown_caption_h1">项目相关</strong>
-									</div>
-								</div>
-								<span>项目名称</span>
-								<div class="project_box_info he_slideCaptionDown_caption">
-									<strong class="he_slideCaptionDown_caption_h">项目名称</strong>
-									<p class="he_slideCaptionDown_caption_p">描述信息</p>
-								</div>
-							</div>
-
+							<?php endif; ?>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
 						</div>
 					</div>
-					<div class="project" id="Java">
+					<div class="project" <?php if($flag[3] == 0): ?> style="display: none;" <?php endif; ?>>
+						<h3 class="project_title">Linux</h3>
+						<div class="row">
+							<?php if(is_array($project) || $project instanceof \think\Collection || $project instanceof \think\Paginator): $i = 0; $__LIST__ = $project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;if($vo['tag1'] == 'Linux'): ?>
+							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
+								<div class="project_box_img he_slideCaptionDown1">
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><img src="http://localhost/myblog/public/static/<?php echo htmlentities($vo['img']); ?>" /></a>
+									<div class="he_slideCaptionDown_caption1">
+										<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><strong class="he_slideCaptionDown_caption_h1"><?php echo htmlentities($vo['info']); ?></strong> </a>
+									</div>
+								</div>
+								<span><?php echo htmlentities($vo['name']); ?></span>
+								<div class="project_box_info he_slideCaptionDown_caption">
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><strong class="he_slideCaptionDown_caption_h"><?php echo htmlentities($vo['name']); ?></strong></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><p class="he_slideCaptionDown_caption_p"><?php echo htmlentities($vo['tag1']); ?> &nbsp;&nbsp;<?php echo htmlentities($vo['tag2']); ?></p></a>
+								</div>
+							</div>
+							<?php endif; ?>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
+						</div>
+					</div>
+					<div class="project" <?php if($flag[4] == 0): ?> style="display: none;" <?php endif; ?>>
 						<h3 class="project_title">Java</h3>
 						<div class="row">
+							<?php if(is_array($project) || $project instanceof \think\Collection || $project instanceof \think\Paginator): $i = 0; $__LIST__ = $project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;if($vo['tag1'] == 'Java'): ?>
 							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
 								<div class="project_box_img he_slideCaptionDown1">
-									<img src="http://localhost/myblog/public/static/index/img/project1.jpg" />
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><img src="http://localhost/myblog/public/static/<?php echo htmlentities($vo['img']); ?>" /></a>
 									<div class="he_slideCaptionDown_caption1">
-										<strong class="he_slideCaptionDown_caption_h1">项目相关</strong>
+										<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><strong class="he_slideCaptionDown_caption_h1"><?php echo htmlentities($vo['info']); ?></strong> </a>
 									</div>
 								</div>
-								<span>项目名称</span>
+								<span><?php echo htmlentities($vo['name']); ?></span>
 								<div class="project_box_info he_slideCaptionDown_caption">
-									<strong class="he_slideCaptionDown_caption_h">项目名称</strong>
-									<p class="he_slideCaptionDown_caption_p">描述信息</p>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><strong class="he_slideCaptionDown_caption_h"><?php echo htmlentities($vo['name']); ?></strong></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><p class="he_slideCaptionDown_caption_p"><?php echo htmlentities($vo['tag1']); ?> &nbsp;&nbsp;<?php echo htmlentities($vo['tag2']); ?></p></a>
 								</div>
 							</div>
-							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
-								<div class="project_box_img he_slideCaptionDown1">
-									<img src="http://localhost/myblog/public/static/index/img/project1.jpg" />
-									<div class="he_slideCaptionDown_caption1">
-										<strong class="he_slideCaptionDown_caption_h1">项目相关</strong>
-									</div>
-								</div>
-								<span>项目名称</span>
-								<div class="project_box_info he_slideCaptionDown_caption">
-									<strong class="he_slideCaptionDown_caption_h">项目名称</strong>
-									<p class="he_slideCaptionDown_caption_p">描述信息</p>
-								</div>
-							</div>
-							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
-								<div class="project_box_img he_slideCaptionDown1">
-									<img src="http://localhost/myblog/public/static/index/img/project1.jpg" />
-									<div class="he_slideCaptionDown_caption1">
-										<strong class="he_slideCaptionDown_caption_h1">项目相关</strong>
-									</div>
-								</div>
-								<span>项目名称</span>
-								<div class="project_box_info he_slideCaptionDown_caption">
-									<strong class="he_slideCaptionDown_caption_h">项目名称</strong>
-									<p class="he_slideCaptionDown_caption_p">描述信息</p>
-								</div>
-							</div>
-
+							<?php endif; ?>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
 						</div>
 					</div>
+					<div class="project" <?php if($flag[5] == 0): ?> style="display: none;" <?php endif; ?>>
+						<h3 class="project_title">Android</h3>
+						<div class="row">
+							<?php if(is_array($project) || $project instanceof \think\Collection || $project instanceof \think\Paginator): $i = 0; $__LIST__ = $project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;if($vo['tag1'] == 'Android'): ?>
+							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
+								<div class="project_box_img he_slideCaptionDown1">
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><img src="http://localhost/myblog/public/static/<?php echo htmlentities($vo['img']); ?>" /></a>
+									<div class="he_slideCaptionDown_caption1">
+										<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><strong class="he_slideCaptionDown_caption_h1"><?php echo htmlentities($vo['info']); ?></strong> </a>
+									</div>
+								</div>
+								<span><?php echo htmlentities($vo['name']); ?></span>
+								<div class="project_box_info he_slideCaptionDown_caption">
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><strong class="he_slideCaptionDown_caption_h"><?php echo htmlentities($vo['name']); ?></strong></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><p class="he_slideCaptionDown_caption_p"><?php echo htmlentities($vo['tag1']); ?> &nbsp;&nbsp;<?php echo htmlentities($vo['tag2']); ?></p></a>
+								</div>
+							</div>
+							<?php endif; ?>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
+						</div>
+					</div>
+					<div class="project" <?php if($flag[6] == 0): ?> style="display: none;" <?php endif; ?>>
+						<h3 class="project_title">C语言</h3>
+						<div class="row">
+							<?php if(is_array($project) || $project instanceof \think\Collection || $project instanceof \think\Paginator): $i = 0; $__LIST__ = $project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;if($vo['tag1'] == 'C语言'): ?>
+							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
+								<div class="project_box_img he_slideCaptionDown1">
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><img src="http://localhost/myblog/public/static/<?php echo htmlentities($vo['img']); ?>" /></a>
+									<div class="he_slideCaptionDown_caption1">
+										<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><strong class="he_slideCaptionDown_caption_h1"><?php echo htmlentities($vo['info']); ?></strong> </a>
+									</div>
+								</div>
+								<span><?php echo htmlentities($vo['name']); ?></span>
+								<div class="project_box_info he_slideCaptionDown_caption">
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><strong class="he_slideCaptionDown_caption_h"><?php echo htmlentities($vo['name']); ?></strong></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><p class="he_slideCaptionDown_caption_p"><?php echo htmlentities($vo['tag1']); ?> &nbsp;&nbsp;<?php echo htmlentities($vo['tag2']); ?></p></a>
+								</div>
+							</div>
+							<?php endif; ?>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
+						</div>
+					</div>
+					<div class="project" <?php if($flag[7] == 0): ?> style="display: none;" <?php endif; ?>>
+						<h3 class="project_title">网络安全</h3>
+						<div class="row">
+							<?php if(is_array($project) || $project instanceof \think\Collection || $project instanceof \think\Paginator): $i = 0; $__LIST__ = $project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;if($vo['tag1'] == '网络安全'): ?>
+							<div class="project_box col-xs-3 col-md-3 col-lg-3 he_slideCaptionDown ">
+								<div class="project_box_img he_slideCaptionDown1">
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><img src="http://localhost/myblog/public/static/<?php echo htmlentities($vo['img']); ?>" /></a>
+									<div class="he_slideCaptionDown_caption1">
+										<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block;"><strong class="he_slideCaptionDown_caption_h1"><?php echo htmlentities($vo['info']); ?></strong> </a>
+									</div>
+								</div>
+								<span><?php echo htmlentities($vo['name']); ?></span>
+								<div class="project_box_info he_slideCaptionDown_caption">
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><strong class="he_slideCaptionDown_caption_h"><?php echo htmlentities($vo['name']); ?></strong></a>
+									<a href="<?php echo htmlentities($vo['gitUrl']); ?>" style="display: block; width: 100%;height: 100%;"><p class="he_slideCaptionDown_caption_p"><?php echo htmlentities($vo['tag1']); ?> &nbsp;&nbsp;<?php echo htmlentities($vo['tag2']); ?></p></a>
+								</div>
+							</div>
+							<?php endif; ?>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
+						</div>
+					</div>
+					
+					
 
 				</div>
 				<div class="col-lg-4 d-none d-sm-block" id="banner_right">

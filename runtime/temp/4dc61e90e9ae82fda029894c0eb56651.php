@@ -1,4 +1,4 @@
-<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\diary\index.html";i:1553524783;}*/ ?>
+<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\diary\index.html";i:1553684342;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -77,14 +77,14 @@
 								技术
 							</a>
 							<div class="dropdown-menu text-center" id="menu">
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">前端</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">PHP</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Python</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Linux</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Java</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Android</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">C语言</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">网络安全</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'前端')); ?>">前端</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'PHP')); ?>">PHP</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Python')); ?>">Python</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Linux')); ?>">Linux</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Java')); ?>">Java</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Android')); ?>">Android</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'C语言')); ?>">C语言</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Security')); ?>">网络安全</a>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -239,24 +239,9 @@
 					</div>
 					<?php endforeach; endif; else: echo "" ;endif; ?>
 					
-					<ul class="pagination d-flex justify-content-center">
-						<li class="page-item">
-							<a class="page-link" href="#">Previous</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">1</a>
-						</li>
-						<li class="page-item active">
-							<a class="page-link" href="#">2</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">3</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">Next</a>
-						</li>
-					</ul>
-
+					<div class="d-flex justify-content-center" style="margin-top: -10px;">
+							<?php echo $diary; ?>
+					</div>
 				</div>
 				<div class="col-lg-4 d-none d-sm-block" id="banner_right">
 					

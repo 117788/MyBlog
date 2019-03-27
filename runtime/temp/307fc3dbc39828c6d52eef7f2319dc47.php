@@ -1,16 +1,18 @@
-<?php /*a:1:{s:65:"D:\wamp64\www\MyBlog\application\index\view\technology\index.html";i:1553243039;}*/ ?>
+<?php /*a:1:{s:65:"D:\wamp64\www\MyBlog\application\index\view\technology\index.html";i:1553684225;}*/ ?>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
-		<title> 技术 - Mr.Wang - Blog </title>
+		<title>技术 -Mr.Wang - Blog </title>
 		<!--width=device-width 表示宽度是设备屏幕的宽度;initial-scale=1 表示初始的缩放比例;shrink-to-fit=no 自动适应手机屏幕的宽度。-->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!--引入public目录中的main.css文件-->
 		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/main.css" />
 		<!--引入public目录中的初始化css文件-->
 		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/initial.css" />
+		<link href="http://localhost/myblog/public/static/admin/style/page.css" rel="stylesheet">
+		
 		<!--引入public目录中的ico图标-->
 		<link rel="shortcut icon" href="http://localhost/myblog/public/static/index/img/favicon.ico">
 		<!--引入cdn图标-->
@@ -24,13 +26,21 @@
 		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
 		<style type="text/css">
-			#main #warp{
+			.article ul span{
+				cursor: pointer;
+			}
+			#main .article  ul a{
+				color: #000!important;
+			}
+			#main #warp {
 				margin-top: 45px!important;
 			}
-			#main #banner_right{
+			
+			#main #banner_right {
 				margin-top: 95px !important;
 			}
 		</style>
+
 	</head>
 
 	<body>
@@ -44,22 +54,22 @@
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link " href="<?php echo url('index/index'); ?>">首页</a>
+							<a class="nav-link" href="<?php echo url('index/index'); ?>">首页</a>
 						</li>
 						<!-- Dropdown -->
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle active" href="#" id="navbardrop" data-toggle="dropdown">
+							<a class="nav-link dropdown-toggle  active" href="#" id="navbardrop" data-toggle="dropdown">
 								技术
 							</a>
 							<div class="dropdown-menu text-center" id="menu">
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">前端</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">PHP</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Python</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Linux</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Java</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">Android</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">C语言</a>
-								<a class="dropdown-item" href="<?php echo url('technology/index'); ?>">网络安全</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'前端')); ?>">前端</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'PHP')); ?>">PHP</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Python')); ?>">Python</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Linux')); ?>">Linux</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Java')); ?>">Java</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Android')); ?>">Android</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'C语言')); ?>">C语言</a>
+								<a class="dropdown-item" href="<?php echo url('technology/index',array('tag1'=>'Security')); ?>">网络安全</a>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -83,144 +93,50 @@
 		</div>
 		<!--导航栏结束-->
 
+
 		<!--主体内容开始-->
 		<div id="main" class="container">
 			<div class="row">
 				
 				<div class="col-xs-12 col-md-12 col-lg-8" id="warp">
-					<!--面包屑导航开始-->
 					<nav class="breadcrumb">
-						<a class="breadcrumb-item " href="#">Blog</a>
-						<a class="breadcrumb-item " href="#">技术</a>
-						<a class="breadcrumb-item active" href="#">前端</a>
+						<a class="breadcrumb-item" href="#">Blog</a>
+						<a class="breadcrumb-item" href="#">技术</a>
+						<a class="breadcrumb-item active" href="#"><?php echo htmlentities($tag1); ?></a>
+						
 					</nav>
-					<!--面包屑导航结束-->
+					<?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
 					<div class="article">
 						<h3>
-							<a href="#" class="article_title">标题</a>
+							<a href="<?php echo url('technology/show',array('id'=>$vo['id'])); ?>" class="article_title"><?php echo htmlentities($vo['title']); ?></a>
 						</h3>
 						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_read"><i class="fa fa-check-square"></i>&nbsp;阅读次数</li>
-							<li class="article_comment"><i class="fa fa-comment"></i>&nbsp;评论次数</li>
-							<li class="article_cate1"><i class="fa fa-list-alt"></i>&nbsp;一级标签</li>
-							<li class="article_cate2"><i class="fa fa-tags"></i>&nbsp;二级标签</li>
-
+							<li class="article_author"><i class="fa fa-user"></i>&nbsp;<?php echo htmlentities($vo['author']); ?></li>
+							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;<span title="<?php echo htmlentities(date("Y-m-d H:i:s",!is_numeric($vo['create_time'])? strtotime($vo['create_time']) : $vo['create_time'])); ?>"><?php echo htmlentities(date("y-m-d",!is_numeric($vo['create_time'])? strtotime($vo['create_time']) : $vo['create_time'])); ?></span></li>
+							<li class="article_read"><i class="fa fa-check-square"></i>&nbsp;<?php echo htmlentities($vo['read_times']); ?></li>
+							<li class="article_comment"><i class="fa fa-comment"></i>&nbsp;<?php echo htmlentities($vo['comment_times']); ?></li>
+							<li class="article_cate1"><i class="fa fa-list-alt"></i>&nbsp;<a href="#" title="<?php echo htmlentities($vo['tag1']); ?>"><?php echo htmlentities($vo['tag1']); ?></a></li>
+							<li class="article_cate2"><i class="fa fa-tags"></i>&nbsp;<a href="#" title="<?php echo htmlentities($vo['tag2']); ?>"><?php echo htmlentities($vo['tag2']); ?></a></li>
 						</ul>
 						<div class="article_main clearfix">
 							<div class="row">
 								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
+									<a href="#"><img src="http://localhost/myblog/public/static/<?php echo htmlentities($vo['img']); ?>"></a>
 								</div>
 								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
+									<?php echo htmlentities($vo['info']); ?>
 								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
+								<a class="article_readAll" href="<?php echo url('technology/show',array('id'=>$vo['id'])); ?>">阅读全文</a>
 							</div>
 
 						</div>
 
 					</div>
-					<div class="article">
-						<h3>
-							<a href="#" class="article_title">标题</a>
-						</h3>
-						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_read"><i class="fa fa-check-square"></i>&nbsp;阅读次数</li>
-							<li class="article_comment"><i class="fa fa-comment"></i>&nbsp;评论次数</li>
-							<li class="article_cate1"><i class="fa fa-list-alt"></i>&nbsp;一级标签</li>
-							<li class="article_cate2"><i class="fa fa-tags"></i>&nbsp;二级标签</li>
-
-						</ul>
-						<div class="article_main clearfix">
-							<div class="row">
-								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
-								</div>
-								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
-								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
-							</div>
-
-						</div>
-
+					
+					<?php endforeach; endif; else: echo "" ;endif; ?>
+					<div class="d-flex justify-content-center" style="margin-top: -10px;">
+							<?php echo $list; ?>
 					</div>
-					<div class="article">
-						<h3>
-							<a href="#" class="article_title">标题</a>
-						</h3>
-						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_read"><i class="fa fa-check-square"></i>&nbsp;阅读次数</li>
-							<li class="article_comment"><i class="fa fa-comment"></i>&nbsp;评论次数</li>
-							<li class="article_cate1"><i class="fa fa-list-alt"></i>&nbsp;一级标签</li>
-							<li class="article_cate2"><i class="fa fa-tags"></i>&nbsp;二级标签</li>
-
-						</ul>
-						<div class="article_main clearfix">
-							<div class="row">
-								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
-								</div>
-								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
-								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
-							</div>
-
-						</div>
-
-					</div>
-					<div class="article">
-						<h3>
-							<a href="#" class="article_title">标题</a>
-						</h3>
-						<ul class="clearfix">
-							<li class="article_author"><i class="fa fa-user"></i>&nbsp;作者</li>
-							<li class="article_time"><i class="fa fa-calendar"></i>&nbsp;发布时间</li>
-							<li class="article_read"><i class="fa fa-check-square"></i>&nbsp;阅读次数</li>
-							<li class="article_comment"><i class="fa fa-comment"></i>&nbsp;评论次数</li>
-							<li class="article_cate1"><i class="fa fa-list-alt"></i>&nbsp;一级标签</li>
-							<li class="article_cate2"><i class="fa fa-tags"></i>&nbsp;二级标签</li>
-
-						</ul>
-						<div class="article_main clearfix">
-							<div class="row">
-								<div class="article_img col-sm-6 col-md-6 col-lg-4 hidden-xs">
-									<a href="#"><img src="https://baijunyao.com/uploads/article/20190317/5c8e551887859.png"></a>
-								</div>
-								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
-									大概每个前端都会碰到的问题是，当用户在某一网站登录之后，记住用户的登录状态。众所周知，HTTP 是一种没有状态的协议，无状态是指协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态
-								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
-							</div>
-
-						</div>
-
-					</div>
-
-					<ul class="pagination d-flex justify-content-center">
-						<li class="page-item">
-							<a class="page-link" href="#">Previous</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">1</a>
-						</li>
-						<li class="page-item active">
-							<a class="page-link" href="#">2</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">3</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">Next</a>
-						</li>
-					</ul>
 
 				</div>
 				<div class="col-lg-4 d-none d-sm-block" id="banner_right">
@@ -271,6 +187,31 @@
 							<li class="list-group-item">
 								<span class="num">5</span>
 								<span><a href="#">近期文章5</a></span>
+							</li>
+						</ul>
+					</div>
+					<div class="comment_list widget">
+						<h2 class="title">近期评论</h2>
+						<ul class="list-group">
+							<li class="list-group-item">
+								<span class="num" style="background-color: #ff858e;">1</span>
+								<span><a href="#">近期评论1</a></span>
+							</li>
+							<li class="list-group-item">
+								<span class="num" style="background-color: #77d549;">2</span>
+								<span><a href="#">近期评论2</a></span>
+							</li>
+							<li class="list-group-item">
+								<span class="num" style="background-color: #62c1ff;">3</span>
+								<span><a href="#">近期评论3</a></span>
+							</li>
+							<li class="list-group-item">
+								<span class="num">4</span>
+								<span><a href="#">近期评论4</a></span>
+							</li>
+							<li class="list-group-item">
+								<span class="num">5</span>
+								<span><a href="#">近期评论5</a></span>
 							</li>
 						</ul>
 					</div>
