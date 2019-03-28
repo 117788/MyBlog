@@ -1,4 +1,4 @@
-<?php /*a:1:{s:59:"D:\wamp64\www\MyBlog\application\index\view\diary\show.html";i:1553679963;}*/ ?>
+<?php /*a:1:{s:59:"D:\wamp64\www\MyBlog\application\index\view\diary\show.html";i:1553778462;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -29,6 +29,10 @@
 		<script src="//at.alicdn.com/t/font_1105571_bbt516qtuju.js" type="text/javascript" charset="utf-8"></script>
 		<!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
 		<link href="http://localhost/myblog/public/static/froala_editor/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+
+		<!-- Include Editor style. -->
+		<link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
 		<style type="text/css">
 			#main .article{
 				margin-top: 15px;
@@ -62,6 +66,43 @@
 			}
 			#main .article  ul a{
 				color: #000!important;
+			}
+			#main .board_table {
+				background-color: #fff;
+				padding: 10px;
+				margin-bottom: 20px;
+			}
+			
+			#main .board_info {
+				display: inline-block;
+			}
+			
+			#main .board img {
+				margin-top: -40px;
+				margin-right: 10px;
+			}
+			
+			#main .board .board_info_review {
+				background-color: #5957c2;
+				width: 100%;
+				height: 25px;
+			}
+			
+			#main .board_info_text {
+				margin-left: 20px!important;
+			}
+			
+			#main .review {
+				margin-left: 50px;
+			}
+			
+			.website_data li {
+				height: 40px;
+				line-height: 15px;
+			}
+			#main .message_p {
+				font-size: 20px;
+				font-weight: 500;
 			}
 		</style>
 	</head>
@@ -234,6 +275,74 @@
 						<div class="fr-view" style="margin-top: 30px;">
   					 		<?php echo $diary['text']; ?>
 						</div>
+						
+						
+					<p style="margin-top: 30px;">评论列表</p>
+					<div class="board" >
+						<?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo1): $mod = ($i % 2 );++$i;if($vo1['level'] == 0): ?>
+						<div class="board_table">
+							<img src="http://localhost/myblog/public/static/index/img/photo.jpg" class="img-fluid rounded" />
+							<div class="board_info">
+								<div class="board_info_review">
+									<p>游客 : <?php echo htmlentities($vo1['name']); ?> <?php echo htmlentities(date("Y-m-d H:i:s",!is_numeric($vo1['create_time'])? strtotime($vo1['create_time']) : $vo1['create_time'])); ?> </p>
+								</div>
+								<p class="board_info_text">
+									<div class="fr-view" >
+  					 					<?php echo $vo1['text']; ?>
+									</div>
+								</p>
+							</div>
+							<?php foreach($list as $k=>$vo2): if($vo2['level'] == 1 and $vo2['pid'] == $vo1['id']): ?>
+							<div class="review ">
+								<img src="http://localhost/myblog/public/static/index/img/photo1.jpg" class="img-fluid rounded" />
+								<div class="board_info">
+									<div class="review_info board_info_review">
+										<p>管理员 : admin <?php echo htmlentities(date("Y-m-d H:i:s",!is_numeric($vo2['create_time'])? strtotime($vo2['create_time']) : $vo2['create_time'])); ?></p>
+									</div>
+									<p class="review_text">
+										<div class="fr-view" >
+  					 						<?php echo $vo2['text']; ?>
+										</div>
+									</p>
+								</div>
+							</div>
+							<?php endif; ?>
+							<?php endforeach; ?>
+						</div>
+						<?php endif; ?>
+						<?php endforeach; endif; else: echo "" ;endif; ?>
+						<div style="text-align: right;margin-top: 10px;" class="d-flex justify-content-center">
+							<?php echo $list; ?>
+						</div>
+					<p class="message_p">有啥问题,尽情评论喔~~</p>
+						<div class="message_box">
+							<form action="">
+								<input type="hidden" value="<?php echo htmlentities($diary['id']); ?>" name="diary_id"/>
+								<input type="hidden" value="0" name="article_id"/>
+								<div class="row">
+									<div class="input-group mb-3 col-xs-6 col-md-6 col-lg-6">
+										<div class="input-group-prepend">
+											<span class="input-group-text">昵称</span>
+										</div>
+										<input type="text" class="form-control" placeholder="昵称将会被显示(必填)" id="usr" name="name">
+									</div>
+
+									<div class="input-group mb-3 col-xs-6 col-md-6 col-lg-6">
+										<div class="input-group-append">
+											<span class="input-group-text">邮箱</span>
+										</div>
+										<input type="text" class="form-control" placeholder="邮箱不会被公开(必填)" id="mail" name="email">
+
+									</div>
+
+								</div>
+								<textarea id="board"></textarea>
+								<input type="hidden" id="editorText" value="" name="editorText" />
+								<button type="submit" class="btn btn-primary" id="toSave" style="margin-bottom: 20px; margin-top: 10px;">发表评论</button>
+
+							</form>
+						</div>
+
 					</div>
 					
 					
@@ -254,7 +363,69 @@
 			</p>
 		</div>
 		<!--copyright结束-->
-		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+
+		<!-- Include Editor JS files. -->
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/js/froala_editor.pkgd.min.js"></script>
+		<script src='http://localhost/myblog/public/static/froala_editor/js/languages/zh_cn.js'></script>
+		<script src="http://localhost/myblog/public/static/layui/layui.js"></script>
+		<!-- Initialize the editor. -->
+		<script>
+			$(function() {
+				$('#board').froalaEditor({
+					language: 'zh_cn',
+					heightMin: 100,
+					heightMax: 600,
+					placeholderText: '亲亲，这边建议您留下评论呢~~',
+					pastePlain: true,
+					tooltips: false,
+					theme: 'dark',
+					quickInsertTags: [''],
+					toolbarButtons: ['emoticons'],
+					toolbarStickyOffset: 53,
+				});
+				
+				layui.use('upload', function() {
+					var upload = layui.upload;
+					var layer = layui.layer;
+					
+				});
+				$('#toSave').click(function() {
+						var html= $('#board').froalaEditor('html.get');
+						$('#editorText').val(html);
+						$.ajax({
+							url: "<?php echo url('comment/add'); ?>",
+							type: 'post',
+							data: $('form').serialize(),
+							dataType: 'json',
+							success: function(data) {
+								console.log(data);
+								if(data.code == 1) {
+									layer.msg(data.msg, {
+										icon: 6,
+										time: 2000
+									}, function() {
+										location.href = data.url;
+									});
+								} else {
+									layer.open({
+										title: '评论失败',
+										content: data.msg,
+										icon: 5,
+										anim: 6
+									});
+								}
+							},
+							error: function(data) {
+								console.log(data);
+							}
+						});
+						return false;
+					});
+			});
+		</script>
 
 	</body>
 

@@ -14,6 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/style.css" />
 		<!--引入public目录中的ico图标-->
 		<link rel="shortcut icon" href="__PUBLIC__/index/img/favicon.ico">
+		<link href="__PUBLIC__/admin/style/page.css" rel="stylesheet">
 		<!--引入cdn图标-->
 		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
 		<!-- 新 Bootstrap4 核心 CSS 文件 -->
@@ -394,61 +395,30 @@
 									</ul>
 									<div class="tab-content tabs-flat">
 										<div id="home11" class="tab-pane active" style="margin-left: 25%;">
-											<p>项目总数 : 66</p>
-											<p>学习项目 : 50</p>
-											<p>原创项目 : 16</p>
-											<p>完成项目 : 63</p>
-											<p>当前项目 : 3</p>
+											<p>项目总数 : {$project_all}</p>
+											<p>学习项目 : {$project_study}</p>
+											<p>原创项目 : {$project_own}</p>
+											<p>完成项目 : {$project_complete}</p>
+											<p>当前项目 : {$project_nocomplete}</p>
 										</div>
 
 										<div id="profile11" class="tab-pane" style="margin-left: 25%;">
+											{volist name = "now_project" id="vo"}
 											<p>
-												<a href="#">当前项目1</a>
+												<a href="{$vo['gitUrl']}">{$vo.name}</a>
 											</p>
-											<p>
-												<a href="#">当前项目2</a>
-											</p>
-											<p>
-												<a href="#">当前项目3</a>
-											</p>
+											{/volist}
 										</div>
 										<div id="profile22" class="tab-pane" style="margin-left: 25%;">
+											{volist name = "ago_project" id="vo"}
 											<p>
-												<a href="#">已完成项目1</a>
+												<a href="$vo['gitUrl']">{$vo.name}</a>
 											</p>
-											<p>
-												<a href="#">已完成项目2</a>
-											</p>
-											<p>
-												<a href="#">已完成项目3</a>
-											</p>
-											<p>
-												<a href="#">已完成项目4</a>
-											</p>
-											<p>
-												<a href="#">已完成项目5</a>
-											</p>
-											<p>
-												<a href="#">已完成项目6</a>
-											</p>
-
-											<ul class="pagination pagination-sm " style="margin-left: -15%;">
-												<li class="page-item">
-													<a class="page-link" href="#"><<</a>
-												</li>
-												<li class="page-item">
-													<a class="page-link" href="#">1</a>
-												</li>
-												<li class="page-item active">
-													<a class="page-link" href="#">2</a>
-												</li>
-												<li class="page-item">
-													<a class="page-link" href="#">3</a>
-												</li>
-												<li class="page-item">
-													<a class="page-link" href="#">>></a>
-												</li>
-											</ul>
+											{/volist}
+											<div class="d-flex justify-content-center" style="margin-top: -10px;">
+												{$ago_project|raw}
+											</div>
+											
 										</div>
 									</div>
 								</div>

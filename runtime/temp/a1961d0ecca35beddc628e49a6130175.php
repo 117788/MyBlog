@@ -1,4 +1,4 @@
-<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\board\index.html";i:1553680001;}*/ ?>
+<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\board\index.html";i:1553788584;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -13,6 +13,8 @@
 		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/initial.css" />
 		<!--引入public目录中的ico图标-->
 		<link rel="shortcut icon" href="http://localhost/myblog/public/static/index/img/favicon.ico">
+		<link href="http://localhost/myblog/public/static/layui/css/layui.css" rel="stylesheet">
+		<link href="http://localhost/myblog/public/static/admin/style/page.css" rel="stylesheet">
 		<!--引入cdn图标-->
 		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
 		<!-- 新 Bootstrap4 核心 CSS 文件 -->
@@ -59,7 +61,7 @@
 			
 			#main .board .board_info_review {
 				background-color: #5957c2;
-				width: 80%;
+				width: 100%;
 				height: 25px;
 			}
 			
@@ -146,129 +148,41 @@
 					<!--面包屑导航结束-->
 
 					<div class="board">
+						<?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;if($vo['level'] == 0): ?>
 						<div class="board_table">
 							<img src="http://localhost/myblog/public/static/index/img/photo.jpg" class="img-fluid rounded" />
 							<div class="board_info">
 								<div class="board_info_review">
-									<p>游客 : 令狐冲 2019.3.20 | &nbsp;&nbsp;
-										<a href="#">回复</a>
-									</p>
+									<p>游客 : <?php echo htmlentities($vo['name']); ?> <?php echo htmlentities(date("Y-m-d H:i:s",!is_numeric($vo['create_time'])? strtotime($vo['create_time']) : $vo['create_time'])); ?> </p>
 								</div>
-								<p class="board_info_text">这是评论内容，这是评论内容，这是评论内容，这是评论内容，这是评论内容</p>
+								<p class="board_info_text">
+									<div class="fr-view" >
+  					 					<?php echo $vo['text']; ?>
+									</div>
+								</p>
 							</div>
-
+							<?php foreach($list as $k=>$vo1): if($vo1['level'] == 1 and $vo1['pid'] == $vo['id']): ?>
 							<div class="review ">
 								<img src="http://localhost/myblog/public/static/index/img/photo1.jpg" class="img-fluid rounded" />
 								<div class="board_info">
 									<div class="review_info board_info_review">
-										<p>admin : admin 2019.3.20 | &nbsp;&nbsp;
-											<a href="#">回复</a>
-										</p>
+										<p>管理员 : admin <?php echo htmlentities(date("Y-m-d H:i:s",!is_numeric($vo1['create_time'])? strtotime($vo1['create_time']) : $vo1['create_time'])); ?></p>
 									</div>
-									<p class="review_text">这是回复内容，这是回复内容，这是回复内容，这是回复内容，这是回复内容</p>
-								</div>
-
-							</div>
-						</div>
-						<div class="board_table">
-							<img src="http://localhost/myblog/public/static/index/img/photo.jpg" class="img-fluid rounded" />
-							<div class="board_info">
-								<div class="board_info_review">
-									<p>游客 : 令狐冲 2019.3.20 | &nbsp;&nbsp;
-										<a href="#">回复</a>
+									<p class="review_text">
+										<div class="fr-view" >
+  					 						<?php echo $vo1['text']; ?>
+										</div>
 									</p>
 								</div>
-								<p>这是评论内容，这是评论内容，这是评论内容，这是评论内容，这是评论内容</p>
 							</div>
+							<?php endif; ?>
+							<?php endforeach; ?>
 						</div>
-						<div class="board_table">
-							<img src="http://localhost/myblog/public/static/index/img/photo.jpg" class="img-fluid rounded" />
-							<div class="board_info">
-								<div class="board_info_review">
-									<p>游客 : 令狐冲 2019.3.20 | &nbsp;&nbsp;
-										<a href="#">回复</a>
-									</p>
-								</div>
-								<p class="board_info_text">这是评论内容，这是评论内容，这是评论内容，这是评论内容，这是评论内容</p>
-							</div>
-
-							<div class="review ">
-								<img src="http://localhost/myblog/public/static/index/img/photo1.jpg" class="img-fluid rounded" />
-								<div class="board_info">
-									<div class="review_info board_info_review">
-										<p>admin : admin 2019.3.20 | &nbsp;&nbsp;
-											<a href="#">回复</a>
-										</p>
-									</div>
-									<p class="review_text">这是回复内容，这是回复内容，这是回复内容，这是回复内容，这是回复内容</p>
-								</div>
-
-							</div>
+						<?php endif; ?>
+						<?php endforeach; endif; else: echo "" ;endif; ?>
+						<div style="text-align: right;margin-top: 10px;" class="d-flex justify-content-center">
+							<?php echo $list; ?>
 						</div>
-						<div class="board_table">
-							<img src="http://localhost/myblog/public/static/index/img/photo.jpg" class="img-fluid rounded" />
-							<div class="board_info">
-								<div class="board_info_review">
-									<p>游客 : 令狐冲 2019.3.20 | &nbsp;&nbsp;
-										<a href="#">回复</a>
-									</p>
-								</div>
-								<p>这是评论内容，这是评论内容，这是评论内容，这是评论内容，这是评论内容</p>
-							</div>
-						</div>
-						<div class="board_table">
-							<img src="http://localhost/myblog/public/static/index/img/photo.jpg" class="img-fluid rounded" />
-							<div class="board_info">
-								<div class="board_info_review">
-									<p>游客 : 令狐冲 2019.3.20 | &nbsp;&nbsp;
-										<a href="#">回复</a>
-									</p>
-								</div>
-								<p class="board_info_text">这是评论内容，这是评论内容，这是评论内容，这是评论内容，这是评论内容</p>
-							</div>
-
-							<div class="review ">
-								<img src="http://localhost/myblog/public/static/index/img/photo1.jpg" class="img-fluid rounded" />
-								<div class="board_info">
-									<div class="review_info board_info_review">
-										<p>admin : admin 2019.3.20 | &nbsp;&nbsp;
-											<a href="#">回复</a>
-										</p>
-									</div>
-									<p class="review_text">这是回复内容，这是回复内容，这是回复内容，这是回复内容，这是回复内容</p>
-								</div>
-
-							</div>
-						</div>
-						<div class="board_table">
-							<img src="http://localhost/myblog/public/static/index/img/photo.jpg" class="img-fluid rounded" />
-							<div class="board_info">
-								<div class="board_info_review">
-									<p>游客 : 令狐冲 2019.3.20 | &nbsp;&nbsp;
-										<a href="#">回复</a>
-									</p>
-								</div>
-								<p>这是评论内容，这是评论内容，这是评论内容，这是评论内容，这是评论内容</p>
-							</div>
-						</div>
-
-						<ul class="pagination d-flex justify-content-center">
-							<li class="page-item">
-								<a class="page-link" href="#">Previous</a>
-							</li>
-							<li class="page-item">
-								<a class="page-link" href="#">1</a>
-							</li>
-							<li class="page-item active">
-								<a class="page-link" href="#">2</a>
-							</li>
-							<li class="page-item">
-								<a class="page-link" href="#">3</a>
-							</li>
-							<li class="page-item">
-								<a class="page-link" href="#">Next</a>
-							</li>
-						</ul>
 						<p class="message_p">留下脚印吧,尽情吐槽~~</p>
 						<div class="message_box">
 							<form action="/action_page.php">
@@ -277,7 +191,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">昵称</span>
 										</div>
-										<input type="text" class="form-control" placeholder="昵称将会被显示(必填)" id="usr" name="username">
+										<input type="text" class="form-control" placeholder="昵称将会被显示(必填)" id="usr" name="name">
 									</div>
 
 									<div class="input-group mb-3 col-xs-6 col-md-6 col-lg-6">
@@ -289,8 +203,9 @@
 									</div>
 
 								</div>
-								<div class="editor"></div>
-								<button type="submit" class="btn btn-primary" style="margin-bottom: 20px; margin-top: 10px;">发表评论</button>
+								<textarea id="board"></textarea>
+								<input type="hidden" id="editorText" value="" name="editorText" />
+								<button type="submit" class="btn btn-primary" id="toSave" style="margin-bottom: 20px; margin-top: 10px;">发表评论</button>
 
 							</form>
 						</div>
@@ -303,12 +218,11 @@
 						<h2 class="title">网站统计</h2>
 						<ul class="list-group">
 							<li class="list-group-item list-group-item-success">运营时间:2年</li>
-							<li class="list-group-item list-group-item-secondary">文章总数:200</li>
-							<li class="list-group-item list-group-item-info">随笔总数:365</li>
-							<li class="list-group-item list-group-item-warning">日志总数:150</li>
-							<li class="list-group-item list-group-item-danger">评论总数:75</li>
-							<li class="list-group-item list-group-item-dark ">留言板:66</li>
-							<li class="list-group-item list-group-item-primary">最后发文:2019.3.21</li>
+							<li class="list-group-item list-group-item-secondary">文章总数:<?php echo htmlentities($article_count); ?></li>
+							<li class="list-group-item list-group-item-info">随笔总数:<?php echo htmlentities($essay_count); ?></li>
+							<li class="list-group-item list-group-item-warning">日志总数:<?php echo htmlentities($diary_count); ?></li>
+							<li class="list-group-item list-group-item-danger">评论总数:<?php echo htmlentities($comment_count); ?></li>
+							<li class="list-group-item list-group-item-dark ">留言板:<?php echo htmlentities($board_count); ?></li>
 						</ul>
 					</div>
 
@@ -334,10 +248,11 @@
 
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/js/froala_editor.pkgd.min.js"></script>
 		<script src='http://localhost/myblog/public/static/froala_editor/js/languages/zh_cn.js'></script>
+		<script src="http://localhost/myblog/public/static/layui/layui.js"></script>
 		<!-- Initialize the editor. -->
 		<script>
 			$(function() {
-				$('div.editor').froalaEditor({
+				$('#board').froalaEditor({
 					language: 'zh_cn',
 					heightMin: 100,
 					heightMax: 600,
@@ -348,7 +263,48 @@
 					quickInsertTags: [''],
 					toolbarButtons: ['emoticons'],
 					toolbarStickyOffset: 53,
-				})
+				});
+				
+				layui.use('upload', function() {
+					var upload = layui.upload;
+					var layer = layui.layer;
+					
+				});
+				$('#toSave').click(function() {
+						var html= $('#board').froalaEditor('html.get');
+						$('#editorText').val(html);
+						$.ajax({
+							url: "<?php echo url('board/add'); ?>",
+							type: 'post',
+							data: $('form').serialize(),
+							dataType: 'json',
+							success: function(data) {
+								console.log(data);
+								if(data.code == 1) {
+									layer.msg(data.msg, {
+										icon: 6,
+										time: 2000
+									}, function() {
+										location.href = data.url;
+									});
+								} else {
+									layer.open({
+										title: '评论失败',
+										content: data.msg,
+										icon: 5,
+										anim: 6
+									});
+								}
+							},
+							error: function(data) {
+								console.log(data);
+							}
+						});
+						return false;
+					});
+				
+				
+				
 			});
 		</script>
 	</body>

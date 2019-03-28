@@ -1,4 +1,4 @@
-<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\index\index.html";i:1553355744;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553575504;}*/ ?>
+<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\index\index.html";i:1553355744;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553755601;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -146,14 +146,14 @@
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="<?php echo url('article/lst'); ?>">
+                                <a href="<?php echo url('comment/lst'); ?>">
                                     <span class="menu-text">
                                         文章评论                                    </span>
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo url('article/lst'); ?>">
+                                <a href="<?php echo url('board/lst'); ?>">
                                     <span class="menu-text">
                                         留言板                                    </span>
                                     <i class="menu-expand"></i>
@@ -225,21 +225,14 @@
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="<?php echo url('tags/lst'); ?>">
-                                    <span class="menu-text">
-                                        网站资料                                  </span>
-                                    <i class="menu-expand"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo url('tags/lst'); ?>">
+                                <a href="<?php echo url('about/edit'); ?>">
                                     <span class="menu-text">
                                         关于                                  </span>
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo url('tags/lst'); ?>">
+                                <a href="<?php echo url('links/lst'); ?>">
                                     <span class="menu-text">
                                        友情链接                                  </span>
                                     <i class="menu-expand"></i>

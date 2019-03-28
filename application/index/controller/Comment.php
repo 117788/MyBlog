@@ -1,31 +1,9 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
-use app\index\model\Board as BoardModel;
-use app\index\model\Article as ArticleModel;
 use app\index\model\Comment as CommentModel;
-use app\index\model\Diary as DiaryModel;
-use app\index\model\Essay as EssayModel;
-class Board extends Controller
+class Comment extends Controller
 {
-    public function index()
-    {
-    	$list = BoardModel::where('state',1)->paginate(10);
-    	$article_count = ArticleModel::count();
-    	$essay_count = EssayModel::count();
-    	$diary_count = DiaryModel::count();
-    	$comment_count = CommentModel::count();
-    	$board_count = BoardModel::count();
-    	$this->assign([
-    		'list'=>$list,
-    		'article_count'=>$article_count,
-    		'essay_count'=>$essay_count,
-    		'diary_count'=>$diary_count,
-    		'comment_count'=>$comment_count,
-    		'board_count'=>$board_count,
-    	]);
-    	return view();
-    }
     public function add()
     {
     	
@@ -56,21 +34,21 @@ class Board extends Controller
                 $ip = $ips[$i];
 
                 break;
-
             }
-
         }
-
     }
+    		
 		    $ip = $ip ? $ip : $_SERVER['REMOTE_ADDR'];
 		    $data = [
+		    	'article_id' => $post['article_id'],
+		    	'diary_id' => $post['diary_id'],
 		    	'name'=>$post['name'],
 		    	'email'=>$post['email'],
 		    	'text'=>$post['editorText'],
 		    	'ip'=>$ip,
 		    ];
-		   	$BoardModel = new BoardModel;
-		   	$save = $BoardModel->save($data);
+		   	$CommentModel = new CommentModel;
+		   	$save = $CommentModel->save($data);
 		    if($save !== false)
 		    {
 		    	$this->success('评论成功！');
@@ -82,6 +60,5 @@ class Board extends Controller
     	}
     	return view();
     }
-    
 
 }

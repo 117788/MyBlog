@@ -1,4 +1,4 @@
-<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\article\add.html";i:1553409701;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553694805;}*/ ?>
+<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\article\add.html";i:1553409701;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553755601;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -158,14 +158,14 @@
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="<?php echo url('article/lst'); ?>">
+                                <a href="<?php echo url('comment/lst'); ?>">
                                     <span class="menu-text">
                                         文章评论                                    </span>
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo url('article/lst'); ?>">
+                                <a href="<?php echo url('board/lst'); ?>">
                                     <span class="menu-text">
                                         留言板                                    </span>
                                     <i class="menu-expand"></i>

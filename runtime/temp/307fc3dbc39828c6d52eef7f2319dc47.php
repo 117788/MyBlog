@@ -1,4 +1,4 @@
-<?php /*a:1:{s:65:"D:\wamp64\www\MyBlog\application\index\view\technology\index.html";i:1553684225;}*/ ?>
+<?php /*a:1:{s:65:"D:\wamp64\www\MyBlog\application\index\view\technology\index.html";i:1553785350;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -38,6 +38,15 @@
 			
 			#main #banner_right {
 				margin-top: 95px !important;
+			}
+			#main #banner_right li:nth-of-type(1) i {
+				background-color: #ff858e;
+			}
+			#main #banner_right li:nth-of-type(2) i{
+				background-color: #77d549;
+			}
+			#main #banner_right li:nth-of-type(3) i{
+				background-color: #62c1ff;
 			}
 		</style>
 
@@ -143,109 +152,49 @@
 					<div class="hot_list widget">
 						<h2 class="title">热门文章</h2>
 						<ul class="list-group">
+							<?php foreach($hotList as $k=>$v): ?> 
 							<li class="list-group-item">
-								<span class="num" style="background-color: #ff858e;">1</span>
-								<span><a href="#">热门文章1</a></span>
+								<i class="num" style=""><?php echo htmlentities($k+1); ?></i>
+								<span><a href="<?php echo url('index/show',array('id'=>$v['id'])); ?>"><?php echo htmlentities($v['title']); ?></a></span>
 							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #77d549;">2</span>
-								<span><a href="#">热门文章2</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #62c1ff;">3</span>
-								<span><a href="#">热门文章3</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">4</span>
-								<span><a href="#">热门文章4</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">5</span>
-								<span><a href="#">热门文章5</a></span>
-							</li>
+							<?php endforeach; ?>
 						</ul>
 					</div>
 					<div class="recent_list widget">
 						<h2 class="title">近期文章</h2>
 						<ul class="list-group">
+							<?php foreach($recentList as $k=>$v): ?> 
 							<li class="list-group-item">
-								<span class="num" style="background-color: #ff858e;">1</span>
-								<span><a href="#">近期文章1</a></span>
+								<i class="num" style=""><?php echo htmlentities($k+1); ?></i>
+								<span><a href="<?php echo url('index/show',array('id'=>$v['id'])); ?>"><?php echo htmlentities($v['title']); ?></a></span>
 							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #77d549;">2</span>
-								<span><a href="#">近期文章2</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #62c1ff;">3</span>
-								<span><a href="#">近期文章3</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">4</span>
-								<span><a href="#">近期文章4</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">5</span>
-								<span><a href="#">近期文章5</a></span>
-							</li>
-						</ul>
-					</div>
-					<div class="comment_list widget">
-						<h2 class="title">近期评论</h2>
-						<ul class="list-group">
-							<li class="list-group-item">
-								<span class="num" style="background-color: #ff858e;">1</span>
-								<span><a href="#">近期评论1</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #77d549;">2</span>
-								<span><a href="#">近期评论2</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #62c1ff;">3</span>
-								<span><a href="#">近期评论3</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">4</span>
-								<span><a href="#">近期评论4</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">5</span>
-								<span><a href="#">近期评论5</a></span>
-							</li>
+							<?php endforeach; ?>
+						
 						</ul>
 					</div>
 					<div class="time_list widget">
 						<h2 class="title">归档</h2>
 						<ul class="list-group">
+							<?php foreach($time as $key=>$vo): if($vo != null): ?>
 							<li class="list-group-item">
-								<span><a href="#">2019(1)</a></span>
+								<span><a href="<?php echo url('index/sort',array('key'=>$key)); ?>">2019.<?php echo htmlentities($key+1); ?>(<?php echo htmlentities($time_count[$key]); ?>)</a></span>
 							</li>
-							<li class="list-group-item">
-								<span><a href="#">2019(2)</a></span>
-							</li>
-							<li class="list-group-item">
-								<span><a href="#">2019(3)</a></span>
-							</li>
-							
+							<?php endif; ?>
+							<?php endforeach; ?>
 						</ul>
 					</div>
 					<div class="friends_link widget">
 						<h2 class="title">友情链接</h2>
 						<ul class="list-group">
+							<?php if(is_array($linkList) || $linkList instanceof \think\Collection || $linkList instanceof \think\Paginator): $i = 0; $__LIST__ = $linkList;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
 							<li class="list-group-item">
-								<span><a href="#">友情链接1</a></span>
+								<span><a href="<?php echo htmlentities($vo['url']); ?>" title="<?php echo htmlentities($vo['info']); ?>"><?php echo htmlentities($vo['name']); ?></a></span>
 							</li>
-							<li class="list-group-item">
-								<span><a href="#">友情链接2</a></span>
-							</li>
-							<li class="list-group-item">
-								<span><a href="#">友情链接3</a></span>
-							</li>
-
+							<?php endforeach; endif; else: echo "" ;endif; ?>
 						</ul>
 					</div>
 				</div>
+				
 			</div>
 
 		</div>

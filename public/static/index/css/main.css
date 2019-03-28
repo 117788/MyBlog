@@ -4,6 +4,8 @@
 
 body,html{
 	background-color: #EEE!important;
+	position: relative;
+	min-height: 800px;
 }
 /*清除浮动*/
 .clearfix:after{

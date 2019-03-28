@@ -1,4 +1,4 @@
-<?php /*a:1:{s:62:"D:\wamp64\www\MyBlog\application\index\view\project\index.html";i:1553700829;}*/ ?>
+<?php /*a:1:{s:62:"D:\wamp64\www\MyBlog\application\index\view\project\index.html";i:1553788007;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="http://localhost/myblog/public/static/index/css/style.css" />
 		<!--引入public目录中的ico图标-->
 		<link rel="shortcut icon" href="http://localhost/myblog/public/static/index/img/favicon.ico">
+		<link href="http://localhost/myblog/public/static/admin/style/page.css" rel="stylesheet">
 		<!--引入cdn图标-->
 		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
 		<!-- 新 Bootstrap4 核心 CSS 文件 -->
@@ -387,61 +388,30 @@
 									</ul>
 									<div class="tab-content tabs-flat">
 										<div id="home11" class="tab-pane active" style="margin-left: 25%;">
-											<p>项目总数 : 66</p>
-											<p>学习项目 : 50</p>
-											<p>原创项目 : 16</p>
-											<p>完成项目 : 63</p>
-											<p>当前项目 : 3</p>
+											<p>项目总数 : <?php echo htmlentities($project_all); ?></p>
+											<p>学习项目 : <?php echo htmlentities($project_study); ?></p>
+											<p>原创项目 : <?php echo htmlentities($project_own); ?></p>
+											<p>完成项目 : <?php echo htmlentities($project_complete); ?></p>
+											<p>当前项目 : <?php echo htmlentities($project_nocomplete); ?></p>
 										</div>
 
 										<div id="profile11" class="tab-pane" style="margin-left: 25%;">
+											<?php if(is_array($now_project) || $now_project instanceof \think\Collection || $now_project instanceof \think\Paginator): $i = 0; $__LIST__ = $now_project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
 											<p>
-												<a href="#">当前项目1</a>
+												<a href="<?php echo htmlentities($vo['gitUrl']); ?>"><?php echo htmlentities($vo['name']); ?></a>
 											</p>
-											<p>
-												<a href="#">当前项目2</a>
-											</p>
-											<p>
-												<a href="#">当前项目3</a>
-											</p>
+											<?php endforeach; endif; else: echo "" ;endif; ?>
 										</div>
 										<div id="profile22" class="tab-pane" style="margin-left: 25%;">
+											<?php if(is_array($ago_project) || $ago_project instanceof \think\Collection || $ago_project instanceof \think\Paginator): $i = 0; $__LIST__ = $ago_project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
 											<p>
-												<a href="#">已完成项目1</a>
+												<a href="$vo['gitUrl']"><?php echo htmlentities($vo['name']); ?></a>
 											</p>
-											<p>
-												<a href="#">已完成项目2</a>
-											</p>
-											<p>
-												<a href="#">已完成项目3</a>
-											</p>
-											<p>
-												<a href="#">已完成项目4</a>
-											</p>
-											<p>
-												<a href="#">已完成项目5</a>
-											</p>
-											<p>
-												<a href="#">已完成项目6</a>
-											</p>
-
-											<ul class="pagination pagination-sm " style="margin-left: -15%;">
-												<li class="page-item">
-													<a class="page-link" href="#"><<</a>
-												</li>
-												<li class="page-item">
-													<a class="page-link" href="#">1</a>
-												</li>
-												<li class="page-item active">
-													<a class="page-link" href="#">2</a>
-												</li>
-												<li class="page-item">
-													<a class="page-link" href="#">3</a>
-												</li>
-												<li class="page-item">
-													<a class="page-link" href="#">>></a>
-												</li>
-											</ul>
+											<?php endforeach; endif; else: echo "" ;endif; ?>
+											<div class="d-flex justify-content-center" style="margin-top: -10px;">
+												<?php echo $ago_project; ?>
+											</div>
+											
 										</div>
 									</div>
 								</div>

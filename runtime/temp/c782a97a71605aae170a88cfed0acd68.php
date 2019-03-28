@@ -1,4 +1,4 @@
-<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\index\index.html";i:1553689124;}*/ ?>
+<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\index\index.html";i:1553784237;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -40,6 +40,43 @@
 			}
 			#main #banner_right li:nth-of-type(3) i{
 				background-color: #62c1ff;
+			}
+			#main .board_table {
+				background-color: #fff;
+				padding: 10px;
+				margin-bottom: 20px;
+			}
+			
+			#main .board_info {
+				display: inline-block;
+			}
+			
+			#main .board img {
+				margin-top: -40px;
+				margin-right: 10px;
+			}
+			
+			#main .board .board_info_review {
+				background-color: #5957c2;
+				width: 100%;
+				height: 25px;
+			}
+			
+			#main .board_info_text {
+				margin-left: 20px!important;
+			}
+			
+			#main .review {
+				margin-left: 50px;
+			}
+			
+			.website_data li {
+				height: 40px;
+				line-height: 15px;
+			}
+			#main .message_p {
+				font-size: 20px;
+				font-weight: 500;
 			}
 		</style>
 
@@ -172,29 +209,15 @@
 						
 						</ul>
 					</div>
-					<div class="comment_list widget">
-						<h2 class="title">近期评论</h2>
-						<ul class="list-group">
-							<li class="list-group-item">
-								<i class="num" >1</i>
-								<span><a href="#">近期评论1</a></span>
-							</li>
-							
-						</ul>
-					</div>
 					<div class="time_list widget">
 						<h2 class="title">归档</h2>
 						<ul class="list-group">
+							<?php foreach($time as $key=>$vo): if($vo != null): ?>
 							<li class="list-group-item">
-								<span><a href="#">2019(1)</a></span>
+								<span><a href="<?php echo url('index/sort',array('key'=>$key)); ?>">2019.<?php echo htmlentities($key+1); ?>(<?php echo htmlentities($time_count[$key]); ?>)</a></span>
 							</li>
-							<li class="list-group-item">
-								<span><a href="#">2019(2)</a></span>
-							</li>
-							<li class="list-group-item">
-								<span><a href="#">2019(3)</a></span>
-							</li>
-							
+							<?php endif; ?>
+							<?php endforeach; ?>
 						</ul>
 					</div>
 					<div class="friends_link widget">

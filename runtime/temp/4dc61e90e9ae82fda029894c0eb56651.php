@@ -1,4 +1,4 @@
-<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\diary\index.html";i:1553684342;}*/ ?>
+<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\diary\index.html";i:1553785771;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -112,7 +112,7 @@
 		<div id="main" class="container">
 			<div class="row">
 				
-				<div class="col-xs-12 col-md-12 col-lg-8" id="warp">
+				<div class="col-xs-12 col-md-12 col-lg-9" id="warp" style="margin-left: 40px;">
 					<!--面包屑导航开始-->
 					<nav class="breadcrumb">
 						<a class="breadcrumb-item " href="#">Blog</a>
@@ -232,7 +232,7 @@
 								<div class="article_text col-xs-12 col-sm-6  col-md-6 col-lg-8">
 									<?php echo htmlentities($vo['info']); ?>
 								</div>
-								<a class="article_readAll" href="#">阅读全文</a>
+								<a class="article_readAll" href="<?php echo url('diary/show',array('id'=>$vo['id'])); ?>">阅读全文</a>
 							</div>
 
 						</div>
@@ -242,26 +242,6 @@
 					<div class="d-flex justify-content-center" style="margin-top: -10px;">
 							<?php echo $diary; ?>
 					</div>
-				</div>
-				<div class="col-lg-4 d-none d-sm-block" id="banner_right">
-					
-					
-					<div class="time_list widget">
-						<h2 class="title">时间轴</h2>
-						<ul class="list-group">
-							<li class="list-group-item">
-								<span><a href="#">2019(1)</a></span>
-							</li>
-							<li class="list-group-item">
-								<span><a href="#">2019(2)</a></span>
-							</li>
-							<li class="list-group-item">
-								<span><a href="#">2019(3)</a></span>
-							</li>
-							
-						</ul>
-					</div>
-					
 				</div>
 			</div>
 

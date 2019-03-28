@@ -38,6 +38,15 @@
 			#main #banner_right {
 				margin-top: 95px !important;
 			}
+			#main #banner_right li:nth-of-type(1) i {
+				background-color: #ff858e;
+			}
+			#main #banner_right li:nth-of-type(2) i{
+				background-color: #77d549;
+			}
+			#main #banner_right li:nth-of-type(3) i{
+				background-color: #62c1ff;
+			}
 		</style>
 
 	</head>
@@ -142,109 +151,50 @@
 					<div class="hot_list widget">
 						<h2 class="title">热门文章</h2>
 						<ul class="list-group">
+							{foreach $hotList as $k=>$v } 
 							<li class="list-group-item">
-								<span class="num" style="background-color: #ff858e;">1</span>
-								<span><a href="#">热门文章1</a></span>
+								<i class="num" style="">{$k+1}</i>
+								<span><a href="{:url('index/show',array('id'=>$v['id']))}">{$v.title}</a></span>
 							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #77d549;">2</span>
-								<span><a href="#">热门文章2</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #62c1ff;">3</span>
-								<span><a href="#">热门文章3</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">4</span>
-								<span><a href="#">热门文章4</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">5</span>
-								<span><a href="#">热门文章5</a></span>
-							</li>
+							{/foreach}
 						</ul>
 					</div>
 					<div class="recent_list widget">
 						<h2 class="title">近期文章</h2>
 						<ul class="list-group">
+							{foreach $recentList as $k=>$v } 
 							<li class="list-group-item">
-								<span class="num" style="background-color: #ff858e;">1</span>
-								<span><a href="#">近期文章1</a></span>
+								<i class="num" style="">{$k+1}</i>
+								<span><a href="{:url('index/show',array('id'=>$v['id']))}">{$v.title}</a></span>
 							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #77d549;">2</span>
-								<span><a href="#">近期文章2</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #62c1ff;">3</span>
-								<span><a href="#">近期文章3</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">4</span>
-								<span><a href="#">近期文章4</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">5</span>
-								<span><a href="#">近期文章5</a></span>
-							</li>
-						</ul>
-					</div>
-					<div class="comment_list widget">
-						<h2 class="title">近期评论</h2>
-						<ul class="list-group">
-							<li class="list-group-item">
-								<span class="num" style="background-color: #ff858e;">1</span>
-								<span><a href="#">近期评论1</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #77d549;">2</span>
-								<span><a href="#">近期评论2</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num" style="background-color: #62c1ff;">3</span>
-								<span><a href="#">近期评论3</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">4</span>
-								<span><a href="#">近期评论4</a></span>
-							</li>
-							<li class="list-group-item">
-								<span class="num">5</span>
-								<span><a href="#">近期评论5</a></span>
-							</li>
+							{/foreach}
+						
 						</ul>
 					</div>
 					<div class="time_list widget">
 						<h2 class="title">归档</h2>
 						<ul class="list-group">
+							{foreach $time as $key=>$vo } 
+							{if condition="$vo neq null"}
 							<li class="list-group-item">
-								<span><a href="#">2019(1)</a></span>
+								<span><a href="{:url('index/sort',array('key'=>$key))}">2019.{$key+1}({$time_count[$key]})</a></span>
 							</li>
-							<li class="list-group-item">
-								<span><a href="#">2019(2)</a></span>
-							</li>
-							<li class="list-group-item">
-								<span><a href="#">2019(3)</a></span>
-							</li>
-							
+							{/if}
+							{/foreach}
 						</ul>
 					</div>
 					<div class="friends_link widget">
 						<h2 class="title">友情链接</h2>
 						<ul class="list-group">
+							{volist name="linkList" id="vo"}
 							<li class="list-group-item">
-								<span><a href="#">友情链接1</a></span>
+								<span><a href="{$vo.url}" title="{$vo.info}">{$vo.name}</a></span>
 							</li>
-							<li class="list-group-item">
-								<span><a href="#">友情链接2</a></span>
-							</li>
-							<li class="list-group-item">
-								<span><a href="#">友情链接3</a></span>
-							</li>
-
+							{/volist}
 						</ul>
 					</div>
 				</div>
+				
 			</div>
 
 		</div>
