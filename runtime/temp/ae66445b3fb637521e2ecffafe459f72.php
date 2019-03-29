@@ -1,10 +1,10 @@
-<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\project\lst.html";i:1553597850;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553833963;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553834037;}*/ ?>
+<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\comment\lst.html";i:1553819185;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553833963;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553834037;}*/ ?>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="utf-8">
-		<title>项目列表 - Mr.Wang - Blog</title>
+		<title>评论列表 - Mr.Wang - Blog</title>
 
 		<meta name="description" content="Dashboard">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,29 @@
 		<link href="http://localhost/myblog/public/static/admin/style/animate.css" rel="stylesheet">
 		<!--引入public目录中的ico图标-->
 		<link rel="shortcut icon" href="http://localhost/myblog/public/static/admin/images/favicon.ico">
+		<script src="//at.alicdn.com/t/font_1105599_yb7x1srwrj.js" type="text/javascript" charset="utf-8"></script>
+		<script src="//at.alicdn.com/t/font_1105571_bbt516qtuju.js" type="text/javascript" charset="utf-8"></script>
+		<!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
+		<link href="http://localhost/myblog/public/static/froala_editor/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			.widget .radio {
+				display: inline-block;
+				float: left;
+				margin-right: 10px;
+			}
+			
+			#weather span,#mood span {
+				font-size: 35px;
+			}
+			
+			.icon {
+				width: 1em;
+				height: 1em;
+				vertical-align: -0.15em;
+				fill: currentColor;
+				overflow: hidden;
+			}
+		</style>
 
 	</head>
 
@@ -242,17 +265,14 @@
 								<li>
 									<a href="#">后台</a>
 								</li>
-								<li >项目管理</li>
-								<li class="active">项目列表</li>
+								<li >评论管理</li>
+								<li class="active">评论列表</li>
 							</ul>
 						</div>
 						<!-- /Page Breadcrumb -->
 
 						<!-- Page Body -->
 						<div class="page-body">
-
-							<button type="button" tooltip="添加文章" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '<?php echo url('project/add'); ?>'"> <i class="fa fa-plus"></i> Add
-</button>
 							<div class="row">
 								<div class="col-lg-12 col-sm-12 col-xs-12">
 									<div class="widget">
@@ -262,12 +282,12 @@
 													<thead class="">
 														<tr>
 															<th class="text-center">ID</th>
-															<th class="text-center">项目名称</th>
-															<th class="text-center">项目介绍</th>
-															<th class="text-center">一级标签</th>
-															<th class="text-center">二级标签</th>
-															<th class="text-center">是否原创</th>
-															<th class="text-center">是否完成</th>
+															<th class="text-center">昵称</th>
+															<th class="text-center">邮箱</th>
+															<th class="text-center">内容</th>
+															<th class="text-center">时间</th>
+															<th class="text-center">状态</th>
+															<th class="text-center">是否回复</th>
 															<th class="text-center">操作</th>
 														</tr>
 													</thead>
@@ -276,22 +296,33 @@
 														<tr>
 															<td align="center"><?php echo htmlentities($vo['id']); ?></td>
 															<td align="center"><?php echo htmlentities($vo['name']); ?></td>
-															<td align="center"><?php echo htmlentities($vo['info']); ?></td>
-															<td align="center"><?php echo htmlentities($vo['tag1']); ?></td>
-															<td align="center"><?php echo htmlentities($vo['tag2']); ?></td>
+															<td align="center"><?php echo htmlentities($vo['email']); ?></td>
 															<td align="center">
-																<?php if($vo['original'] == '1'): ?> 原创项目 <?php else: ?> 学习项目 <?php endif; ?>
+																<div class="fr-view" >
+  					 												<?php echo $vo['text']; ?>
+																</div>
+															</td>
+															<td align="center"><?php echo htmlentities(date("Y-m-d H:i:s",!is_numeric($vo['create_time'])? strtotime($vo['create_time']) : $vo['create_time'])); ?></td>
+															<td align="center">
+																<?php if($vo['state'] == 1): ?>
+																展示中
+																<?php else: ?>
+																不展示
+																<?php endif; ?>
 															</td>
 															<td align="center">
-																<?php if($vo['complete'] == '1'): ?> 已完成 <?php else: ?> 未完成 <?php endif; ?>
+																<?php if($vo['reply'] == 1): ?>
+																已回复
+																<?php else: ?>
+																未回复
+																<?php endif; ?>
 															</td>
-
 															<td align="center">
-																<a href="<?php echo url('project/edit',array('id'=>$vo['id'])); ?>" class="btn btn-primary btn-sm shiny">
-																	<i class="fa fa-edit"></i> 编辑
+																<a href="<?php echo url('comment/edit',array('id'=>$vo['id'])); ?>" class="btn btn-primary btn-sm shiny">
+																	<i class="fa fa-edit"></i> 回复
 																</a>
 
-																<a href="#" onClick="warning('确实要删除吗', '<?php echo url("project/del",array('id'=>$vo['id'])); ?>')" class="btn btn-danger btn-sm shiny">
+																<a href="#" onClick="warning('确实要删除吗', '<?php echo url("comment/del",array('id'=>$vo['id'])); ?>')" class="btn btn-danger btn-sm shiny">
 																	<i class="fa fa-trash-o"></i> 删除
 																</a>
 

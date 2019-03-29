@@ -1,8 +1,7 @@
 <?php
 namespace app\admin\controller;
-use think\Controller;
 use app\admin\model\About as AboutModel;
-class About extends Controller
+class About extends Base
 {
     public function edit()
     {

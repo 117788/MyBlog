@@ -14,8 +14,8 @@ class Board extends Controller
     	$article_count = ArticleModel::count();
     	$essay_count = EssayModel::count();
     	$diary_count = DiaryModel::count();
-    	$comment_count = CommentModel::count();
-    	$board_count = BoardModel::count();
+    	$comment_count = CommentModel::where('level',0)->count();
+    	$board_count = BoardModel::where('level',0)->count();
     	$this->assign([
     		'list'=>$list,
     		'article_count'=>$article_count,

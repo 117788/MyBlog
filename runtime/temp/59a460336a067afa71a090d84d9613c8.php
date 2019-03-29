@@ -1,4 +1,4 @@
-<?php /*a:1:{s:62:"D:\wamp64\www\MyBlog\application\index\view\project\index.html";i:1553788007;}*/ ?>
+<?php /*a:1:{s:62:"D:\wamp64\www\MyBlog\application\index\view\project\index.html";i:1553818604;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -405,7 +405,7 @@
 										<div id="profile22" class="tab-pane" style="margin-left: 25%;">
 											<?php if(is_array($ago_project) || $ago_project instanceof \think\Collection || $ago_project instanceof \think\Paginator): $i = 0; $__LIST__ = $ago_project;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
 											<p>
-												<a href="$vo['gitUrl']"><?php echo htmlentities($vo['name']); ?></a>
+												<a href="<?php echo htmlentities($vo['gitUrl']); ?>"><?php echo htmlentities($vo['name']); ?></a>
 											</p>
 											<?php endforeach; endif; else: echo "" ;endif; ?>
 											<div class="d-flex justify-content-center" style="margin-top: -10px;">

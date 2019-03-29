@@ -1,8 +1,7 @@
 <?php
 namespace app\admin\controller;
-use think\Controller;
 use app\admin\model\Article as ArticleModel;
-class Article extends Controller
+class Article extends Base
 {
     public function lst()
     {
@@ -80,8 +79,8 @@ class Article extends Controller
     {
         $img = request()->file('file');
         // 移动到框架应用根目录/public/uploads/ 目录下
-        $info = $img->move('static/uploads');
-        $url = 'uploads/' . $info->getSaveName();
+        $info = $img->move('static/uploads/article');
+        $url = 'uploads/article/' . $info->getSaveName();
         
         if($info){
         	if(cookie('url')){
@@ -89,7 +88,8 @@ class Article extends Controller
         	}
         	cookie('url',$url);
         	if(cookie('url')){
-            	return json(['code' => 0, 'msg' => '上传成功!', 'url' => 'static/uploads/' . $info->getSaveName()]);
+        		 $data['src'] = 'http://localhost/MyBlog/public/static/uploads/article/'.$info->getSaveName();
+            	 $this->result($data,0,'上传成功');
         	}
             // 成功上传后 获取上传信息
 

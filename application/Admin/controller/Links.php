@@ -1,8 +1,7 @@
 <?php
 namespace app\admin\controller;
-use think\Controller;
 use app\admin\model\Links as LinksModel;
-class Links extends Controller
+class Links extends Base
 {
     public function lst()
     {

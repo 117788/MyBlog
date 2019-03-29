@@ -1,12 +1,11 @@
 <?php
 namespace app\admin\controller;
-use think\Controller;
 use app\admin\model\Comment as CommentModel;
-class Comment extends Controller
+class Comment extends Base
 {
     public function lst()
     {
-    	$list = CommentModel::paginate(5);
+    	$list = CommentModel::where('level',0)->paginate(5);
     	$this->assign("list",$list);
     	return view();
     }
@@ -14,21 +13,57 @@ class Comment extends Controller
     {
     	$id = input('id');
     	$Comment = db('Comment')->find($id);
-	    $this->assign('Comment',$Comment);
+	    $this->assign('comment',$Comment);
+	    $replyRes = CommentModel::where('pid',$id)->find();
+	    if(!$replyRes){
+		    $this->assign("reply",null);
+		}else{
+		    $this->assign("reply",$replyRes);
+		}
+	   
     	if(request()->isAjax()){
 		    $post = input('post.');
 		    $id = $post['id'];
-		    $data = [
+		    if(input('state') == 'on'){
+    			$data['state'] = 1;
+    		}else{
+    			$data['state'] = 0;
+    		}
+		    $reply = [
+		    	'article_id'=>$Comment['article_id'],
+		    	'diary_id'=>$Comment['diary_id'],
+		    	'name'=>'admin',
+		    	'email'=>'email',
+		    	'pid'=>$id,
+		    	'level'=>1,
     			'text'=>$post['text'],
+    			'ip'=>"admin",
 		    ];
-		   	$CommentModel = new CommentModel;
-		   	$save = $CommentModel->save($data,['id' => $id]);
-		    if($save !== false)
+		    if(!$replyRes){
+		    	if($post['text'] !== ''){
+		    		$CommentModel2 = new CommentModel;
+		    		$data['reply'] = 1;
+		   			$save1 = $CommentModel2->save($reply);
+		    	}
+		    
+		    }else{
+		    	if($post['text'] == ''){
+		    		$data['reply'] = 0;
+		    		$rep= db('comment')->delete($replyRes['id']);
+		    	}else{
+		    		$rep= CommentModel::get($replyRes['id']);
+		    		$save1 = $rep->save($reply);
+		    	}
+		    }
+		   	$CommentModel1 = new CommentModel;
+		   	$save = $CommentModel1->save($data,['id' => $id]);
+
+		    if($save !== false )
 		    {
-		    	$this->success('修改随笔成功！','lst');
+		    	$this->success('修改成功！','lst');
 		    	
 		    }else{
-		    	$this->error('修改随笔失败！');
+		    	$this->error('修改失败！');
 		    }
 		    
     	}
@@ -38,6 +73,7 @@ class Comment extends Controller
 		$id = input('id');
 		// 软删除
 		$Comment = CommentModel::get($id);
+		db('comment')->where('pid',$id)->delete();
 		$res = $Comment->delete();
 		if($res){
 			$this->redirect('lst');

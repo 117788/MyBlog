@@ -1,8 +1,7 @@
 <?php
 namespace app\admin\controller;
-use think\Controller;
 use app\admin\model\Essay as EssayModel;
-class Essay extends Controller
+class Essay extends Base
 {
     public function lst()
     {

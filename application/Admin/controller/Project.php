@@ -1,8 +1,7 @@
 <?php
 namespace app\admin\controller;
-use think\Controller;
 use app\admin\model\Project as ProjectModel;
-class Project extends Controller
+class Project extends Base
 {
     public function lst()
     {
@@ -98,8 +97,8 @@ class Project extends Controller
     {
         $img = request()->file('file');
         // 移动到框架应用根目录/public/uploads/ 目录下
-        $info = $img->move('static/uploads');
-        $url = 'uploads/' . $info->getSaveName();
+        $info = $img->move('static/uploads/project');
+        $url = 'uploads/project/' . $info->getSaveName();
         
         if($info){
         	if(cookie('url')){
@@ -108,7 +107,7 @@ class Project extends Controller
         	cookie('url',$url);
         	 // 成功上传后 获取上传信息
         	if(cookie('url')){
-        		 $data['src'] = 'http://localhost/MyBlog/public/static/uploads/'.$info->getSaveName();
+        		 $data['src'] = 'http://localhost/MyBlog/public/static/uploads/project/'.$info->getSaveName();
             	 $this->result($data,0,'上传成功');
         	}
            

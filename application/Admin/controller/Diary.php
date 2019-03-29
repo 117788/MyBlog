@@ -1,8 +1,7 @@
 <?php
 namespace app\admin\controller;
-use think\Controller;
 use app\admin\model\Diary as DiaryModel;
-class Diary extends Controller
+class Diary extends Base
 {
     public function lst()
     {
@@ -69,8 +68,8 @@ class Diary extends Controller
     {
         $img = request()->file('file');
         // 移动到框架应用根目录/public/uploads/ 目录下
-        $info = $img->move('static/uploads');
-        $url = 'uploads/' . $info->getSaveName();
+        $info = $img->move('static/uploads/diary');
+        $url = 'uploads/diary/' . $info->getSaveName();
         
         if($info){
         	if(cookie('url')){
@@ -78,7 +77,8 @@ class Diary extends Controller
         	}
         	cookie('url',$url);
         	if(cookie('url')){
-            	return json(['code' => 0, 'msg' => '上传成功!', 'url' => 'static/uploads/' . $info->getSaveName()]);
+        		 $data['src'] = 'http://localhost/MyBlog/public/static/uploads/diary/'.$info->getSaveName();
+            	 $this->result($data,0,'上传成功');
         	}
             // 成功上传后 获取上传信息
 

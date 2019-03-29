@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>添加文章 - Mr.Wang - Blog</title>
+		<title>回复评论 - Mr.Wang - Blog</title>
 		<meta name="description" content="Dashboard">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,7 +31,16 @@
 		<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
 		<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="__PUBLIC__/editor/editormd.min.css" />
+		<!-- Include Editor style. -->
+		<link href='https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
+		<link href='https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_style.min.css' rel='stylesheet' type='text/css' />
+		<!-- Include JS file. -->
+		<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/js/froala_editor.min.js'></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+
+		<!-- Include Editor style. -->
+		<link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+		<link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 
 	</head>
 
@@ -60,9 +69,9 @@
 									<a href="#">后台</a>
 								</li>
 								<li>
-									<a href="{:url('admin/lst')}">文章管理</a>
+									<a href="{:url('comment/lst')}">评论管理</a>
 								</li>
-								<li class="active">添加文章</li>
+								<li class="active">回复评论</li>
 							</ul>
 						</div>
 						<!-- /Page Breadcrumb -->
@@ -74,83 +83,51 @@
 								<div class="col-lg-12 col-sm-12 col-xs-12">
 									<div class="widget">
 										<div class="widget-header bordered-bottom bordered-blue">
-											<span class="widget-caption">新增文章</span>
+											<span class="widget-caption">回复评论</span>
 										</div>
 										<div class="widget-body">
 
 											<div id="horizontal-form">
 												<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+													<input type="hidden" name="id" value="{$comment.id}" />
 													<div class="form-group">
-														<label for="title" class="col-sm-2 control-label no-padding-right">文章标题</label>
-														<div class="col-sm-6">
-															<input class="form-control" id="title" placeholder="文章标题" name="title" type="text">
+														<label for="name" class="col-lg-2 control-label no-padding-right">昵称</label>
+														<div class="col-lg-10">
+															<input  class="form-control" type="text" id="name" value="{$comment.name}" name="name" disabled="disabled"/>
 														</div>
-														<p class="help-block col-sm-4 red">* 必填</p>
 													</div>
 													<div class="form-group">
-														<label for="info" class="col-sm-2 control-label no-padding-right">文章简介</label>
-														<div class="col-sm-6">
-															<input class="form-control" id="info" placeholder="文章简介" name="info" type="text">
+														<label for="email" class="col-lg-2 control-label no-padding-right">邮箱</label>
+														<div class="col-lg-10">
+															<input  class="form-control" type="text" id="email" value="{$comment.email}" name="email" disabled="disabled"/>
 														</div>
-														<p class="help-block col-sm-4 red">* 必填</p>
 													</div>
 													<div class="form-group">
-
-														<div id="element_id">
-															<div style="display: block;overflow: hidden;margin-left: 135px;">
-																<label for="title" class="col-sm-2 control-label no-padding-right">
-																	<span style="margin-right: 10px;">一级标签</span>
-															<select class="tag1" name="tag1" style="width: 100px;">
-																<option value="前端" selected>前端</option>
-															</select>
-															</label>
+														<label for="text" class="col-lg-2 control-label no-padding-right">评论内容</label>
+														<div class="col-lg-10">
+															<div class="fr-view" >
+																{$comment.text|raw}
 															</div>
-
-															<div style="display: block; overflow: hidden;margin-left: 135px;">
-																<label for="title" class="col-sm-2 control-label no-padding-right">
-																	<span style="margin-right: 10px;">二级标签</span>
-															<select class="tag2" name="tag2" style="width: 100px;">
-																<option value="HTML" selected>HTML</option>
-															</select>
-															</label>
-															</div>
-
 														</div>
-
-													</div>
-
-													<div class="form-group">
-														<div class="layui-upload">
-															<label for="pic" class="col-sm-2 control-label no-padding-right">项目缩略图</label>
-															<div class="col-sm-6">
-																<button type="button" class="layui-btn layui-btn-normal layui-input-inline " id="pic">添加图片</button>
-																<div class="layui-form-mid layui-word-aux  " style="float: right;">头像的尺寸限定150x150px,大小在50kb以内</div>
-																<div >
-																	<img src="" id="img_show">
-																</div>
-
-															</div>
-
-														</div>
-
 													</div>
 													<div class="form-group">
-														<label for="state" class="col-sm-2 control-label no-padding-right">是否推荐</label>
+														<label for="state" class="col-sm-2 control-label no-padding-right">是否展示</label>
 														<div class="col-sm-6">
 															<label>
-                                    							<input class="checkbox-slider colored-darkorange" name="state"  type="checkbox">
+                                    							<input class="checkbox-slider colored-darkorange" name="state" {if condition="$comment['state'] eq 1"}checked="checked"{/if} type="checkbox">
                                     							<span class="text"></span>
                                  							</label>
 														</div>
 													</div>
 													<div class="form-group">
-														<label for="text" class="col-lg-2 control-label no-padding-right">编辑文章</label>
-														<div class="col-lg-9">
-															<div id="test-editormd">
-																<textarea style="display:none;"></textarea>
-																<!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
-																<textarea class="editormd-html-textarea" name="html"></textarea>
-															</div>
+														<label for="text1" class="col-lg-2 control-label no-padding-right">回复评论</label>
+														<div class="col-lg-10">
+															<textarea id="editor">
+																{if condition="$reply neq null"}
+																	{$reply.text}
+																{/if}
+															</textarea>
+															<input type="hidden" id="editorText" value="" name="text" />
 														</div>
 													</div>
 													<div class="form-group">
@@ -172,61 +149,41 @@
 				</div>
 			</div>
 
+			<!-- Include external JS libs. -->
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+
+			<!-- Include Editor JS files. -->
+
+			<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/js/froala_editor.pkgd.min.js"></script>
+			<script src='__PUBLIC__/froala_editor/js/languages/zh_cn.js'></script>
+
 			<!--Basic Scripts-->
-			<script src="__PUBLIC__/admin/style/jquery_002.js"></script>
 			<script src="__PUBLIC__/admin/style/bootstrap.js"></script>
-			<script src="__PUBLIC__/admin/style/jquery.js"></script>
 			<!--Beyond Scripts-->
 			<script src="__PUBLIC__/admin/style/beyond.js"></script>
 			<script src="__PUBLIC__/layui/layui.js"></script>
-			<script src="__PUBLIC__/cxSelect/js/jquery.cxselect.js"></script>
-			<script src="__PUBLIC__/editor/editormd.js"></script>
+			
 			<script type="text/javascript">
-				var testEditor;
 				$(function() {
-					testEditor = editormd("test-editormd", {
-						width: "100%",
-						height: 1600,
-						emoji: true,
-						previewTheme: "dark", //预览主题
-						path: "__PUBLIC__/editor/lib/",
+					$('#editor').froalaEditor({
+						language: 'zh_cn',
+						heightMin: 200,
+						heightMax: 300,
+						placeholderText: '再忙也要回复评论哦~~',
+						pastePlain: true,
+						theme: 'dark',
+						toolbarSticky: false,
+						quickInsertTags: [''],
+						toolbarButtons: ['emoticons'],
 					});
-
-				});
-			</script>
-			<script type="text/javascript">
-				$(function() {
 					
-					layui.config({
-					base: '__PUBLIC__/layui/third/' //layui自定义layui组件目录
-				}).use(['form', 'croppers'], function() {
-					var $ = layui.jquery,
-						form = layui.form,
-						croppers = layui.croppers,
-						layer = layui.layer;
-
-					//创建一个头像上传组件
-					croppers.render({
-						elem: '#pic',
-						saveW: 150 //保存宽度
-							,
-						saveH: 150,
-						mark: 200/ 150 
-							,
-						area: '900px' //弹窗宽度
-							,
-						url: "{:url('article/upload')}" //图片上传接口返回和（layui 的upload 模块）返回的JOSN一样
-							,
-						done: function(url) { //上传完毕回调
-							console.log(url);
-							$("#img_show").attr('src', url);
-						}
-					});
-
-				});
 					$('#toSave').click(function() {
+						var html = $('textarea#editor').froalaEditor('html.get');
+						$('#editorText').val(html);
 						$.ajax({
-							url: "{:url('article/add')}",
+							url: "{:url('comment/edit')}",
 							type: 'post',
 							data: $('form').serialize(),
 							dataType: 'json',
@@ -241,7 +198,7 @@
 									});
 								} else {
 									layer.open({
-										title: '添加文章失败',
+										title: '回复失败',
 										content: data.msg,
 										icon: 5,
 										anim: 6
@@ -250,19 +207,17 @@
 							},
 							error: function(data) {
 								console.log(data);
-
 							}
 						});
 						return false;
 					});
 				});
 			</script>
-			<script type="text/javascript">
-				$(function() {
-					$('#element_id').cxSelect({
-						url: 'http://localhost/MyBlog/public/static/cxSelect/js/tag.json', // 提示：如果服务器不支持 .json 类型文件，请将文件改为 .js 文件
-						selects: ['tag1', 'tag2'], // selects 为数组形式，请注意顺序
-					});
+			<script>
+				layui.use('upload', function() {
+					var upload = layui.upload;
+					var layer = layui.layer;
+					
 				});
 			</script>
 	</body>

@@ -1,4 +1,4 @@
-<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\article\add.html";i:1553409701;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553755601;}*/ ?>
+<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\article\add.html";i:1553840743;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553833963;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553834037;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -62,7 +62,7 @@
                         <li>
                             <a class="login-area dropdown-toggle" data-toggle="dropdown">
                                 <div class="avatar" title="View your public profile">
-                                    <img src="http://localhost/myblog/public/static/admin/images/newx.jpg">
+                                    <img src="http://localhost/myblog/public/static/admin/images/cat.jpg">
                                 </div>
                                 <section>
                                     <h2><span class="profile"><span><?php echo htmlentities(app('request')->session('username')); ?></span></span></h2>
@@ -78,7 +78,7 @@
                                 </li>
                                 <li class="dropdown-footer">
                                     <a href="<?php echo url('admin/edit',array('id'=>app('request')->session('uid'))); ?>">
-                                            修改密码
+                                            修改资料
                                         </a>
                                 </li>
                             </ul>
@@ -122,13 +122,6 @@
                                 <a href="<?php echo url('admin/lst'); ?>">
                                     <span class="menu-text">
                                         管理员列表                                   </span>
-                                    <i class="menu-expand"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo url('admin/lst'); ?>">
-                                    <span class="menu-text">
-                                        资料修改                                   </span>
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>
@@ -184,13 +177,6 @@
                                 <a href="<?php echo url('project/lst'); ?>">
                                     <span class="menu-text">
                                         项目列表                                    </span>
-                                    <i class="menu-expand"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo url('project/show'); ?>">
-                                    <span class="menu-text">
-                                        项目统计                                    </span>
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>
@@ -329,15 +315,14 @@
 
 													<div class="form-group">
 														<div class="layui-upload">
-															<label for="pic" class="col-sm-2 control-label no-padding-right">文章缩略图</label>
+															<label for="pic" class="col-sm-2 control-label no-padding-right">项目缩略图</label>
 															<div class="col-sm-6">
-																<button type="button" class="layui-btn layui-btn-normal" id="pic">添加图片</button>
-																<p class="help-block col-sm-4 red" style="float: right;">点击图片放大预览</p>
-																<div id="img_sel">
-
+																<button type="button" class="layui-btn layui-btn-normal layui-input-inline " id="pic">添加图片</button>
+																<div class="layui-form-mid layui-word-aux  " style="float: right;">头像的尺寸限定150x150px,大小在50kb以内</div>
+																<div >
+																	<img src="" id="img_show">
 																</div>
-																<button type="button" class="layui-btn" id="test8" style="margin-top: 10px;">上传</button>
-																<p class="help-block col-sm-4 red" style="float: right;">* 请点击上传</p>
+
 															</div>
 
 														</div>
@@ -399,88 +384,42 @@
 						emoji: true,
 						previewTheme: "dark", //预览主题
 						path: "http://localhost/myblog/public/static/editor/lib/",
+						imageUpload : true,
+						imageUploadURL:"<?php echo url('article/upload'); ?>",
 					});
 
-				});
-			</script>
-			<script>
-				layui.use('upload', function() {
-					var upload = layui.upload;
-					var layer = layui.layer;
-					var count = 0;
-					//执行实例
-					var uploadInst = upload.render({
-						elem: '#pic' //绑定元素
-							,
-						url: "<?php echo url('article/upload'); ?>" //上传接口
-							,
-						auto: false //选择文件后不自动上传
-
-							,
-						bindAction: '#test8',
-						choose: function(obj) {
-							//预读本地文件示例，不支持ie8
-							obj.preview(function(index, file, result) { //在当前ID为“demo2”的区域显示图片
-								count++;
-								console.log(count);
-								if(count > 1) {
-									layer.msg("只允许上传一张图片");
-									error();
-								}
-								var files = obj.pushFile();
-								layui.use(['jquery', 'layer'], function() {
-									var $ = layui.$ //重点处
-										,
-										layer = layui.layer;
-									$('#img_sel').append('<div class="image-container" id="container' + index + '"><div class="delete-css"><button id="upload_img_' + index + '" class="layui-btn layui-btn-danger layui-btn-xs">删除</button></div>' +
-										'<img id="showImg' + index + '" style="width: 150px; margin:10px;cursor:pointer;"src="' + result + '" alt="' + file.name + '"></div>');
-
-									$("#upload_img_" + index).bind('click', function() {
-										delete files[index];
-										$("#container" + index).remove();
-									});
-									//某图片放大预览
-									$("#showImg" + index).bind('click', function() {
-										var width = $("#showImg" + index).width();
-										var height = $("#showImg" + index).height();
-										var scaleWH = width / height;
-										var bigH = 600;
-										var bigW = scaleWH * bigH;
-										if(bigW > 900) {
-											bigW = 900;
-											bigH = bigW / scaleWH;
-										}
-
-										// 放大预览图片
-										layer.open({
-											type: 1,
-											title: false,
-											closeBtn: 1,
-											shadeClose: true,
-											area: [bigW + 'px', bigH + 'px'], //宽高
-											content: "<img width='" + bigW + "' height='" + bigH + "' src=" + result + " />"
-										});
-									});
-
-								});
-
-							});
-						},
-
-						done: function(res) {
-							//上传完毕回调
-							layer.msg('上传成功');
-
-						},
-						error: function() {
-							//请求异常回调
-							layer.msg('上传失败，请重试');
-						}
-					});
 				});
 			</script>
 			<script type="text/javascript">
 				$(function() {
+					
+					layui.config({
+					base: 'http://localhost/myblog/public/static/layui/third/' //layui自定义layui组件目录
+				}).use(['form', 'croppers'], function() {
+					var $ = layui.jquery,
+						form = layui.form,
+						croppers = layui.croppers,
+						layer = layui.layer;
+
+					//创建一个头像上传组件
+					croppers.render({
+						elem: '#pic',
+						saveW: 150 //保存宽度
+							,
+						saveH: 150,
+						mark: 200/ 150 
+							,
+						area: '900px' //弹窗宽度
+							,
+						url: "<?php echo url('article/upload'); ?>" //图片上传接口返回和（layui 的upload 模块）返回的JOSN一样
+							,
+						done: function(url) { //上传完毕回调
+							console.log(url);
+							$("#img_show").attr('src', url);
+						}
+					});
+
+				});
 					$('#toSave').click(function() {
 						$.ajax({
 							url: "<?php echo url('article/add'); ?>",

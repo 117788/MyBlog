@@ -1,8 +1,7 @@
 <?php
 namespace app\admin\controller;
-use think\Controller;
 use app\admin\model\Board as BoardModel;
-class Board extends Controller
+class Board extends Base
 {
     public function lst()
     {
@@ -41,22 +40,32 @@ class Board extends Controller
 		    
 		    if(!$replyRes){
 		    	$this->assign("reply",0);
-		    	$BoardModel2 = new BoardModel;
-		   		$save1 = $BoardModel2->save($reply);
+		    	if($post['text'] !== ''){
+		    		$data['reply'] = 1;
+		    		$BoardModel2 = new BoardModel;
+		   			$save1 = $BoardModel2->save($reply);
+		    	}
+		    	
 		    }else{
+		    	if($post['text'] == ''){
+		    		$data['reply'] = 0;
+		    		$rep= db('board')->delete($replyRes['id']);
+		    	}else{
+		    		$rep= BoardModel::get($replyRes['id']);
+		    		$save1 = $rep->save($reply);
+		    	}
 		    	$this->assign("reply",$replyRes);
-		    	$rep= BoardModel::get($replyRes['id']);
-		    	$save1 = $rep->save($reply);
+		    	
 		    }
 		   	$BoardModel1 = new BoardModel;
 		   	$save = $BoardModel1->save($data,['id' => $id]);
 
-		    if($save !== false &&$save1 !== false)
+		    if($save !== false )
 		    {
-		    	$this->success('回复成功！','lst');
+		    	$this->success('修改成功！','lst');
 		    	
 		    }else{
-		    	$this->error('回复失败！');
+		    	$this->error('修改失败！');
 		    }
 		    
     	}
@@ -66,6 +75,7 @@ class Board extends Controller
 		$id = input('id');
 		// 软删除
 		$Board = BoardModel::get($id);
+		db('board')->where('pid',$id)->delete();
 		$res = $Board->delete();
 		if($res){
 			$this->redirect('lst');

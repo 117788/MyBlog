@@ -1,4 +1,4 @@
-<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\diary\index.html";i:1553785771;}*/ ?>
+<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\index\view\diary\index.html";i:1553818778;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -112,7 +112,7 @@
 		<div id="main" class="container">
 			<div class="row">
 				
-				<div class="col-xs-12 col-md-12 col-lg-9" id="warp" style="margin-left: 40px;">
+				<div class="col-xs-12 col-md-12 col-lg-9" id="warp" >
 					<!--面包屑导航开始-->
 					<nav class="breadcrumb">
 						<a class="breadcrumb-item " href="#">Blog</a>

@@ -1,4 +1,4 @@
-<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\index\index.html";i:1553355744;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553755601;}*/ ?>
+<?php /*a:3:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\index\index.html";i:1553355744;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553833963;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553834037;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -51,7 +51,7 @@
                         <li>
                             <a class="login-area dropdown-toggle" data-toggle="dropdown">
                                 <div class="avatar" title="View your public profile">
-                                    <img src="http://localhost/myblog/public/static/admin/images/newx.jpg">
+                                    <img src="http://localhost/myblog/public/static/admin/images/cat.jpg">
                                 </div>
                                 <section>
                                     <h2><span class="profile"><span><?php echo htmlentities(app('request')->session('username')); ?></span></span></h2>
@@ -67,7 +67,7 @@
                                 </li>
                                 <li class="dropdown-footer">
                                     <a href="<?php echo url('admin/edit',array('id'=>app('request')->session('uid'))); ?>">
-                                            修改密码
+                                            修改资料
                                         </a>
                                 </li>
                             </ul>
@@ -110,13 +110,6 @@
                                 <a href="<?php echo url('admin/lst'); ?>">
                                     <span class="menu-text">
                                         管理员列表                                   </span>
-                                    <i class="menu-expand"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo url('admin/lst'); ?>">
-                                    <span class="menu-text">
-                                        资料修改                                   </span>
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>
@@ -172,13 +165,6 @@
                                 <a href="<?php echo url('project/lst'); ?>">
                                     <span class="menu-text">
                                         项目列表                                    </span>
-                                    <i class="menu-expand"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo url('project/show'); ?>">
-                                    <span class="menu-text">
-                                        项目统计                                    </span>
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>

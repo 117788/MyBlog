@@ -1,4 +1,4 @@
-<?php /*a:3:{s:58:"D:\wamp64\www\MyBlog\application\admin\view\diary\lst.html";i:1553507585;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553398483;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553694805;}*/ ?>
+<?php /*a:3:{s:58:"D:\wamp64\www\MyBlog\application\admin\view\diary\lst.html";i:1553507585;s:59:"D:\wamp64\www\MyBlog\application\admin\view\common\top.html";i:1553833963;s:60:"D:\wamp64\www\MyBlog\application\admin\view\common\left.html";i:1553834037;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -72,7 +72,7 @@
                         <li>
                             <a class="login-area dropdown-toggle" data-toggle="dropdown">
                                 <div class="avatar" title="View your public profile">
-                                    <img src="http://localhost/myblog/public/static/admin/images/newx.jpg">
+                                    <img src="http://localhost/myblog/public/static/admin/images/cat.jpg">
                                 </div>
                                 <section>
                                     <h2><span class="profile"><span><?php echo htmlentities(app('request')->session('username')); ?></span></span></h2>
@@ -88,7 +88,7 @@
                                 </li>
                                 <li class="dropdown-footer">
                                     <a href="<?php echo url('admin/edit',array('id'=>app('request')->session('uid'))); ?>">
-                                            修改密码
+                                            修改资料
                                         </a>
                                 </li>
                             </ul>
@@ -135,13 +135,6 @@
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>
-                            <li>
-                                <a href="<?php echo url('admin/lst'); ?>">
-                                    <span class="menu-text">
-                                        资料修改                                   </span>
-                                    <i class="menu-expand"></i>
-                                </a>
-                            </li>
                         </ul>                            
                     </li> 
                     <li>
@@ -168,14 +161,14 @@
                         </a>
                         <ul class="submenu">
                             <li>
-                                <a href="<?php echo url('article/lst'); ?>">
+                                <a href="<?php echo url('comment/lst'); ?>">
                                     <span class="menu-text">
                                         文章评论                                    </span>
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo url('article/lst'); ?>">
+                                <a href="<?php echo url('board/lst'); ?>">
                                     <span class="menu-text">
                                         留言板                                    </span>
                                     <i class="menu-expand"></i>
@@ -194,13 +187,6 @@
                                 <a href="<?php echo url('project/lst'); ?>">
                                     <span class="menu-text">
                                         项目列表                                    </span>
-                                    <i class="menu-expand"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo url('project/show'); ?>">
-                                    <span class="menu-text">
-                                        项目统计                                    </span>
                                     <i class="menu-expand"></i>
                                 </a>
                             </li>

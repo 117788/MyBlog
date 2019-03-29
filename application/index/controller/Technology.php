@@ -28,6 +28,7 @@ class Technology extends Controller
 			if($data->isEmpty()){
 				$time[$key] = null;
 				$time_count[$key] = 0;
+				$time_link[$key] = 0;
 			}else{
 				$time[$key] = $data;
 				$time_count[$key] = ArticleModel::whereBetweenTime('create_time', '2019-'.$value.'-1', '2019-'.$value.'-31')->count();
@@ -42,7 +43,7 @@ class Technology extends Controller
     public function show(){
     	$id = input('id');
     	$text = ArticleModel::where('id',$id)->find();
-    	$list = CommentModel::where('article_id',$id)->paginate(2);
+    	$list = CommentModel::where('article_id',$id)->where('state',1)->paginate(20);
     	$this->assign('vo',$text);
     	$this->assign('list',$list);
     	return view();

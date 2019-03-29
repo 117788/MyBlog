@@ -1,3 +1,4 @@
+<?php /*a:1:{s:60:"D:\wamp64\www\MyBlog\application\admin\view\login\login.html";i:1553835899;}*/ ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<!--Head-->
@@ -9,15 +10,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<!--Basic __PUBLIC__/admin/styles-->
-		<link href="__PUBLIC__/admin/style/bootstrap.css" rel="stylesheet">
-		<link href="__PUBLIC__/admin/style/font-awesome.css" rel="stylesheet">
-		<!--Beyond __PUBLIC__/admin/styles-->
-		<link id="beyond-link" href="__PUBLIC__/admin/style/beyond.css" rel="stylesheet">
-		<link href="__PUBLIC__/admin/style/demo.css" rel="stylesheet">
-		<link href="__PUBLIC__/admin/style/animate.css" rel="stylesheet">
-		<link rel="shortcut icon" href="__PUBLIC__/admin/images/newx.ico" />
-		<link rel="stylesheet" href="__PUBLIC__/layui/css/layui.css">
+		<!--Basic http://localhost/myblog/public/static/admin/styles-->
+		<link href="http://localhost/myblog/public/static/admin/style/bootstrap.css" rel="stylesheet">
+		<link href="http://localhost/myblog/public/static/admin/style/font-awesome.css" rel="stylesheet">
+		<!--Beyond http://localhost/myblog/public/static/admin/styles-->
+		<link id="beyond-link" href="http://localhost/myblog/public/static/admin/style/beyond.css" rel="stylesheet">
+		<link href="http://localhost/myblog/public/static/admin/style/demo.css" rel="stylesheet">
+		<link href="http://localhost/myblog/public/static/admin/style/animate.css" rel="stylesheet">
+		<link rel="shortcut icon" href="http://localhost/myblog/public/static/admin/images/newx.ico" />
+		<link rel="stylesheet" href="http://localhost/myblog/public/static/layui/css/layui.css">
 	</head>
 	<!--Head Ends-->
 	<!--Body-->
@@ -35,7 +36,7 @@
 					</div>
 					<div class="loginbox-textbox">
 						<input class="form-control" placeholder="验证码" name="code" type="text" style="width: 80px; float: left;">
-						<img src="{:captcha_src()}" alt="captcha" onclick="this.src=this.src+'?'" style="float: left;cursor: pointer;width: 140px;" />
+						<img src="<?php echo captcha_src(); ?>" alt="captcha" onclick="this.src=this.src+'?'" style="float: left;cursor: pointer;width: 140px;" />
 					</div>
 					<div class="loginbox-textbox" style="margin-top: 25px;">
 						<label>
@@ -52,17 +53,17 @@
 		</div>
 
 		<!--Basic Scripts-->
-		<script src="__PUBLIC__/admin/style/jquery.js"></script>
-		<script src="__PUBLIC__/admin/style/bootstrap.js"></script>
-		<script src="__PUBLIC__/admin/style/jquery_002.js"></script>
+		<script src="http://localhost/myblog/public/static/admin/style/jquery.js"></script>
+		<script src="http://localhost/myblog/public/static/admin/style/bootstrap.js"></script>
+		<script src="http://localhost/myblog/public/static/admin/style/jquery_002.js"></script>
 		<!--Beyond Scripts-->
-		<script src="__PUBLIC__/admin/style/beyond.js"></script>
-		<script src="__PUBLIC__/layer/layer.js"></script>
+		<script src="http://localhost/myblog/public/static/admin/style/beyond.js"></script>
+		<script src="http://localhost/myblog/public/static/layer/layer.js"></script>
 		<script>
 			$(function() {
 				$('#login').click(function() {
 					$.ajax({
-						url: "{:url('login/index')}",
+						url: "<?php echo url('login/index'); ?>",
 						type: 'post',
 						data: $('form').serialize(),
 						dataType: 'json',

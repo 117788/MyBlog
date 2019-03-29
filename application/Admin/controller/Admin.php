@@ -1,8 +1,7 @@
 <?php
 namespace app\admin\controller;
-use think\Controller;
 use app\admin\model\Admin as AdminModel;
-class Admin extends Controller
+class Admin extends Base
 {
     public function lst()
     {
@@ -73,8 +72,8 @@ class Admin extends Controller
     {
         $img = request()->file('file');
         // 移动到框架应用根目录/public/uploads/ 目录下
-        $info = $img->move('static/uploads');
-        $url = 'uploads/' . $info->getSaveName();
+        $info = $img->move('static/uploads/admin');
+        $url = 'uploads/admin/' . $info->getSaveName();
         
         if($info){
         	if(cookie('url')){
@@ -82,7 +81,7 @@ class Admin extends Controller
         	}
         	cookie('url',$url);
         	if(cookie('url')){
-            	return json(['code' => 0, 'msg' => '上传成功!', 'url' => 'static/uploads/' . $info->getSaveName()]);
+            	return json(['code' => 0, 'msg' => '上传成功!', 'url' => 'static/uploads/admin/' . $info->getSaveName()]);
         	}
             // 成功上传后 获取上传信息
 

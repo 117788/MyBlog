@@ -12,6 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/initial.css" />
 		<!--引入public目录中的ico图标-->
 		<link rel="shortcut icon" href="__PUBLIC__/index/img/favicon.ico">
+		<link href="__PUBLIC__/admin/style/page.css" rel="stylesheet">
 		<!--引入cdn图标-->
 		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
 		<!-- 新 Bootstrap4 核心 CSS 文件 -->
@@ -187,17 +188,17 @@
 									</div>
 								</p>
 							</div>
-							{foreach $list as $k=>$vo2 } 
-							{if condition="$vo2['level'] eq 1 and $vo2['pid'] eq $vo1['id']"}
+							{foreach $list as $k=>$v } 
+							{if condition="$v['level'] eq 1 and $v['pid'] eq $vo1['id']"}
 							<div class="review ">
 								<img src="__PUBLIC__/index/img/photo1.jpg" class="img-fluid rounded" />
 								<div class="board_info">
 									<div class="review_info board_info_review">
-										<p>管理员 : admin {$vo2.create_time|date="Y-m-d H:i:s"}</p>
+										<p>管理员 : admin {$v.create_time|date="Y-m-d H:i:s"}</p>
 									</div>
 									<p class="review_text">
 										<div class="fr-view" >
-  					 						{$vo2.text|raw}
+  					 						{$v.text|raw}
 										</div>
 									</p>
 								</div>
